@@ -870,10 +870,13 @@
         const tabIds = tabButtons.map((button) => button.dataset.kanaTab);
         const compactOutputQuery = window.matchMedia("(max-width: 860px)");
         const coarsePointerQuery = window.matchMedia("(pointer: coarse)");
+        const landscapeOrientationQuery = window.matchMedia("(orientation: landscape)");
         const gojuonLayoutStorageKey = "mojihako:kana-pad:gojuon-layout";
+        const mobileAutoGojuonMaxViewport = 600;
         let statusTimer = 0;
         let activeTab = readStoredString(`${storagePrefix}tab`, "hiragana");
-        let isGojuonLayout = readStoredString(gojuonLayoutStorageKey) === "1";
+        let storedGojuonLayout = readStoredString(gojuonLayoutStorageKey) === "1";
+        let isGojuonLayout = storedGojuonLayout;
         let caretStart = 0;
         let caretEnd = 0;
 
@@ -916,6 +919,26 @@
 
         function shouldSkipOutputFocus() {
             return coarsePointerQuery.matches;
+        }
+
+        function shouldAutoSwitchGojuonLayout() {
+            return coarsePointerQuery.matches && Math.min(window.innerWidth, window.innerHeight) <= mobileAutoGojuonMaxViewport;
+        }
+
+        function desiredGojuonLayout() {
+            if (shouldAutoSwitchGojuonLayout()) return landscapeOrientationQuery.matches;
+            return storedGojuonLayout;
+        }
+
+        function syncGojuonLayoutMode(shouldRender = true) {
+            const autoSwitching = shouldAutoSwitchGojuonLayout();
+            const nextLayout = desiredGojuonLayout();
+            if (gojuonToggle) {
+                gojuonToggle.checked = nextLayout;
+                gojuonToggle.disabled = autoSwitching;
+                gojuonToggle.setAttribute("aria-disabled", autoSwitching ? "true" : "false");
+            }
+            setGojuonLayout(nextLayout, shouldRender);
         }
 
         function syncOutputFocusAfterAction({ shouldFocusDesktop = false } = {}) {
@@ -1176,8 +1199,13 @@
         if (gojuonToggle) {
             gojuonToggle.checked = isGojuonLayout;
             gojuonToggle.addEventListener("change", () => {
-                writeStoredString(gojuonLayoutStorageKey, gojuonToggle.checked ? "1" : "0");
-                setGojuonLayout(gojuonToggle.checked);
+                if (shouldAutoSwitchGojuonLayout()) {
+                    syncGojuonLayoutMode();
+                    return;
+                }
+                storedGojuonLayout = gojuonToggle.checked;
+                writeStoredString(gojuonLayoutStorageKey, storedGojuonLayout ? "1" : "0");
+                syncGojuonLayoutMode();
             });
         }
         searchInput.addEventListener("input", renderGrid);
@@ -1197,9 +1225,15 @@
         } else if (typeof compactOutputQuery.addListener === "function") {
             compactOutputQuery.addListener(autoResizeOutput);
         }
+        if (typeof landscapeOrientationQuery.addEventListener === "function") {
+            landscapeOrientationQuery.addEventListener("change", () => syncGojuonLayoutMode());
+        } else if (typeof landscapeOrientationQuery.addListener === "function") {
+            landscapeOrientationQuery.addListener(() => syncGojuonLayoutMode());
+        }
+        window.addEventListener("resize", () => syncGojuonLayoutMode());
 
         autoResizeOutput();
-        setGojuonLayout(isGojuonLayout, false);
+        syncGojuonLayoutMode(false);
         setActiveTab(activeTab);
         updateHandoffLinks();
     }
