@@ -423,6 +423,16 @@ h2 {
     font-size: 1.25rem;
 }
 
+.guide-section h2,
+.article-extra h2,
+.guide-section h3,
+.article-extra h3,
+.guide-section h4,
+.article-extra h4 {
+    line-height: 1.4;
+}
+
+
 .home-article-list {
     margin: 0;
     padding-left: 1.25rem;
