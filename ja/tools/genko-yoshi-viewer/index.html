@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>縦書き原稿用紙ビューア - 200字・400字の枚数計算 | MojiHako</title>
+        <meta name="description"
+              content="テキストを縦書き原稿用紙の形式で配置し、200字・400字原稿用紙の枚数を計算できる無料ツールです。ブラウザ上で動作し、入力内容はサーバーに送信されません。">
+
+        <!-- Canonical -->
+        <link rel="canonical" href="https://ezyno.github.io/japanese-text-converter/ja/tools/genko-yoshi-viewer/">
+
+        <!-- Icons -->
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+        <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="manifest" href="/site.webmanifest">
+
+        <!-- Style -->
+        <link rel="stylesheet" href="/style.css">
+
+        <!-- Schema -->
+        <script type="application/ld+json">
+         {
+             "@context": "https://schema.org",
+             "@type": "WebApplication",
+             "name": "縦書き原稿用紙ビューア",
+             "alternateName": "Genko Yoshi Viewer",
+             "url": "https://ezyno.github.io/japanese-text-converter/ja/tools/genko-yoshi-viewer/",
+             "inLanguage": "ja",
+             "applicationCategory": "UtilitiesApplication",
+             "operatingSystem": "Any",
+             "isAccessibleForFree": true,
+             "description": "テキストを縦書き原稿用紙の形式で配置し、200字・400字原稿用紙の枚数を計算できる無料ツールです。入力内容はブラウザ内で処理されます。",
+             "offers": {
+                 "@type": "Offer",
+                 "price": "0",
+                 "priceCurrency": "JPY"
+             },
+             "creator": {
+                 "@type": "Organization",
+                 "name": "MojiHako",
+                 "url": "https://ezyno.github.io/japanese-text-converter/"
+             }
+         }
+        </script>
+
+    </head>
+    <body id="top">
+        <a class="skip-link" href="#main">本文へ移動</a>
+        <header class="site-header">
+            <div class="header-inner">
+                <a class="brand" href="/ja/" aria-label="MojiHako ホーム">
+                    <img class="brand-mark" src="/assets/images/mojihako-brand-logo-origin.svg" alt="" width="34" height="34">
+                    <span class="brand-word"><span class="brand-moji">Moji</span><span class="brand-hako">Hako</span></span>
+                </a>
+                <nav class="language-nav" aria-label="言語選択">
+                    <a href="/ko/">한국어</a>
+                    <a aria-current="page" href="/ja/">日本語</a>
+                    <a href="/">English</a>
+                </nav>
+            </div>
+            <nav class="tool-nav" aria-label="ツールメニュー">
+                <a href="/ja/tools/width-converter/">全角・半角</a>
+                <a href="/ja/tools/kana-converter/">かな変換</a>
+                <a href="/ja/tools/kana-pad/">日本語入力</a>
+                <a aria-current="page" href="./">原稿用紙</a>
+                <a href="/ja/tools/japanese-era-converter/">和暦</a>
+                <a href="/ja/tools/kaomoji-copy/">顔文字</a>
+                <a href="/ja/#tool-list">ツール一覧</a>
+            </nav>
+        </header>
+
+        <!-- Main content -->
+        <main id="main" class="page-shell">
+
+            <!-- Desktop ad slot -->
+            <aside class="ad-slot desktop-ad" aria-label="広告エリア"><span></span></aside>
+
+            <!-- Main tool -->
+            <div class="content-column">
+                <section class="intro">
+                    <div class="tool-title-row">
+                        <h1 data-i18n-text="genko.title">縦書き原稿用紙ビューア</h1>
+                    </div>
+                    <p data-i18n-text="genko.description">
+                        テキストを縦書き原稿用紙の形式で配置し、200字・400字基準の枚数を計算します。</p>
+                </section>
+
+                <div class="genko-control-grid" data-genko-tool>
+                    <section class="tool-panel genko-input-panel" aria-labelledby="genko-input-heading">
+                        <h2 id="genko-input-heading" data-i18n-text="genko.inputHeading">テキスト入力</h2>
+                        <label class="field-label" for="genko-input" data-i18n-text="genko.textLabel">原稿用紙に入れるテキスト</label>
+                        <textarea id="genko-input" class="text-box genko-textarea" data-genko-input data-i18n-placeholder="placeholders.genkoInput" rows="10"
+                                  placeholder="原稿用紙に入れるテキストを入力するか、TXT ファイルを読み込んでください。">
+吾輩は猫である。
+名前はまだ無い。
+
+どこで生れたかとんと見当がつかぬ。</textarea>
+                        <div class="genko-file-row">
+                            <label class="file-label" for="genko-file" data-i18n-text="genko.fileLabel">
+                                テキストファイルを読み込む（.txt / .md）</label>
+                            <input id="genko-file" class="file-input" data-genko-file type="file" accept=".txt,.md,text/plain,text/markdown">
+                        </div>
+                        <p class="note" data-i18n-text="genko.filePrivacy">
+                            ファイルはサーバーにアップロードされず、ブラウザ内でのみ処理されます。</p>
+                        <p class="status-line" data-genko-file-status aria-live="polite"></p>
+                    </section>
+
+                    <section class="tool-panel genko-settings-panel" aria-labelledby="genko-settings-heading">
+                        <h2 id="genko-settings-heading" data-i18n-text="genko.settings">設定</h2>
+
+                        <fieldset class="option-grid genko-option-grid">
+                            <legend data-i18n-text="genko.paperKind">原稿用紙形式</legend>
+                            <label><input name="genko-paper" type="radio" value="400" checked>
+                                <span data-i18n-text="genko.paper400">400字</span></label>
+                            <label><input name="genko-paper" type="radio" value="200">
+                                <span data-i18n-text="genko.paper200">200字</span></label>
+                        </fieldset>
+
+                        <fieldset class="option-grid genko-option-grid">
+                            <legend data-i18n-text="genko.viewMode">表示方式</legend>
+                            <label><input name="genko-view-mode" type="radio" value="paged" checked>
+                                <span data-i18n-text="genko.pagedView">ページ単位表示</span></label>
+                            <label><input name="genko-view-mode" type="radio" value="all">
+                                <span data-i18n-text="genko.allView">全体を続けて表示</span></label>
+                        </fieldset>
+
+                        <fieldset class="option-grid genko-option-grid genko-display-options">
+                            <legend data-i18n-text="genko.options">表示オプション</legend>
+                            <label><input id="genko-grid-toggle" data-genko-grid-toggle type="checkbox" checked>
+                                <span data-i18n-text="genko.showGrid">原稿用紙の罫線を表示</span></label>
+                            <label><input data-genko-indent type="checkbox" checked>
+                                <span data-i18n-text="genko.indentParagraph">段落の最初を一マス空ける</span></label>
+                            <label><input data-genko-remove-blank-lines type="checkbox">
+                                <span data-i18n-text="genko.removeBlankLines">空行を削除</span></label>
+                            <label><input data-genko-linebreaks type="checkbox" checked>
+                                <span data-i18n-text="genko.respectLineBreaks">改行を反映</span></label>
+                            <label><input data-genko-kinsoku type="checkbox" checked>
+                                <span data-i18n-text="genko.kinsoku">基本的な禁則処理を適用</span></label>
+                            <p class="note genko-kinsoku-note" data-i18n-text="genko.kinsokuNote">
+                                句読点や閉じ括弧が行頭に来ないように、前の行末に寄せて表示します。開き括弧は行頭に置くことができます。
+                            </p>
+                        </fieldset>
+                    </section>
+                </div>
+
+                <section class="tool-panel genko-stats-panel" aria-labelledby="genko-stats-heading" aria-live="polite">
+                    <h2 id="genko-stats-heading" data-i18n-text="genko.stats">計算結果</h2>
+                    <dl class="genko-stats-grid">
+                        <div>
+                            <dt data-i18n-text="genko.totalCharacters">総文字数</dt>
+                            <dd data-genko-stat="total">0字</dd>
+                        </div>
+                        <div>
+                            <dt data-i18n-text="genko.noSpaceCharacters">空白を除いた文字数</dt>
+                            <dd data-genko-stat="noSpaces">0字</dd>
+                        </div>
+                        <div>
+                            <dt data-i18n-text="genko.lineCount">行数</dt>
+                            <dd data-genko-stat="lines">0行</dd>
+                        </div>
+                        <div>
+                            <dt data-i18n-text="genko.rawSheets">文字数換算</dt>
+                            <dd data-genko-stat="rawSheets">0枚</dd>
+                        </div>
+                        <div>
+                            <dt data-i18n-text="genko.layoutSheets">原稿用紙換算</dt>
+                            <dd data-genko-stat="layoutSheets">0枚</dd>
+                        </div>
+                    </dl>
+                </section>
+
+                <section class="tool-panel genko-viewer-panel" aria-labelledby="genko-viewer-heading">
+                    <div class="genko-viewer-header">
+                        <h2 id="genko-viewer-heading" data-i18n-text="genko.viewer">原稿用紙ビューア</h2>
+                        <div class="genko-pager" data-genko-pager>
+                            <button class="secondary-button" data-genko-action="first" type="button" data-i18n-text="genko.first">最初</button>
+                            <button class="secondary-button" data-genko-action="prev" type="button" data-i18n-text="genko.prev">前へ</button>
+                            <button class="secondary-button" data-genko-action="next" type="button" data-i18n-text="genko.next">次へ</button>
+                            <button class="secondary-button" data-genko-action="last" type="button" data-i18n-text="genko.last">最後</button>
+                            <label class="sr-only" for="genko-page-input" data-i18n-text="genko.pageNumber">ページ番号</label>
+                            <input id="genko-page-input" class="page-number-input" data-genko-page-input type="number" min="1" value="1">
+                            <span class="genko-page-total">/ <span data-genko-total-pages-control>1</span></span>
+                            <button class="secondary-button" data-genko-action="go" type="button" data-i18n-text="genko.go">移動</button>
+                        </div>
+                    </div>
+                    <div class="genko-viewer-scroll" data-genko-viewer aria-live="polite"></div>
+                </section>
+
+                <div class="handoff-links genko-handoff-links" data-handoff-source="genko-input" aria-label="結果を他のツールへ送る">
+                    <span>結果を他のツールへ送る</span>
+                    <a data-handoff-target="/ja/tools/kana-converter/" href="/ja/tools/kana-converter/">ひらがな・カタカナ</a>
+                    <a data-handoff-target="/ja/tools/width-converter/" href="/ja/tools/width-converter/">全角・半角</a>
+                    <a data-handoff-target="/ja/tools/kana-pad/" href="/ja/tools/kana-pad/">Kana Pad</a>
+                </div>
+
+                <!-- Mobile ad slot -->
+                <aside class="ad-slot mobile-ad" aria-label="広告エリア"><span></span></aside>
+
+                <!-- Guide section -->
+                <section class="guide-section" aria-labelledby="guide-heading">
+                    <h2 id="guide-heading">原稿用紙とは</h2>
+                    <p>原稿用紙は、一定のマス目に文字を一字ずつ書き込む用紙です。
+                        縦書き原稿用紙では文字が上から下へ並び、列は右から左へ進みます。</p>
+
+                    <h2>200字原稿用紙と400字原稿用紙の違い</h2>
+                    <p>400字詰め原稿用紙は20字×20行（20×20）が基準です。
+                        200字詰め原稿用紙は20字×10行（20×10）が基準です。</p>
+
+                    <h2>縦書き原稿用紙の基本ルール</h2>
+                    <p>1マスに1文字を配置します。改行すると次の列に移ります。
+                        「段落の最初を一マス空ける」オプションをオンにすると、段落の先頭に字下げが入ります。
+                        句読点や括弧類も、原則として1マスを使います。</p>
+                    <p>単語間にスペースを使う文章（英文など）では、行頭に来るスペースはスキップされ、
+                        先頭のマスが空白で始まらないように処理します。</p>
+                    <p>「禁則処理」をオンにすると、「。」「、」「」」などの句読点・閉じ括弧が
+                        行頭に来ないよう、直前の行末に添わせて表示します。</p>
+
+                    <h2>文字数基準の枚数と実際の配置基準の枚数の違い</h2>
+                    <p>「文字数換算」は総文字数を原稿用紙のマス数で割った目安です。
+                        「原稿用紙換算」は改行・空行・字下げ・禁則処理など、
+                        実際にマスを使う要素を反映した目安です。</p>
+
+                    <h2>TXT ファイルの読み込みについて</h2>
+                    <p>ファイルの読み込みにはブラウザの File API を使用しており、
+                        入力テキストもファイルの内容もサーバーには送信されません。</p>
+
+                    <h2>注意事項</h2>
+                    <p>原稿用紙の書き方ルールは、学校・公募・出版社・提出先によって異なります。
+                        このツールは縦書きレイアウトの確認を補助する目的で作られており、
+                        専門的な組版・出版編集の代わりにはなりません。
+                        実際の提出用原稿を作成する際は、各提出先のルールを必ずご確認ください。</p>
+
+                    <h2>関連ツール</h2>
+                    <ul class="link-list">
+                        <li><a href="/ja/tools/width-converter/">全角・半角</a></li>
+                        <li><a href="/ja/tools/kana-converter/">ひらがな・カタカナ</a></li>
+                        <li><a href="/ja/tools/kana-pad/">Kana Pad</a></li>
+                        <li><a href="/ja/tools/kaomoji-copy/">顔文字</a></li>
+                        <li><a href="/ja/tools/japanese-era-converter/">和暦</a></li>
+                    </ul>
+                </section>
+
+                <!-- Horizontal ad slot -->
+                <aside class="ad-slot horizontal-ad" aria-label="広告エリア"><span></span></aside>
+
+                <!-- Extra article section -->
+                <article class="guide-section article-extra" aria-labelledby="genko-yoshi-extra-guide-heading">
+
+                    <h2 id="genko-yoshi-extra-guide-heading">縦書き原稿用紙のGuide sectionと枚数計算ガイド</h2>
+
+                    <p>
+                        作文の課題やエッセイ、公募原稿、翻訳文を仕上げるとき、
+                        テキストが実際の原稿用紙にどう収まるかを確認したい場面があります。
+                        縦書き原稿用紙は文字を上から下へ、行を右から左へ並べる日本語の文章でよく使われる書式で、
+                        字下げ・改行・句読点の位置といったルールが絡むため、
+                        単純な文字数だけでは枚数を正確に見積もりにくいことがあります。
+                    </p>
+
+                    <p>
+                        このビューアはテキストを縦書き原稿用紙形式に配置し、
+                        総文字数・空白除き文字数・文字数換算の枚数・実際の配置に基づく枚数をまとめて計算します。
+                        400字と200字の切り替えも自由にできます。
+                    </p>
+
+                    <section>
+                        <h3>📌 このツールが役立つ場面</h3>
+                        <div class="table-scroll">
+                            <table class="seo-guide-table">
+                                <thead>
+                                    <tr>
+                                        <th>場面</th>
+                                        <th>活用方法</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>作文・国語の課題</strong></td>
+                                        <td>縦書きレイアウトと段落の配置を提出前に確認できます。</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>公募・文芸誌への投稿</strong></td>
+                                        <td>400字または200字原稿用紙の規定枚数に収まるか計算できます。</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>翻訳文・創作文の確認</strong></td>
+                                        <td>横書きで書いた文章が縦書きでどう見えるかをプレビューできます。</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>文字数のカウント</strong></td>
+                                        <td>空白込みの文字数と空白除きの文字数を並べて確認できます。</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3>1. 縦書き原稿用紙とは</h3>
+                        <p>
+                            原稿用紙は一定のマス目に文字を書き込む用紙で、1マスに1文字を入れるのが基本です。
+                            縦書きでは文字が上から下へ、列が右から左へ進みます。
+                        </p>
+                        <p>
+                            標準的な400字詰め原稿用紙は20字×20行（<strong>20×20</strong>）。
+                            200字詰めは20字×10行（<strong>20×10</strong>）です。
+                            課題や公募で「原稿用紙○枚以内」と指定されている場合は、
+                            どちらの形式かを必ず確認しましょう。
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>2. 文字数で計算した枚数と実際の枚数がずれる理由</h3>
+                        <p>
+                            文字数を400や200で割るだけでは、実際の配置と差が出ることがあります。
+                            原稿用紙では、段落の字下げ・改行後の余白・空行・禁則処理といった要素が
+                            マスを消費するためです。
+                        </p>
+                        <ul>
+                            <li><strong>文字数換算：</strong>総文字数 ÷ マス数</li>
+                            <li><strong>原稿用紙換算：</strong>改行・空行・字下げ・禁則処理を反映した値</li>
+                        </ul>
+                        <p>
+                            たとえば文字数が400字未満でも、段落が多かったり改行が多かったりすると、
+                            実際の原稿用紙では2枚目にはみ出すことがあります。
+                            提出枚数を合わせたいときは両方の数値を確認するのが安全です。
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>3. 縦書き原稿用紙の基本ルール</h3>
+                        <p>
+                            各オプションを切り替えると、レイアウトへの影響をリアルタイムで確認できます。
+                        </p>
+                        <ul>
+                            <li><strong>字下げ：</strong>段落の先頭マスを1字分空けます。</li>
+                            <li><strong>改行を反映：</strong>入力テキストの改行を配置に反映します。</li>
+                            <li><strong>空行を削除：</strong>空の行を削除して配置に反映しないようにできます。</li>
+                            <li><strong>禁則処理：</strong>句読点や閉じ括弧が列の先頭に来ないよう調整します。</li>
+                        </ul>
+                        <p>
+                            「。」「、」「」」などが行頭に来ると、縦書きでは読みにくくなることがあります。
+                            禁則処理をオンにすると、これらの文字をなるべく直前の列末尾に添わせて
+                            原稿用紙らしい仕上がりに近づけます。
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>4. 400字詰めと200字詰めの違い</h3>
+                        <p>
+                            400字詰め原稿用紙は作文・文学作品・課題・公募でよく使われる標準形式です。
+                            1ページに多くの文字が入るので、長い文章の分量確認に向いています。
+                        </p>
+                        <p>
+                            200字詰めは1ページの列数が少なく、短い文章や練習用の確認に適しています。
+                            同じテキストでも200字基準では400字基準より枚数が多く表示されます。
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>5. TXT・MD ファイルの読み込みとプライバシー</h3>
+                        <p>
+                            メモ帳・Markdown エディタ・ワープロなどで書いたテキストを
+                            <code>.txt</code> または <code>.md</code> ファイルとして読み込めます。
+                            長い文章を毎回コピー&amp;ペーストする手間が省けます。
+                        </p>
+                        <p>
+                            ファイルの読み込みにはブラウザの File API を使用しています。
+                            入力したテキストもファイルの内容も外部サーバーには送信されず、
+                            すべての処理はブラウザ内で完結します。
+                        </p>
+                    </section>
+
+                    <section>
+                        <div class="shortcut-box">
+                            <h4>🛑 提出前のチェックリスト</h4>
+                            <ul>
+                                <li>400字詰めと200字詰め、どちらの原稿用紙が指定されているか確認しましたか？</li>
+                                <li>枚数のカウント方法が文字数基準か配置基準かを確認しましたか？</li>
+                                <li>字下げオプションが提出規定に合っているか確認しましたか？</li>
+                                <li>空白処理オプションが原文の意図と合っているか確認しましたか？</li>
+                                <li>句読点や閉じ括弧の位置がおかしくないかプレビューで確認しましたか？</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3>よくある質問</h3>
+
+                        <h4>Q. 日本語以外のテキストも配置できますか？</h4>
+                        <p>
+                            はい。漢字・ひらがな・カタカナのほか、英字・数字・記号が混在したテキストも配置できます。
+                        </p>
+                        <p>
+                            全角アルファベット・数字（<code>Ａ</code>、<code>ａ</code>、<code>１</code> など）は
+                            回転せず1文字1マスとして扱います。
+                            半角アルファベット・数字は縦書きグリッド内で回転表示され、
+                            1マスに最大2文字まで配置されます。
+                        </p>
+
+                        <h4>Q. 空白や改行も文字数に含まれますか？</h4>
+                        <p>
+                            全文字数と空白除きの文字数をそれぞれ表示します。
+                            配置基準の枚数では、改行・空行・字下げなど
+                            マスを消費する要素も反映されます。
+                        </p>
+
+                        <h4>Q. 印刷したり、提出用ファイルとして保存できますか？</h4>
+                        <p>
+                            このツールはブラウザ内でのレイアウト確認と枚数計算を目的としています。
+                            実際の提出用原稿用紙が必要な場合は、
+                            提出先から指定された用紙や書式をご利用ください。
+                        </p>
+                    </section>
+                </article>
+
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <nav class="footer-nav" aria-label="フッターのサイトリンク">
+                    <div class="footer-link-group">
+                        <a href="#top">ページ上部へ戻る</a>
+                        <a href="/ja/tools/width-converter/">全角・半角</a>
+                        <a href="/ja/tools/kana-converter/">かな変換</a>
+                        <a href="/ja/tools/kana-pad/">日本語入力</a>
+                        <a aria-current="page" href="./">原稿用紙</a>
+                        <a href="/ja/tools/japanese-era-converter/">和暦</a>
+                        <a href="/ja/tools/kaomoji-copy/">顔文字</a>
+                        <a href="/ja/#tool-list">ツール一覧</a>
+                    </div>
+                    <div class="footer-link-group">
+                        <a href="/ja/about.html">サイト紹介 / お問い合わせ</a>
+                        <a href="/ja/terms.html">利用規約</a>
+                        <a href="/ja/privacy.html">プライバシーポリシー</a>
+                    </div>
+                </nav>
+                <p class="footer-note">入力したテキストはサーバーへ送信されず、ユーザーのブラウザ内だけで処理されます。</p>
+                <p class="copyright">© 2026 MojiHako. All rights reserved.</p>
+            </div>
+        </footer>
+        <script src="/assets/js/i18n.js"></script>
+        <script src="/assets/js/genko-viewer.js"></script>
+    </body>
+</html>

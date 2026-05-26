@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>全角・半角変換 - 日本語の文字幅変換ツール | MojiHako</title>
+        <meta name="description"
+              content="全角カタカナ・半角カタカナ・全角ASCII・半角ASCII・全角スペースの相互変換とNFKC正規化を、ブラウザ内だけで処理できる無料ツールです。">
+
+        <!-- Canonical -->
+        <link rel="canonical" href="https://ezyno.github.io/japanese-text-converter/ja/tools/width-converter/">
+
+        <!-- Icons -->
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+        <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="manifest" href="/site.webmanifest">
+
+        <!-- Style -->
+        <link rel="stylesheet" href="/style.css">
+
+        <!-- Schema -->
+        <script type="application/ld+json">
+         {
+             "@context": "https://schema.org",
+             "@type": "WebApplication",
+             "name": "全角・半角変換",
+             "alternateName": "Full-width Half-width Converter",
+             "url": "https://ezyno.github.io/japanese-text-converter/ja/tools/width-converter/",
+             "inLanguage": "ja",
+             "applicationCategory": "UtilitiesApplication",
+             "operatingSystem": "Any",
+             "isAccessibleForFree": true,
+             "description": "全角カタカナ・半角カタカナ・全角ASCII・半角ASCII・全角スペースの相互変換とNFKC正規化を、ブラウザ内だけで処理する無料ツールです。",
+             "offers": {
+                 "@type": "Offer",
+                 "price": "0",
+                 "priceCurrency": "JPY"
+             },
+             "creator": {
+                 "@type": "Organization",
+                 "name": "MojiHako",
+                 "url": "https://ezyno.github.io/japanese-text-converter/"
+             }
+         }
+        </script>
+
+    </head>
+    <body id="top">
+        <a class="skip-link" href="#main">本文へ移動</a>
+        <header class="site-header">
+            <div class="header-inner">
+                <a class="brand" href="/ja/" aria-label="MojiHako ホーム">
+                    <img class="brand-mark" src="/assets/images/mojihako-brand-logo-origin.svg" alt="" width="34" height="34">
+                    <span class="brand-word"><span class="brand-moji">Moji</span><span class="brand-hako">Hako</span></span>
+                </a>
+                <nav class="language-nav" aria-label="言語選択">
+                    <a href="/ko/">한국어</a>
+                    <a aria-current="page" href="/ja/">日本語</a>
+                    <a href="/">English</a>
+                </nav>
+            </div>
+            <nav class="tool-nav" aria-label="ツールメニュー">
+                <a aria-current="page" href="./">全角・半角</a>
+                <a href="/ja/tools/kana-converter/">かな変換</a>
+                <a href="/ja/tools/kana-pad/">日本語入力</a>
+                <a href="/ja/tools/genko-yoshi-viewer/">原稿用紙</a>
+                <a href="/ja/tools/japanese-era-converter/">和暦</a>
+                <a href="/ja/tools/kaomoji-copy/">顔文字</a>
+                <a href="/ja/#tool-list">ツール一覧</a>
+            </nav>
+        </header>
+
+        <!-- Main content -->
+        <main id="main" class="page-shell">
+
+            <!-- Desktop ad slot -->
+            <aside class="ad-slot desktop-ad" aria-label="広告エリア"><span></span></aside>
+
+            <!-- Main tool -->
+            <div class="content-column">
+                <section class="intro">
+                    <div class="tool-title-row">
+                        <h1>全角・半角変換</h1>
+                    </div>
+                    <p>
+                        日本語テキストに含まれる全角・半角文字をすばやく変換します。
+                        フォームの入力エラーを直したいときや、住所・氏名・商品名の文字幅を整えたいときに便利です。
+                    </p>
+                </section>
+
+                <section class="tool-panel converter-tool" aria-label="全角/半角変換ツール">
+                    <div class="input-header">
+                        <label class="field-label" for="width-input">入力</label>
+                    </div>
+                    <textarea id="width-input" class="text-box converter-textarea code-ascii width-textarea" data-receive-text rows="4" placeholder="例: ＡＢＣ１２３ ｶﾀｶﾅ ① Ⅳ"></textarea>
+
+                    <fieldset class="option-grid" aria-label="変換方式">
+                        <legend>変換方式</legend>
+                        <label><input name="width-mode" type="radio" value="full-kana-to-half" checked>
+                            全角カタカナ → 半角カタカナ</label>
+                        <label><input name="width-mode" type="radio" value="half-kana-to-full">
+                            半角カタカナ → 全角カタカナ</label>
+                        <label><input name="width-mode" type="radio" value="full-to-half">
+                            全角 ASCII → 半角 ASCII</label>
+                        <label><input name="width-mode" type="radio" value="half-to-full">
+                            半角 ASCII → 全角 ASCII</label>
+                        <label><input name="width-mode" type="radio" value="full-space-to-half">
+                            全角スペース → 半角スペース</label>
+                        <label><input name="width-mode" type="radio" value="half-space-to-full">
+                            半角スペース → 全角スペース</label>
+                        <label><input name="width-mode" type="radio" value="nfkc">
+                            NFKC 正規化</label>
+                    </fieldset>
+
+                    <div class="action-row convert-action-row">
+                        <label class="live-toggle-inline"><input data-live-toggle="width" type="checkbox" checked><span>自動変換</span></label>
+                        <button class="primary-button" data-convert="width" type="button" hidden>変換</button>
+                    </div>
+
+                    <div class="result-header">
+                        <label class="field-label" for="width-output">結果</label>
+                        <div class="result-actions">
+                            <button class="copy-button" data-copy="width" type="button">コピー</button>
+                            <button class="secondary-button" data-clear="width" type="button">クリア</button>
+                        </div>
+                    </div>
+                    <textarea id="width-output" class="text-box converter-textarea code-ascii width-textarea output-box" rows="4" readonly placeholder="変換結果がここに表示されます。"></textarea>
+                    <div class="handoff-links" data-handoff-source="width-output" aria-label="結果を他のツールへ送る">
+                        <span>結果を他のツールへ送る</span>
+                        <a data-handoff-target="/ja/tools/kana-converter/" href="/ja/tools/kana-converter/">ひらがな/カタカナ</a>
+                        <a data-handoff-target="/ja/tools/kana-pad/" href="/ja/tools/kana-pad/">Kana Pad</a>
+                        <a data-handoff-target="/ja/tools/genko-yoshi-viewer/" href="/ja/tools/genko-yoshi-viewer/">原稿用紙</a>
+                    </div>
+                    <p class="note">
+                        <span class="note-icon" aria-hidden="true">!</span>
+                        NFKC 正規化は <code>①</code>、<code>Ⅳ</code> などの互換文字も変換します。
+                        元の表記を保つ必要がある場合は、変換結果をご確認ください。</p>
+                </section>
+
+                <!-- Mobile ad slot -->
+                <aside class="ad-slot mobile-ad" aria-label="広告エリア"><span></span></aside>
+
+                <!-- Guide section -->
+                <section class="guide-section" aria-labelledby="guide-heading">
+                    <h2 id="guide-heading">Guide section</h2>
+                    <ul>
+                        <li>変換したいテキストを入力欄に貼り付けます。</li>
+                        <li>変換方式を選択します。</li>
+                        <li>自動変換がオンのときは、結果がリアルタイムで表示されます。</li>
+                        <li>自動変換をオフにすると、［変換］ボタンで手動変換できます。</li>
+                        <li>［コピー］ボタンで変換結果をコピーして使用できます。</li>
+                    </ul>
+
+                    <h2>変換例</h2>
+                    <div class="example-grid">
+                        <div><strong>全角カタカナ → 半角カタカナ</strong>
+                            <p><code>ガッツポーズ → ｶﾞｯﾂﾎﾟｰｽﾞ</code></p></div>
+                        <div><strong>半角カタカナ → 全角カタカナ</strong>
+                            <p><code>ｶﾞｯﾂﾎﾟｰｽﾞ → ガッツポーズ</code></p></div>
+                        <div><strong>全角 ASCII → 半角 ASCII</strong>
+                            <p><code>ＡＢ１２ → AB12</code></p></div>
+                        <div><strong>半角 ASCII → 全角 ASCII</strong>
+                            <p><code>AB12 → ＡＢ１２</code></p></div>
+                        <div><strong>全角スペース → 半角スペース</strong>
+                            <p><code>Ａ　Ｂ → Ａ Ｂ</code></p></div>
+                        <div><strong>半角スペース → 全角スペース</strong>
+                            <p><code>A B → A　B</code></p></div>
+                        <div><strong>NFKC 正規化</strong>
+                            <p><code>① Ⅳ ㍿ → 1 IV 株式会社</code></p></div>
+                    </div>
+
+                    <h2>全角と半角の違い</h2>
+                    <p>
+                        全角文字は、一般的に日本語1文字分の幅を持つ文字です。半角文字は、その半分程度の幅で表示される文字です。
+                        日本語のフォームでは、氏名・住所・電話番号・商品名の入力時に、全角・半角の区別が求められることがあります。
+                    </p>
+
+                    <h2>NFKC 正規化とは</h2>
+                    <p>
+                        NFKC 正規化は、①や Ⅳ といった互換文字や、全角英数字（Ａ、１）を、
+                        通常の表記（1、IV、A）に統一する処理です。
+                    </p>
+                    <p>
+                        テキスト内の表記ゆれを一括で整えられるため、
+                        検索・データ整理・EC サイトの商品登録など、
+                        大量のテキストを扱う場面で役立ちます。
+                    </p>
+
+                    <h2>関連ツール</h2>
+                    <ul class="link-list">
+                        <li><a href="/ja/tools/kana-converter/">ひらがな/カタカナ</a></li>
+                        <li><a href="/ja/tools/kana-pad/">Kana Pad</a></li>
+                        <li><a href="/ja/tools/genko-yoshi-viewer/">原稿用紙</a></li>
+                        <li><a href="/ja/tools/kaomoji-copy/">顔文字</a></li>
+                        <li><a href="/ja/tools/japanese-era-converter/">和暦</a></li>
+                    </ul>
+                </section>
+
+                <!-- Horizontal ad slot -->
+                <aside class="ad-slot horizontal-ad" aria-label="広告エリア"><span></span></aside>
+
+                <!-- Extra article section -->
+                <article class="guide-section article-extra" aria-labelledby="width-extra-guide-heading">
+
+                    <h2 id="width-extra-guide-heading">全角・半角エラーの原因と直し方</h2>
+
+                    <p>
+                        日本のウェブサイトで会員登録や住所入力をしていると、
+                        <strong>「全角で入力してください」</strong>や
+                        <strong>「半角で入力してください」</strong>というエラーが表示されることがあります。
+                        これは入力フォームが文字の幅（全角・半角）を区別して処理しているためです。
+                        以下のガイドでエラーの原因を確認し、必要な形式に変換してみましょう。
+                    </p>
+
+                    <section>
+                        <h3>📌 入力項目ごとの全角・半角の目安</h3>
+                        <div class="table-scroll">
+                            <table class="seo-guide-table">
+                                <thead>
+                                    <tr>
+                                        <th>入力項目</th>
+                                        <th>よくある要件</th>
+                                        <th>入力例</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>氏名フリガナ（カタカナ）</strong></td>
+                                        <td class="text-teal">全角カタカナを求められることが多い</td>
+                                        <td><code>ヤマダ</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>郵便番号 / 電話番号</strong></td>
+                                        <td class="text-orange">半角数字が基本。ハイフンの可否はサイトによる</td>
+                                        <td><code>1234567</code> / <code>09012345678</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>番地・部屋番号</strong></td>
+                                        <td>サイトによって異なる。エラーが出たら全角・半角を切り替えてみる</td>
+                                        <td><code>1-2-3</code> または <code>１－２－３</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>メールアドレス・パスワード</strong></td>
+                                        <td class="text-orange">半角英数字・記号を使用</td>
+                                        <td><code>moji@hako.com</code></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3>1. 全角文字と半角文字の違い</h3>
+                        <ul>
+                            <li><strong>全角文字：</strong>日本語1文字分ほどの幅を持つ文字</li>
+                            <li><strong>半角文字：</strong>全角の半分程度の幅を持つ文字。英数字や半角カタカナが該当</li>
+                        </ul>
+
+                        <h4>❓ なぜ全角・半角のエラーが起きるの？</h4>
+                        <p>
+                            見た目がほぼ同じアルファベット <code>A</code> と <code>Ａ</code>、
+                            数字 <code>1</code> と <code>１</code>、
+                            カタカナ <code>ｶ</code> と <code>カ</code> は、
+                            コンピューター内部ではまったく異なる文字コードとして扱われます。
+                            他のアプリからコピーしたテキスト、スマートフォンの自動補完、
+                            ウェブからの貼り付けなどで、全角・半角が意図せず混在してしまうことがよくあります。
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>2. フリガナ入力：全角カタカナと半角カタカナ</h3>
+                        <p>
+                            日本のウェブフォームの氏名フリガナ欄では、<strong>全角カタカナ</strong>を求められることがよくあります。
+                            カタカナで入力したのにエラーが出る場合、<strong>半角カタカナ</strong>になっている可能性があります。
+                            このページの <strong>［半角カタカナ → 全角カタカナ］</strong> で変換してお試しください。
+                        </p>
+                        <p>
+                            <em>※ただし、古い予約システムや配送システムでは半角カタカナを指定している場合もあります。
+                                エラーメッセージの文言を必ず確認してください。</em>
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>3. 全角数字と半角数字の違い</h3>
+                        <p>
+                            全角数字（<code>１２３４</code>）は日本語1文字分ほどの幅を持ち、
+                            半角数字（<code>1234</code>）は一般的な英数字と同じ幅です。
+                            クレジットカード番号・郵便番号・電話番号の欄に全角数字を入力すると、エラーになることがあります。
+                            <strong>［全角 ASCII → 半角 ASCII］</strong> で半角に統一してお試しください。
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>4. 見えにくい全角スペースの落とし穴</h3>
+                        <p>
+                            意外と気づきにくいエラーの原因が<strong>スペース</strong>です。
+                            日本語入力がオンの状態でスペースキーを押すと、
+                            通常の半角スペースではなく全角スペース（<code>　</code>）が入力されることがあります。
+                            氏名の姓と名の間、住所の途中、建物名の前後に全角スペースが紛れ込むと、
+                            フォームが入力値を正しく認識しないことがあります。
+                            原因が分からないときは <strong>［全角スペース → 半角スペース］</strong> を試してみてください。
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>5. 大量のテキスト整理には NFKC 正規化が便利</h3>
+                        <p>
+                            EC サイトへの商品登録や、収集した日本語テキストを整形するときは
+                            <strong>NFKC 正規化</strong>が役立ちます。
+                            <code>①</code>・<code>Ⅳ</code>・<code>㍿</code> などの互換文字や全角英数字を
+                            標準的なテキスト（<code>1</code>・<code>IV</code>・<code>株式会社</code>・半角英数字）に
+                            一括変換でき、検索や比較がしやすくなります。
+                        </p>
+                    </section>
+
+                    <section>
+                        <div class="shortcut-box">
+                            <h4>✅ フォームエラーが出たときのチェックリスト</h4>
+                            <ul>
+                                <li>電話番号・郵便番号・カード番号が<strong>半角数字</strong>になっているか確認します。（例：<code>1234</code>）</li>
+                                <li>フリガナ欄が<strong>全角カタカナ</strong>になっているか確認します。（例：<code>ヤマダ</code>）</li>
+                                <li>テキストの中に見えにくい<strong>全角スペース</strong>が混入していないか確認します。</li>
+                                <li>住所や商品名に <strong>互換文字（<code>①</code>・<code>Ⅰ</code> など）</strong>が含まれていないか確認します。</li>
+                            </ul>
+                        </div>
+                    </section>
+                </article>
+
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <nav class="footer-nav" aria-label="フッターのサイトリンク">
+                    <div class="footer-link-group">
+                        <a href="#top">ページ上部へ戻る</a>
+                        <a aria-current="page" href="./">全角・半角</a>
+                        <a href="/ja/tools/kana-converter/">かな変換</a>
+                        <a href="/ja/tools/kana-pad/">日本語入力</a>
+                        <a href="/ja/tools/genko-yoshi-viewer/">原稿用紙</a>
+                        <a href="/ja/tools/japanese-era-converter/">和暦</a>
+                        <a href="/ja/tools/kaomoji-copy/">顔文字</a>
+                        <a href="/ja/#tool-list">ツール一覧</a>
+                    </div>
+                    <div class="footer-link-group">
+                        <a href="/ja/about.html">サイト紹介 / お問い合わせ</a>
+                        <a href="/ja/terms.html">利用規約</a>
+                        <a href="/ja/privacy.html">プライバシーポリシー</a>
+                    </div>
+                </nav>
+                <p class="footer-note">入力したテキストはサーバーへ送信されず、ユーザーのブラウザ内だけで処理されます。</p>
+                <p class="copyright">© 2026 MojiHako. All rights reserved.</p>
+            </div>
+        </footer>
+        <script src="/assets/js/i18n.js"></script>
+        <script src="/assets/js/app.js"></script>
+    </body>
+</html>

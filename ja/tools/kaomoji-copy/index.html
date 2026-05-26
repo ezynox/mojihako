@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>顔文字コピー - 顔文字検索・お気に入り保存 | MojiHako</title>
+        <meta name="description"
+              content="かわいい・泣き・怒り・動物など、カテゴリ別の顔文字を検索してワンクリックでコピーできる無料ツールです。お気に入りと最近コピーした顔文字もブラウザ内に保存できます。">
+
+        <!-- Canonical -->
+        <link rel="canonical" href="https://ezyno.github.io/japanese-text-converter/ja/tools/kaomoji-copy/">
+
+        <!-- Icons -->
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+        <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="manifest" href="/site.webmanifest">
+
+        <!-- Style -->
+        <link rel="stylesheet" href="/style.css">
+
+        <!-- Schema -->
+        <script type="application/ld+json">
+         {
+             "@context": "https://schema.org",
+             "@type": "WebApplication",
+             "name": "顔文字コピー",
+             "alternateName": "Kaomoji Copy",
+             "url": "https://ezyno.github.io/japanese-text-converter/ja/tools/kaomoji-copy/",
+             "inLanguage": "ja",
+             "applicationCategory": "UtilitiesApplication",
+             "operatingSystem": "Any",
+             "isAccessibleForFree": true,
+             "description": "かわいい・泣き・怒り・動物など、カテゴリ別の顔文字を検索してワンクリックでコピーできる無料ツールです。お気に入りと最近コピーした顔文字もブラウザ内に保存できます。",
+             "offers": {
+                 "@type": "Offer",
+                 "price": "0",
+                 "priceCurrency": "JPY"
+             },
+             "creator": {
+                 "@type": "Organization",
+                 "name": "MojiHako",
+                 "url": "https://ezyno.github.io/japanese-text-converter/"
+             }
+         }
+        </script>
+
+    </head>
+    <body id="top">
+        <a class="skip-link" href="#main">本文へ移動</a>
+        <header class="site-header">
+            <div class="header-inner">
+                <a class="brand" href="/ja/" aria-label="MojiHako ホーム">
+                    <img class="brand-mark" src="/assets/images/mojihako-brand-logo-origin.svg" alt="" width="34" height="34">
+                    <span class="brand-word"><span class="brand-moji">Moji</span><span class="brand-hako">Hako</span></span>
+                </a>
+                <nav class="language-nav" aria-label="言語選択">
+                    <a href="/ko/">한국어</a>
+                    <a aria-current="page" href="/ja/">日本語</a>
+                    <a href="/">English</a>
+                </nav>
+            </div>
+            <nav class="tool-nav" aria-label="ツールメニュー">
+                <a href="/ja/tools/width-converter/">全角・半角</a>
+                <a href="/ja/tools/kana-converter/">かな変換</a>
+                <a href="/ja/tools/kana-pad/">日本語入力</a>
+                <a href="/ja/tools/genko-yoshi-viewer/">原稿用紙</a>
+                <a href="/ja/tools/japanese-era-converter/">和暦</a>
+                <a aria-current="page" href="./">顔文字</a>
+                <a href="/ja/#tool-list">ツール一覧</a>
+            </nav>
+        </header>
+
+        <!-- Main content -->
+        <main id="main" class="page-shell">
+
+            <!-- Desktop ad slot -->
+            <aside class="ad-slot desktop-ad" aria-label="広告エリア"><span></span></aside>
+
+            <!-- Main tool -->
+            <div class="content-column">
+                <section class="intro">
+                    <div class="tool-title-row">
+                        <h1>顔文字コピー</h1>
+                    </div>
+                    <p>よく使う顔文字をカテゴリから探して、ワンクリックでコピーできます。お気に入り登録や最近コピーした顔文字の確認もできます。</p>
+                </section>
+
+                <section class="tool-panel kaomoji-panel" data-kaomoji-copy aria-label="顔文字コピー ツール">
+                    <div class="utility-toolbar">
+                        <label class="search-field" for="kaomoji-search">
+                            <span class="field-label">検索</span>
+                            <input id="kaomoji-search" class="search-input" data-kaomoji-search type=
+                                       "search" placeholder="love, cry, cat, 喜び, 動物">
+                        </label>
+                        <output class="status-line" data-kaomoji-status aria-live="polite"></output>
+                    </div>
+
+                    <div class="copy-tab-list" role="tablist" aria-label="顔文字カテゴリ" data-kaomoji-tabs>
+                        <button role="tab" type="button" data-kaomoji-tab="love">恋愛</button>
+                        <button role="tab" type="button" data-kaomoji-tab="cute">かわいい</button>
+                        <button role="tab" type="button" data-kaomoji-tab="happy">喜び</button>
+                        <button role="tab" type="button" data-kaomoji-tab="cry">泣き</button>
+                        <button role="tab" type="button" data-kaomoji-tab="angry">怒り</button>
+                        <button role="tab" type="button" data-kaomoji-tab="shocked">驚き</button>
+                        <button role="tab" type="button" data-kaomoji-tab="sleepy">眠い</button>
+                        <button role="tab" type="button" data-kaomoji-tab="animal">動物</button>
+                        <button role="tab" type="button" data-kaomoji-tab="greeting">あいさつ</button>
+                        <button role="tab" type="button" data-kaomoji-tab="gaming">ゲーム</button>
+                        <button role="tab" type="button" data-kaomoji-tab="embarrassed">照れ</button>
+                        <button role="tab" type="button" data-kaomoji-tab="excited">わくわく</button>
+                        <button role="tab" type="button" data-kaomoji-tab="sad">悲しみ</button>
+                        <button role="tab" type="button" data-kaomoji-tab="favorites">お気に入り</button>
+                        <button role="tab" type="button" data-kaomoji-tab="recent">最近コピー</button>
+                    </div>
+
+                    <div class="kaomoji-list" data-kaomoji-list aria-live="polite"></div>
+                </section>
+
+                <!-- Mobile ad slot -->
+                <aside class="ad-slot mobile-ad" aria-label="広告エリア"><span></span></aside>
+
+                <!-- Guide section -->
+                <section class="guide-section" aria-labelledby="guide-heading">
+                    <h2 id="guide-heading">顔文字コピーのGuide section</h2>
+                    <ol>
+                        <li>恋愛、かわいい、喜び、泣き、怒り、動物などのカテゴリを選びます。</li>
+                        <li>使いたい顔文字をクリックすると、クリップボードにコピーされます。</li>
+                        <li>☆ボタンでお気に入りに保存できます。</li>
+                        <li>検索欄では、cat、happy、喜び、動物などのタグや顔文字の一部を入力できます。</li>
+                    </ol>
+                    <h2>顔文字の例</h2>
+                    <div class="example-grid">
+                        <div><strong>恋愛</strong><p>(ღˇ◡ˇ*)♡</p></div>
+                        <div><strong>かわいい</strong><p>(´,,•ω•,,)♡</p></div>
+                        <div><strong>3</strong><p>（*＾3＾)/~☆</p></div>
+                    </div>
+                    <h2>保存について</h2>
+                    <p>お気に入りと最近コピーした顔文字は、お使いのブラウザ内に保存されます。ログインやサーバー送信なしで使えます。</p>
+                    <h2>関連ツール</h2>
+                    <ul class="link-list">
+                        <li><a href="/ja/tools/width-converter/">全角・半角</a></li>
+                        <li><a href="/ja/tools/kana-converter/">ひらがな・カタカナ</a></li>
+                        <li><a href="/ja/tools/kana-pad/">Kana Pad</a></li>
+                        <li><a href="/ja/tools/genko-yoshi-viewer/">原稿用紙</a></li>
+                        <li><a href="/ja/tools/japanese-era-converter/">和暦</a></li>
+                    </ul>
+                </section>
+
+                <!-- Horizontal ad slot -->
+                <aside class="ad-slot horizontal-ad" aria-label="広告エリア"><span></span></aside>
+
+                <!-- Extra article section -->
+                <article class="guide-section article-extra" aria-labelledby="kaomoji-extra-guide-heading">
+
+                    <h2 id="kaomoji-extra-guide-heading">顔文字をすばやく探してコピー</h2>
+
+                    <section>
+                        <p>
+                            顔文字は、文字や記号を組み合わせて表情や気分を表すテキスト表現です。
+                            <code>(´▽`)</code>、<code>(；ω；)</code>、<code>(≧▽≦)</code> のように、
+                            目・口・手のパーツで雰囲気を作れるので、短いメッセージにも感情を添えやすいのが特徴です。
+                        </p>
+                    </section>
+
+                    <section>
+                        <p>
+                            日本語のチャットやSNSでは、絵文字だけでは少し強すぎるときや、
+                            文章の空気をやわらかくしたいときに顔文字がよく使われます。
+                            「ありがとう」「おつかれさま」「ごめんね」などの一言に添えるだけでも、
+                            受け取る印象がかなり変わります。
+                        </p>
+                    </section>
+
+                    <section>
+                        <p>
+                            気に入った顔文字はお気に入りに保存しておくと、よく使うものをすぐに呼び出せます。
+                            最近コピーした顔文字もブラウザ内に残るので、同じ表情を続けて使いたいときにも便利です。
+                        </p>
+                    </section>
+
+                </article>
+
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <nav class="footer-nav" aria-label="フッターリンク">
+                    <div class="footer-link-group">
+                        <a href="#top">ページ上部へ戻る</a>
+                        <a href="/ja/tools/width-converter/">全角・半角</a>
+                        <a href="/ja/tools/kana-converter/">かな変換</a>
+                        <a href="/ja/tools/kana-pad/">日本語入力</a>
+                        <a href="/ja/tools/genko-yoshi-viewer/">原稿用紙</a>
+                        <a href="/ja/tools/japanese-era-converter/">和暦</a>
+                        <a aria-current="page" href="./">顔文字</a>
+                        <a href="/ja/#tool-list">ツール一覧</a>
+                    </div>
+                    <div class="footer-link-group">
+                        <a href="/ja/about.html">サイト紹介 / お問い合わせ</a>
+                        <a href="/ja/terms.html">利用規約</a>
+                        <a href="/ja/privacy.html">プライバシーポリシー</a>
+                    </div>
+                </nav>
+                <p class="footer-note">入力したテキストはサーバーへ送信されず、ユーザーのブラウザ内だけで処理されます。</p>
+                <p class="copyright">© 2026 MojiHako. All rights reserved.</p>
+            </div>
+        </footer>
+        <script src="/assets/js/i18n.js"></script>
+        <script src="/assets/js/app.js"></script>
+        <script src="/assets/js/kaomoji.js"></script>
+    </body>
+</html>

@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>和暦変換 - 西暦を令和・平成・昭和・大正・明治に変換 | MojiHako</title>
+        <meta name="description"
+              content="西暦の日付を令和・平成・昭和・大正・明治などの和暦に変換できる無料ツールです。元年表記、ローマ字・略号（R1・H31・S64）にも対応。ブラウザ上で動作します。">
+
+        <!-- Canonical -->
+        <link rel="canonical" href="https://ezyno.github.io/japanese-text-converter/ja/tools/japanese-era-converter/">
+
+        <!-- Icons -->
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+        <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="manifest" href="/site.webmanifest">
+
+        <!-- Style -->
+        <link rel="stylesheet" href="/style.css">
+
+        <!-- Schema -->
+        <script type="application/ld+json">
+         {
+             "@context": "https://schema.org",
+             "@type": "WebApplication",
+             "name": "和暦変換",
+             "alternateName": "Japanese Era Converter",
+             "url": "https://ezyno.github.io/japanese-text-converter/ja/tools/japanese-era-converter/",
+             "inLanguage": "ja",
+             "applicationCategory": "UtilitiesApplication",
+             "operatingSystem": "Any",
+             "isAccessibleForFree": true,
+             "description": "西暦の日付を令和・平成・昭和・大正・明治などの和暦に変換できる無料ツールです。元年表記、ローマ字・略号にも対応しています。ブラウザ上で処理できます。",
+             "offers": {
+                 "@type": "Offer",
+                 "price": "0",
+                 "priceCurrency": "JPY"
+             },
+             "creator": {
+                 "@type": "Organization",
+                 "name": "MojiHako",
+                 "url": "https://ezyno.github.io/japanese-text-converter/"
+             }
+         }
+        </script>
+
+    </head>
+    <body id="top">
+        <a class="skip-link" href="#main">本文へ移動</a>
+        <header class="site-header">
+            <div class="header-inner">
+                <a class="brand" href="/ja/" aria-label="MojiHako ホーム">
+                    <img class="brand-mark" src="/assets/images/mojihako-brand-logo-origin.svg" alt="" width="34" height="34">
+                    <span class="brand-word"><span class="brand-moji">Moji</span><span class="brand-hako">Hako</span></span>
+                </a>
+                <nav class="language-nav" aria-label="言語選択">
+                    <a href="/ko/">한국어</a>
+                    <a aria-current="page" href="/ja/">日本語</a>
+                    <a href="/">English</a>
+                </nav>
+            </div>
+            <nav class="tool-nav" aria-label="ツールメニュー">
+                <a href="/ja/tools/width-converter/">全角・半角</a>
+                <a href="/ja/tools/kana-converter/">かな変換</a>
+                <a href="/ja/tools/kana-pad/">日本語入力</a>
+                <a href="/ja/tools/genko-yoshi-viewer/">原稿用紙</a>
+                <a aria-current="page" href="./">和暦</a>
+                <a href="/ja/tools/kaomoji-copy/">顔文字</a>
+                <a href="/ja/#tool-list">ツール一覧</a>
+            </nav>
+        </header>
+
+        <!-- Main content -->
+        <main id="main" class="page-shell">
+
+            <!-- Desktop ad slot -->
+            <aside class="ad-slot desktop-ad" aria-label="広告エリア"><span></span></aside>
+
+            <!-- Main tool -->
+            <div class="content-column">
+                <section class="intro">
+                    <div class="tool-title-row">
+                        <h1>和暦変換</h1>
+                    </div>
+                    <p>西暦の日付を和暦（元号）に変換できます。
+                        令和・平成・昭和・大正・明治など近現代の主要な元号を中心に対応しており、
+                        一部の古い元号は参考用の基準日として扱っています。</p>
+                </section>
+
+                <section class="tool-panel" aria-label="和暦変換ツール">
+                    <label class="field-label" for="era-date">西暦日付</label>
+                    <div class="date-row">
+                        <input
+                            id="era-date"
+                            class="date-input"
+                            type="text"
+                            value="2019-05-01"
+                            inputmode="numeric"
+                            autocomplete="off"
+                            maxlength="10"
+                            pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+                        >
+
+                        <div class="era-options" aria-label="表示オプション">
+                            <span class="option-title">表示オプション</span>
+                            <label class="option-check">
+                                <input id="era-gannen" type="checkbox" checked>
+                                元年表記
+                            </label>
+                            <label class="option-check">
+                                <input id="era-roman" type="checkbox" checked>
+                                ローマ字・略号を表示
+                            </label>
+                            <label class="option-check">
+                                <input id="era-korean" type="checkbox">
+                                韓国語表記を表示
+                            </label>
+                        </div>
+
+                    </div>
+                    <div class="era-preset-row" aria-label="日付移動">
+                        <button class="era-preset-button" data-era-relative="-1" type="button">← 1日</button>
+                        <button class="era-preset-button" data-era-relative="0" type="button">今日</button>
+                        <button class="era-preset-button" data-era-relative="1" type="button">1日 →</button>
+                    </div>
+                    <div class="era-year-jump-row" aria-label="年単位の移動">
+                        <button class="era-preset-button" data-year-jump="-10" type="button">← 10年</button>
+                        <button class="era-preset-button" data-year-jump="-1" type="button">← 1年</button>
+                        <button class="era-preset-button" data-year-jump="1" type="button">1年 →</button>
+                        <button class="era-preset-button" data-year-jump="10" type="button">10年 →</button>
+                    </div>
+                    <div class="era-start-row" aria-label="主な元号の開始日">
+                        <button class="era-start-button" data-era-date="2019-05-01" data-era-start="reiwa" type="button">令和の開始日</button>
+                        <button class="era-start-button" data-era-date="1989-01-08" data-era-start="heisei" type="button">平成の開始日</button>
+                        <button class="era-start-button" data-era-date="1926-12-25" data-era-start="showa" type="button">昭和の開始日</button>
+                        <button class="era-start-button" data-era-date="1912-07-30" data-era-start="taisho" type="button">大正の開始日</button>
+                        <button class="era-start-button" data-era-date="1868-01-25" data-era-start="meiji" type="button">明治の開始日</button>
+                        <button class="era-start-button" data-era-date="0645-06-19" data-era-start="taika" type="button">大化の開始日</button>
+                    </div>
+                    <output id="era-output" class="era-output" aria-live="polite"></output>
+                    <div class="handoff-links" data-handoff-source="era-output" aria-label="結果を他のツールへ送る">
+                        <span>結果を他のツールへ送る</span>
+                        <a data-handoff-target="/ja/tools/kana-pad/" href="/ja/tools/kana-pad/">Kana Pad</a>
+                        <a data-handoff-target="/ja/tools/width-converter/" href="/ja/tools/width-converter/">全角・半角</a>
+                        <a data-handoff-target="/ja/tools/genko-yoshi-viewer/" href="/ja/tools/genko-yoshi-viewer/">原稿用紙</a>
+                    </div>
+                    <p class="note">例：2019-04-30 は平成31年、2019-05-01 は令和元年です。</p>
+                </section>
+
+                <!-- Mobile ad slot -->
+                <aside class="ad-slot mobile-ad" aria-label="広告エリア"><span></span></aside>
+
+                <!-- Guide section -->
+                <section class="guide-section" aria-labelledby="guide-heading">
+                    <h2 id="guide-heading">Guide section</h2>
+                    <ol>
+                        <li>西暦の日付を YYYY-MM-DD 形式で入力します。</li>
+                        <li>元年表記・韓国語表記・ローマ字・略号の表示有無を選択します。</li>
+                        <li>結果エリアに和暦が表示されます。</li>
+                    </ol>
+
+                    <h2>変換例</h2>
+                    <div class="example-grid">
+                        <div><strong>令和</strong><p>2019-05-01 → <br>令和元年5月1日 / <br>Reiwa 1 / R1</p></div>
+                        <div><strong>平成</strong><p>2019-04-30 → <br>平成31年4月30日 / <br>Heisei 31 / H31</p></div>
+                        <div><strong>昭和</strong><p>1989-01-07 → <br>昭和64年1月7日 / <br>Showa 64 / S64</p></div>
+                    </div>
+
+                    <h2>注意事項</h2>
+                    <p>元号は改元日を基準に切り替わります。同じ西暦年でも、月日によって適用される元号が異なる場合があります。</p>
+                    <p>たとえば 2019 年は 4 月 30 日まで平成、5 月 1 日からは令和になります。</p>
+
+                    <h2>関連ツール</h2>
+                    <ul class="link-list">
+                        <li><a href="/ja/tools/width-converter/">全角・半角</a></li>
+                        <li><a href="/ja/tools/kana-converter/">ひらがな・カタカナ</a></li>
+                        <li><a href="/ja/tools/kana-pad/">Kana Pad</a></li>
+                        <li><a href="/ja/tools/genko-yoshi-viewer/">原稿用紙</a></li>
+                        <li><a href="/ja/tools/kaomoji-copy/">顔文字</a></li>
+                    </ul>
+                </section>
+
+                <!-- Horizontal ad slot -->
+                <aside class="ad-slot horizontal-ad" aria-label="広告エリア"><span></span></aside>
+
+                <!-- Extra article section -->
+                <article class="guide-section article-extra" aria-labelledby="era-extra-guide-heading">
+
+                    <h2 id="era-extra-guide-heading">和暦と西暦の変換ガイド</h2>
+
+                    <p>
+                        日本では履歴書・契約書・公的書類・領収書・保証書など、さまざまな場面で
+                        令和・平成・昭和といった和暦が使われます。
+                        「平成31年は西暦何年？」「昭和64年はいつ？」といった疑問は、
+                        日本の書類を扱うときに意外とよく出てきます。
+                    </p>
+                    <p>
+                        このツールは西暦の日付を入力すると、その日付に対応する元号・年数を計算し、
+                        漢字表記・ローマ字表記・略号をまとめて確認できます。
+                        元号は改元日を境に切り替わるため、同じ西暦年でも月日によって変わることがあります。
+                        年だけでなく月日まで含めた日付で確認することが大切です。
+                    </p>
+
+                    <section>
+                        <h3>📌 主な元号一覧</h3>
+                        <div class="table-scroll">
+                            <table class="seo-guide-table">
+                                <thead>
+                                    <tr>
+                                        <th>元号</th>
+                                        <th>ローマ字</th>
+                                        <th>開始日（西暦）</th>
+                                        <th>略号の例</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>令和</strong></td>
+                                        <td>Reiwa</td>
+                                        <td>2019-05-01</td>
+                                        <td><code>R1</code>、<code>R6</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>平成</strong></td>
+                                        <td>Heisei</td>
+                                        <td>1989-01-08</td>
+                                        <td><code>H1</code>、<code>H31</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>昭和</strong></td>
+                                        <td>Showa</td>
+                                        <td>1926-12-25</td>
+                                        <td><code>S1</code>、<code>S64</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>大正</strong></td>
+                                        <td>Taisho</td>
+                                        <td>1912-07-30</td>
+                                        <td><code>T1</code>、<code>T15</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>明治</strong></td>
+                                        <td>Meiji</td>
+                                        <td>1868-01-25</td>
+                                        <td><code>M1</code>、<code>M45</code></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3>1. 和暦（元号）とは</h3>
+                        <p>
+                            和暦は、元号と年数を組み合わせて年を表す日本の年号制度です。
+                            西暦とは別に <code>令和6年</code>・<code>平成31年</code>・<code>昭和64年</code> のように
+                            元号と年数を組み合わせて日付を表します。
+                            行政書類・履歴書・契約書・申請書・古い資料など
+                            幅広い日本の文書で使われており、西暦との併記や単独表記が混在しています。
+                        </p>
+                        <p>
+                            たとえば <code>2019-05-01</code> は令和の初日なので <code>令和元年5月1日</code> と表記します。
+                            その前日 <code>2019-04-30</code> はまだ平成のため <code>平成31年4月30日</code> です。
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>2. 同じ西暦年でも元号が変わる理由</h3>
+                        <p>
+                            元号は特定の日付を境に切り替わるため、西暦年だけで判断すると誤る場合があります。
+                            2019 年を例にとると、4 月 30 日までは平成 31 年、5 月 1 日からは令和元年です。
+                        </p>
+                        <ul>
+                            <li><code>2019-04-30</code> → <strong>平成31年4月30日</strong></li>
+                            <li><code>2019-05-01</code> → <strong>令和元年5月1日</strong></li>
+                            <li><code>1989-01-07</code> → <strong>昭和64年1月7日</strong></li>
+                            <li><code>1989-01-08</code> → <strong>平成元年1月8日</strong></li>
+                        </ul>
+                        <p>
+                            1 日の違いで元号が変わる境界日があるため、
+                            書類作成や日付確認の際は年だけでなく月日まで入力して確かめるようにしましょう。
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>3. 元年表記とは</h3>
+                        <p>
+                            日本では、新元号が始まった最初の年を数字の <code>1年</code> ではなく
+                            <code>元年</code> と表記することが一般的です。
+                            令和の最初の年も、一般的には <code>令和1年</code> より <code>令和元年</code> と書かれます。
+                        </p>
+                        <p>
+                            ツールの <strong>元年表記</strong> オプションで
+                            <code>元年</code> と <code>1年</code> を切り替えられます。
+                            提出先の書式に合わせてご利用ください。
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>4. 西暦⇔和暦の概算計算式</h3>
+                        <p>
+                            元号の年数を西暦年に換算する目安として、以下の計算式が使えます。
+                            ただし改元年は月日によって元号が変わるため、
+                            境界日付近では必ず正確な日付で確認してください。
+                        </p>
+                        <ul>
+                            <li><strong>令和：</strong>元号年数 + 2018 = 西暦年</li>
+                            <li><strong>平成：</strong>元号年数 + 1988 = 西暦年</li>
+                            <li><strong>昭和：</strong>元号年数 + 1925 = 西暦年</li>
+                            <li><strong>大正：</strong>元号年数 + 1911 = 西暦年</li>
+                            <li><strong>明治：</strong>元号年数 + 1867 = 西暦年</li>
+                        </ul>
+                        <p>
+                            例：平成31年 → 31 + 1988 = 西暦 2019 年。
+                            ただし 2019 年の 5 月 1 日以降は令和元年になる点に注意が必要です。
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>5. 和暦が必要になる場面</h3>
+                        <ul>
+                            <li><strong>履歴書・職務経歴書：</strong>生年月日や学歴・職歴を和暦で記入する欄がある場合</li>
+                            <li><strong>ビザ・行政書類：</strong>官公庁の申請書で和暦の日付を求められる場合</li>
+                            <li><strong>契約書・不動産・金融書類：</strong>契約日や有効期間が和暦で記載されている場合</li>
+                            <li><strong>領収書・保証書：</strong>購入日や保証期間が和暦で表示されている場合</li>
+                            <li><strong>翻訳・資料調査：</strong>日本語文書の日付を西暦に統一する際</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>6. 略号 R1・H31・S64 とは</h3>
+                        <p>
+                            和暦はローマ字の頭文字と年数を組み合わせた略号で表記されることがあります。
+                            令和 = <code>R</code>、平成 = <code>H</code>、昭和 = <code>S</code>、
+                            大正 = <code>T</code>、明治 = <code>M</code> が使われます。
+                        </p>
+                        <ul>
+                            <li>令和元年 → <code>R1</code></li>
+                            <li>平成31年 → <code>H31</code></li>
+                            <li>昭和64年 → <code>S64</code></li>
+                            <li>大正15年 → <code>T15</code></li>
+                            <li>明治45年 → <code>M45</code></li>
+                        </ul>
+                        <p>
+                            運転免許証・保険証・各種証明書など、記入欄が限られた書類で見かけることがあります。
+                        </p>
+                    </section>
+
+                    <section>
+                        <div class="shortcut-box">
+                            <h4>🛑 和暦を記入する前のチェックリスト</h4>
+                            <ul>
+                                <li>年だけでなく月日まで確認しましたか？</li>
+                                <li>改元の境界日付近の日付ではないか確認しましたか？</li>
+                                <li>元年（<code>元年</code>）表記が必要かどうか確認しましたか？</li>
+                                <li>漢字・ローマ字・略号のどの表記が求められているか確認しましたか？</li>
+                                <li>公的な提出書類の場合、提出先の日付表記ルールを確認しましたか？</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3>よくある質問</h3>
+
+                        <h4>Q. 今日は和暦で何年ですか？</h4>
+                        <p>
+                            <strong>今日</strong>ボタンを押すと、今日の日付の和暦をすぐに確認できます。
+                        </p>
+
+                        <h4>Q. 平成31年と令和元年は同じ 2019 年ですか？</h4>
+                        <p>
+                            はい。どちらも西暦 2019 年に含まれますが、適用される期間が異なります。
+                            2019 年 4 月 30 日までは平成 31 年、5 月 1 日からは令和元年です。
+                        </p>
+
+                        <h4>Q. 昭和 64 年が短いのはなぜですか？</h4>
+                        <p>
+                            昭和 64 年は 1989 年 1 月 1 日から 1 月 7 日までのわずか 7 日間です。
+                            1989 年 1 月 8 日からは平成元年が始まります。
+                        </p>
+
+                        <h4>Q. 明治元年はなぜ 1868 年 1 月 25 日から計算されるのですか？</h4>
+                        <p>
+                            明治は公式の布告日と元年の起算日が異なります。
+                            このツールでは <code>1868-01-25</code> を明治元年の開始日として計算しています
+                            （遡及適用の基準日）。
+                        </p>
+
+                        <h4>Q. 明治より古い元号も調べられますか？</h4>
+                        <p>
+                            このツールは主に明治以降の近現代の元号変換を対象としています。
+                            大化（たいか）など古い元号は歴史的参考用の基準日として提供していますが、
+                            古代の日付や学術用途の変換には、原資料の暦法も合わせてご確認ください。
+                        </p>
+
+                    </section>
+                </article>
+
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <nav class="footer-nav" aria-label="フッターのサイトリンク">
+                    <div class="footer-link-group">
+                        <a href="#top">ページ上部へ戻る</a>
+                        <a href="/ja/tools/width-converter/">全角・半角</a>
+                        <a href="/ja/tools/kana-converter/">かな変換</a>
+                        <a href="/ja/tools/kana-pad/">日本語入力</a>
+                        <a href="/ja/tools/genko-yoshi-viewer/">原稿用紙</a>
+                        <a aria-current="page" href="./">和暦</a>
+                        <a href="/ja/tools/kaomoji-copy/">顔文字</a>
+                        <a href="/ja/#tool-list">ツール一覧</a>
+                    </div>
+                    <div class="footer-link-group">
+                        <a href="/ja/about.html">サイト紹介 / お問い合わせ</a>
+                        <a href="/ja/terms.html">利用規約</a>
+                        <a href="/ja/privacy.html">プライバシーポリシー</a>
+                    </div>
+                </nav>
+                <p class="footer-note">入力したテキストはサーバーへ送信されず、ユーザーのブラウザ内だけで処理されます。</p>
+                <p class="copyright">© 2026 MojiHako. All rights reserved.</p>
+            </div>
+        </footer>
+        <script src="/assets/js/i18n.js"></script>
+        <script src="/assets/js/app.js"></script>
+    </body>
+</html>

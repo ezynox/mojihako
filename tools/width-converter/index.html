@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Full-width / Half-width Converter - Japanese Character Width Tool | MojiHako</title>
+        <meta name="description"
+              content="Convert Japanese full-width and half-width characters instantly in your browser. Supports full-width katakana, half-width katakana, ASCII, spaces, and NFKC normalization.">
+
+        <!-- Canonical -->
+        <link rel="canonical" href="https://ezyno.github.io/japanese-text-converter/tools/width-converter/">
+
+        <!-- Icons -->
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+        <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="manifest" href="/site.webmanifest">
+
+        <!-- Style -->
+        <link rel="stylesheet" href="/style.css">
+
+        <!-- Schema -->
+        <script type="application/ld+json">
+         {
+             "@context": "https://schema.org",
+             "@type": "WebApplication",
+             "name": "Full-width / Half-width Converter",
+             "alternateName": "全角半角変換",
+             "url": "https://ezyno.github.io/japanese-text-converter/tools/width-converter/",
+             "inLanguage": "en",
+             "applicationCategory": "UtilitiesApplication",
+             "operatingSystem": "Any",
+             "isAccessibleForFree": true,
+             "description": "Convert full-width and half-width Japanese characters — katakana, ASCII, spaces — and apply NFKC normalization, all in your browser.",
+             "offers": {
+                 "@type": "Offer",
+                 "price": "0",
+                 "priceCurrency": "USD"
+             },
+             "creator": {
+                 "@type": "Organization",
+                 "name": "MojiHako",
+                 "url": "https://ezyno.github.io/japanese-text-converter/"
+             }
+         }
+        </script>
+
+    </head>
+    <body id="top">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <header class="site-header">
+            <div class="header-inner">
+                <a class="brand" href="/" aria-label="MojiHako home">
+                    <img class="brand-mark" src="/assets/images/mojihako-brand-logo-origin.svg" alt="" width="34" height="34">
+                    <span class="brand-word"><span class="brand-moji">Moji</span><span class="brand-hako">Hako</span></span>
+                </a>
+                <nav class="language-nav" aria-label="Language">
+                    <a href="/ko/">한국어</a>
+                    <a href="/ja/">日本語</a>
+                    <a aria-current="page" href="/">English</a>
+                </nav>
+            </div>
+            <nav class="tool-nav" aria-label="Tools">
+                <a aria-current="page" href="./">Full/Half Width</a>
+                <a href="/tools/kana-converter/">Kana Converter</a>
+                <a href="/tools/kana-pad/">Kana Pad</a>
+                <a href="/tools/genko-yoshi-viewer/">Genko Paper</a>
+                <a href="/tools/japanese-era-converter/">Japanese Era</a>
+                <a href="/tools/kaomoji-copy/">Kaomoji</a>
+                <a href="/#tool-list">All Tools</a>
+            </nav>
+        </header>
+
+        <!-- Main content -->
+        <main id="main" class="page-shell">
+
+            <!-- Desktop ad slot -->
+            <aside class="ad-slot desktop-ad" aria-label="Advertisement"></aside>
+
+            <!-- Main tool -->
+            <div class="content-column">
+                <section class="intro">
+                    <div class="tool-title-row">
+                        <h1>Full-width / Half-width Converter</h1>
+                    </div>
+
+                    <p>
+                        Quickly convert between full-width and half-width characters — useful for formatting names,
+                        addresses, product listings, and form fields on Japanese websites.
+                    </p>
+
+                </section>
+
+                <section class="tool-panel converter-tool" aria-label="Full-width / Half-width conversion tool">
+                    <div class="input-header">
+                        <label class="field-label" for="width-input">Input</label>
+                    </div>
+                    <textarea id="width-input" class="text-box converter-textarea code-ascii width-textarea" data-receive-text rows="4" placeholder="Example: ＡＢＣ１２３ ｶﾀｶﾅ ① Ⅳ"></textarea>
+
+                    <fieldset class="option-grid" aria-label="Conversion mode">
+                        <legend>Conversion mode</legend>
+                        <label><input name="width-mode" type="radio" value="full-kana-to-half" checked>
+                            Full-width katakana → Half-width katakana</label>
+                        <label><input name="width-mode" type="radio" value="half-kana-to-full">
+                            Half-width katakana → Full-width katakana</label>
+                        <label><input name="width-mode" type="radio" value="full-to-half">
+                            Full-width ASCII → Half-width ASCII</label>
+                        <label><input name="width-mode" type="radio" value="half-to-full">
+                            Half-width ASCII → Full-width ASCII</label>
+                        <label><input name="width-mode" type="radio" value="full-space-to-half">
+                            Full-width space → Half-width space</label>
+                        <label><input name="width-mode" type="radio" value="half-space-to-full">
+                            Half-width space → Full-width space</label>
+                        <label><input name="width-mode" type="radio" value="nfkc">
+                            NFKC normalization</label>
+                    </fieldset>
+
+                    <div class="action-row convert-action-row">
+                        <label class="live-toggle-inline"><input data-live-toggle="width" type="checkbox" checked><span>Live</span></label>
+                        <button class="primary-button" data-convert="width" type="button" hidden>Convert</button>
+                    </div>
+
+                    <div class="result-header">
+                        <label class="field-label" for="width-output">Result</label>
+                        <div class="result-actions">
+                            <button class="copy-button" data-copy="width" type="button">Copy</button>
+                            <button class="secondary-button" data-clear="width" type="button">Clear</button>
+                        </div>
+                    </div>
+                    <textarea id="width-output" class="text-box converter-textarea code-ascii width-textarea output-box" rows="4" readonly placeholder="Converted text will appear here."></textarea>
+                    <div class="handoff-links" data-handoff-source="width-output" aria-label="Send result to another tool">
+                        <span>Send result to another tool</span>
+                        <a data-handoff-target="/tools/kana-converter/" href="/tools/kana-converter/">Hiragana/Katakana</a>
+                        <a data-handoff-target="/tools/kana-pad/" href="/tools/kana-pad/">Kana Pad</a>
+                        <a data-handoff-target="/tools/genko-yoshi-viewer/" href="/tools/genko-yoshi-viewer/">Genko Paper</a>
+                    </div>
+                    <p class="note">
+                        <span class="note-icon" aria-hidden="true">!</span>
+                        NFKC normalization also converts compatibility characters such as <code>①</code> and <code>Ⅳ</code>. Check the result carefully if preserving the original character form matters.</p>
+                </section>
+
+                <!-- Mobile ad slot -->
+                <aside class="ad-slot mobile-ad" aria-label="Advertisement"></aside>
+
+                <!-- How to use -->
+                <section class="guide-section" aria-labelledby="guide-heading">
+                    <h2 id="guide-heading">How to use</h2>
+                    <ol>
+                        <li>Paste the text you want to convert into the input box.</li>
+                        <li>Select a conversion mode.</li>
+                        <li>With Live mode on, the result updates automatically as you type.</li>
+                        <li>Turn Live mode off to convert manually with the Convert button.</li>
+                        <li>Click Copy to copy the converted text to your clipboard.</li>
+                    </ol>
+
+                    <h2>Examples</h2>
+                    <div class="example-grid">
+                        <div><strong>Full-width katakana → Half-width katakana</strong>
+                            <p><code>ガッツポーズ → ｶﾞｯﾂﾎﾟｰｽﾞ</code></p></div>
+                        <div><strong>Half-width katakana → Full-width katakana</strong>
+                            <p><code>ｶﾞｯﾂﾎﾟｰｽﾞ → ガッツポーズ</code></p></div>
+                        <div><strong>Full-width ASCII → Half-width ASCII</strong>
+                            <p><code>ＡＢ１２ → AB12</code></p></div>
+                        <div><strong>Half-width ASCII → Full-width ASCII</strong>
+                            <p><code>AB12 → ＡＢ１２</code></p></div>
+                        <div><strong>Full-width space → Half-width space</strong>
+                            <p><code>Ａ　Ｂ → Ａ Ｂ</code></p></div>
+                        <div><strong>Half-width space → Full-width space</strong>
+                            <p><code>A B → A　B</code></p></div>
+                        <div><strong>NFKC normalization</strong>
+                            <p><code>① Ⅳ ㍿ → 1 IV 株式会社</code></p></div>
+                    </div>
+
+                    <h2>What are full-width and half-width characters?</h2>
+                    <p>Full-width characters occupy a square cell (1:1 ratio), like kanji or full-width Latin letters. Half-width characters are narrower (1:0.5 ratio), like standard ASCII letters and digits.</p>
+                    <p>Japanese websites often require a specific width format for names, addresses, phone numbers, and product fields — mixing the two can trigger validation errors.</p>
+
+                    <h2>What is NFKC normalization?</h2>
+                    <p>NFKC normalization maps compatibility characters — such as circled numbers (<code>①</code>), Roman numerals (<code>Ⅳ</code>), and full-width letters (<code>Ａ</code>, <code>１</code>) — to their standard Unicode equivalents (<code>1</code>, <code>IV</code>, <code>A</code>).</p>
+                    <p>It is useful for cleaning up text before search indexing or data analysis, where inconsistent character forms can cause mismatches.</p>
+
+                    <h2>Related tools</h2>
+                    <ul class="link-list">
+                        <li><a href="/tools/kana-converter/">Hiragana / Katakana</a></li>
+                        <li><a href="/tools/kana-pad/">Kana Pad</a></li>
+                        <li><a href="/tools/genko-yoshi-viewer/">Genko Paper</a></li>
+                        <li><a href="/tools/kaomoji-copy/">Kaomoji</a></li>
+                        <li><a href="/tools/japanese-era-converter/">Japanese Era</a></li>
+                    </ul>
+                </section>
+
+                <!-- Horizontal ad slot -->
+                <aside class="ad-slot horizontal-ad" aria-label="Advertisement"></aside>
+
+                <!-- Extra article section -->
+                <article class="guide-section article-extra" aria-labelledby="width-extra-guide-heading">
+
+                    <h2 id="width-extra-guide-heading">
+                        How to Fix Full-width and Half-width Errors on Japanese Websites
+                    </h2>
+
+                    <p>
+                        When signing up for a Japanese website, shopping on Amazon Japan or Mercari, or booking a hotel,
+                        you may run into error messages like
+                        <strong>"Please enter in full-width characters (全角で入力してください)"</strong> or
+                        <strong>"Please enter in half-width characters (半角で入力してください)"</strong>.
+                        These errors are usually caused by input forms that distinguish
+                        between full-width and half-width character widths.
+                        Use the guide below to identify the cause and convert your text to the required format.
+                    </p>
+
+                    <section>
+                        <h3>
+                            📌 Common full-width / half-width requirements by field type
+                        </h3>
+                        <div class="table-scroll">
+                            <table class="seo-guide-table">
+                                <thead>
+                                    <tr>
+                                        <th>Field</th>
+                                        <th>Typical requirement</th>
+                                        <th>Correct example</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Name furigana (katakana)</strong></td>
+                                        <td class="text-teal">Full-width katakana is usually required</td>
+                                        <td><code>ヤマダ</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Postal code / Phone number</strong></td>
+                                        <td class="text-orange">Half-width digits are usually required; check whether hyphens are allowed</td>
+                                        <td><code>1234567</code> / <code>01012345678</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Street number / Apartment number</strong></td>
+                                        <td>Varies by site; try switching if you get an error</td>
+                                        <td><code>1-2-3</code> or <code>１－２－３</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Email address / Password</strong></td>
+                                        <td class="text-orange">Half-width letters, digits, and symbols are usually required</td>
+                                        <td><code>moji@hako.com</code></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3>1. Why full-width errors occur on Japanese shopping sites</h3>
+                        <p>
+                            Characters that look nearly identical — the Latin letter <code>A</code> vs. <code>Ａ</code>,
+                            the digit <code>1</code> vs. <code>１</code>, or the katakana <code>ｶ</code> vs. <code>カ</code> —
+                            are treated as completely different codes by the underlying system.
+                            Full-width and half-width characters can easily get mixed in when you paste an address from another app,
+                            copy text from a website, or rely on smartphone autocomplete.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>2. Furigana input: full-width vs. half-width katakana</h3>
+                        <p>
+                            Furigana (phonetic reading) fields on Japanese websites typically require
+                            <strong>full-width katakana</strong>.
+                            If you entered your name in katakana but keep getting an error,
+                            the problem may be that <strong>half-width katakana</strong> was used instead.
+                            Use the <strong>[Half-width katakana → Full-width katakana]</strong> option on this page to fix it.
+                        </p>
+                        <p>
+                            <em>*Note: Some older reservation or shipping systems specifically require half-width katakana (半角カナ).
+                                Always check the exact wording of the error message.</em>
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>3. Full-width digits vs. half-width digits</h3>
+                        <p>
+                            Full-width digits like <code>１２３４</code> take up a square cell each,
+                            while half-width digits <code>1234</code> use standard ASCII width.
+                            Payment card numbers, postal codes, and phone number fields often reject full-width digits.
+                            Use <strong>[Full-width ASCII → Half-width ASCII]</strong> to normalize them.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>4. The invisible full-width space problem</h3>
+                        <p>
+                            One of the trickiest error sources is the <strong>space character</strong>.
+                            When a Japanese IME is active, pressing the spacebar can insert a full-width space (<code>　</code>)
+                            instead of a regular half-width space.
+                            A full-width space hidden between a first and last name, inside an address,
+                            or before a building name can cause a form to reject the input entirely.
+                            If you cannot find the cause of an error,
+                            try running <strong>[Full-width space → Half-width space]</strong>.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>5. Bulk text cleanup with NFKC normalization</h3>
+                        <p>
+                            When collecting Japanese product names at scale for data analysis,
+                            or preparing listings for an online store, <strong>NFKC normalization</strong> is a handy one-step cleanup.
+                            It converts compatibility characters like <code>①</code>, <code>Ⅳ</code>,
+                            and <code>㍿</code> alongside full-width alphanumerics into standard text
+                            (<code>1</code>, <code>IV</code>, <code>株式会社</code>), making search and comparison far more reliable.
+                        </p>
+                    </section>
+
+                    <section>
+                        <div class="shortcut-box">
+                            <h4>🛑 Checklist when you hit an error on a Japanese site</h4>
+                            <ul>
+                                <li>Are phone numbers, postal codes, and card numbers in <strong>half-width digits</strong>?
+                                    (e.g. <code>1234</code>)</li>
+                                <li>Is the furigana field filled with <strong>full-width katakana</strong>?
+                                    (e.g. <code>ヤマダ</code>)</li>
+                                <li>Is there an invisible <strong>full-width space</strong> hiding somewhere in the text?</li>
+                                <li>Do any <strong>compatibility characters</strong> (<code>①</code>, <code>Ⅰ</code>, etc.)
+                                    appear in addresses or product names?</li>
+                            </ul>
+                        </div>
+                    </section>
+                </article>
+
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <nav class="footer-nav" aria-label="Site links">
+                    <div class="footer-link-group">
+                        <a href="#top">Back to Top</a>
+                        <a aria-current="page" href="./">Full/Half Width</a>
+                        <a href="/tools/kana-converter/">Kana Converter</a>
+                        <a href="/tools/kana-pad/">Kana Pad</a>
+                        <a href="/tools/genko-yoshi-viewer/">Genko Paper</a>
+                        <a href="/tools/japanese-era-converter/">Japanese Era</a>
+                        <a href="/tools/kaomoji-copy/">Kaomoji</a>
+                        <a href="/#tool-list">All Tools</a>
+                    </div>
+                    <div class="footer-link-group">
+                        <a href="/about.html">About / Contact</a>
+                        <a href="/terms.html">Terms</a>
+                        <a href="/privacy.html">Privacy Policy</a>
+                    </div>
+                </nav>
+                <p class="footer-note">Your text stays in your browser and is not sent to our server.</p>
+                <p class="copyright">© 2026 MojiHako. All rights reserved.</p>
+            </div>
+        </footer>
+        <script src="/assets/js/i18n.js"></script>
+        <script src="/assets/js/app.js"></script>
+    </body>
+</html>

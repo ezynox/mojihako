@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Kana Pad - Type Hiragana &amp; Katakana Without a Japanese Keyboard | MojiHako</title>
+        <meta name="description"
+              content="Click or search to type hiragana, katakana, voiced and semi-voiced kana, small kana, and Japanese punctuation directly in your browser — no Japanese keyboard or IME needed. Free online Japanese input tool.">
+
+        <!-- Canonical -->
+        <link rel="canonical" href="https://ezyno.github.io/japanese-text-converter/tools/kana-pad/">
+
+        <!-- Icons -->
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+        <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="manifest" href="/site.webmanifest">
+
+        <!-- Style -->
+        <link rel="stylesheet" href="/style.css">
+
+        <!-- Schema -->
+        <script type="application/ld+json">
+         {
+             "@context": "https://schema.org",
+             "@type": "WebApplication",
+             "name": "Kana Pad",
+             "alternateName": "Japanese Kana Input Pad",
+             "url": "https://ezyno.github.io/japanese-text-converter/tools/kana-pad/",
+             "inLanguage": "en",
+             "applicationCategory": "UtilitiesApplication",
+             "operatingSystem": "Any",
+             "isAccessibleForFree": true,
+             "description": "Click or search to type hiragana, katakana, voiced and semi-voiced kana, small kana, and Japanese punctuation directly in your browser — no Japanese keyboard or IME needed.",
+             "offers": {
+                 "@type": "Offer",
+                 "price": "0",
+                 "priceCurrency": "USD"
+             },
+             "creator": {
+                 "@type": "Organization",
+                 "name": "MojiHako",
+                 "url": "https://ezyno.github.io/japanese-text-converter/"
+             }
+         }
+        </script>
+
+    </head>
+    <body id="top">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <header class="site-header">
+            <div class="header-inner">
+                <a class="brand" href="/" aria-label="MojiHako home">
+                    <img class="brand-mark" src="/assets/images/mojihako-brand-logo-origin.svg" alt="" width="34" height="34">
+                    <span class="brand-word"><span class="brand-moji">Moji</span><span class="brand-hako">Hako</span></span>
+                </a>
+                <nav class="language-nav" aria-label="Language">
+                    <a href="/ko/">한국어</a>
+                    <a href="/ja/">日本語</a>
+                    <a aria-current="page" href="/">English</a>
+                </nav>
+            </div>
+            <nav class="tool-nav" aria-label="Tools">
+                <a href="/tools/width-converter/">Full/Half Width</a>
+                <a href="/tools/kana-converter/">Kana Converter</a>
+                <a aria-current="page" href="./">Kana Pad</a>
+                <a href="/tools/genko-yoshi-viewer/">Genko Paper</a>
+                <a href="/tools/japanese-era-converter/">Japanese Era</a>
+                <a href="/tools/kaomoji-copy/">Kaomoji</a>
+                <a href="/#tool-list">All Tools</a>
+            </nav>
+        </header>
+
+        <!-- Main content -->
+        <main id="main" class="page-shell kana-pad-page">
+
+            <!-- Desktop ad slot -->
+            <aside class="ad-slot desktop-ad" aria-label="Advertisement"></aside>
+
+            <!-- Main tool -->
+            <div class="content-column">
+                <section class="intro">
+                    <div class="tool-title-row">
+                        <h1>Kana Pad</h1>
+                    </div>
+                    <p>
+                        Type hiragana, katakana, and Japanese punctuation directly in your browser
+                        — no Japanese keyboard or IME required.
+                    </p>
+                </section>
+
+                <section class="tool-panel kana-pad-panel" data-kana-pad aria-label="Kana Pad Japanese input tool">
+                    <div class="kana-workspace">
+                        <div class="result-panel kana-result-panel">
+                            <div class="input-header">
+                                <label class="field-label" for="kana-pad-output">Composed Text</label>
+                                <output class="status-line" data-kana-status aria-live="polite"></output>
+                            </div>
+                            <textarea id="kana-pad-output" class="text-box kana-output" data-receive-text rows="5" placeholder="Text appears here"></textarea>
+
+                            <div class="action-row kana-actions result-actions" aria-label="Text actions">
+                                <button class="action-button action-button-primary" data-kana-action="copy" type="button"
+                                        aria-label="Copy composed text">Copy</button>
+                                <button class="action-button" data-kana-action="clear" type="button"
+                                        aria-label="Clear all text">Clear</button>
+                                <button class="action-button" data-kana-action="backspace" type="button"
+                                        aria-label="Delete last character">⌫</button>
+                                <button class="action-button" data-kana-action="space" type="button"
+                                        aria-label="Insert space">Space</button>
+                                <button class="action-button" data-kana-action="newline" type="button"
+                                        aria-label="Insert line break">↵</button>
+                            </div>
+                        </div>
+
+                        <div class="kana-picker-panel" aria-label="Character picker">
+
+                            <div class="utility-toolbar kana-search-row">
+                                <label class="search-field" for="kana-pad-search">
+                                    <span class="field-label">Search</span>
+                                    <input id="kana-pad-search" class="search-input" data-kana-search type="search"
+                                           placeholder="ka, tsu, か, small yo">
+                                </label>
+                            </div>
+
+                            <label class="option-check kana-layout-toggle">
+                                <input id="kana-gojuon-layout-toggle" data-kana-gojuon-layout-toggle type="checkbox">
+                                Traditional Kana Chart
+                            </label>
+
+                            <div class="split-tool-layout">
+                                <div class="side-tabs kana-tabs" role="tablist" aria-label="Kana Pad categories" data-kana-tabs>
+                                    <button id="kana-tab-hiragana" class="kana-tab" role="tab" type="button" data-kana-tab="hiragana" aria-label="Hiragana" title="Hiragana">あ</button>
+                                    <button id="kana-tab-hiragana-voiced" class="kana-tab" role="tab" type="button" data-kana-tab="hiraganaVoiced" aria-label="Hiragana voiced and semi-voiced kana" title="Hiragana voiced and semi-voiced kana">が</button>
+                                    <button id="kana-tab-katakana" class="kana-tab" role="tab" type="button" data-kana-tab="katakana" aria-label="Katakana" title="Katakana">ア</button>
+                                    <button id="kana-tab-katakana-voiced" class="kana-tab" role="tab" type="button" data-kana-tab="katakanaVoiced" aria-label="Katakana voiced and semi-voiced kana" title="Katakana voiced and semi-voiced kana">ガ</button>
+                                    <button id="kana-tab-small" class="kana-tab" role="tab" type="button" data-kana-tab="small" aria-label="Small kana" title="Small kana">ゃ</button>
+                                    <button id="kana-tab-symbols" class="kana-tab" role="tab" type="button" data-kana-tab="symbols" aria-label="Symbols" title="Symbols">「」</button>
+                                </div>
+                                <div class="kana-grid-shell">
+                                    <div id="kana-pad-grid" class="kana-grid" role="grid" aria-label="Kana character grid" data-kana-grid></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="handoff-links send-tools" data-handoff-source="kana-pad-output" aria-label="Send result to another tool">
+                        <span>Send result to another tool</span>
+                        <a data-handoff-target="/tools/width-converter/" href="/tools/width-converter/">Full/Half Width</a>
+                        <a data-handoff-target="/tools/kana-converter/" href="/tools/kana-converter/">Hiragana/Katakana</a>
+                        <a data-handoff-target="/tools/genko-yoshi-viewer/" href="/tools/genko-yoshi-viewer/">Genko Paper</a>
+                    </div>
+                </section>
+
+                <!-- Mobile ad slot -->
+                <aside class="ad-slot mobile-ad" aria-label="Advertisement"></aside>
+
+                <!-- How to use -->
+                <section class="guide-section" aria-labelledby="guide-heading">
+                    <h2 id="guide-heading">What is Kana Pad?</h2>
+                    <p>
+                        Kana Pad lets you type hiragana, katakana, and Japanese symbols directly in a web browser
+                        — no Japanese keyboard layout or IME required.
+                    </p>
+                    <p>If you frequently need Japanese characters on mobile, bookmark Kana Pad for quick access.</p>
+
+                    <h2>How to use Kana Pad</h2>
+                    <ol>
+                        <li>Select a tab: <strong>あ</strong> Hiragana, <strong>が</strong> voiced hiragana,
+                            <strong>ア</strong> Katakana, <strong>ガ</strong> voiced katakana,
+                            <strong>ゃ</strong> Small kana, or <strong>「」</strong> Symbols.</li>
+                        <li>Click a character to insert it at the cursor position in the text area. Use Copy to copy the full result.</li>
+                        <li>Arrow keys move within the character grid; Enter or Space inserts the selected character.</li>
+                        <li>Tab and Shift+Tab move between the text area, action buttons, tabs, and character grid when using keyboard only.</li>
+                    </ol>
+
+                    <h2>Supported characters</h2>
+                    <p>
+                        Kana Pad covers the basic gojūon hiragana and katakana tables,
+                        plus voiced and semi-voiced kana (が・ざ・だ・ば・ぱ / ガ・ザ・ダ・バ・パ・ヴ series), yōon and sokuon (ゃ・ゅ・ょ・っ),
+                        small kana (ァ・ィ・ゥ・ェ・ォ), and Japanese punctuation including kuten, toten, quotation brackets,
+                        the long vowel mark (ー), iteration mark (々), and ellipsis (…).
+                    </p>
+
+                    <h2>Traditional Kana chart</h2>
+                    <p>
+                        Turn on Traditional Chart to display kana in the Japanese chart order,
+                        with the あ row on the far right and columns running from right to left.
+                    </p>
+
+                    <h2>Search examples</h2>
+                    <div class="example-grid">
+                        <div><strong>Romaji</strong><p>ka → か, カ</p></div>
+                        <div><strong>Kana</strong><p>つ → つ, っ, ツ, ッ</p></div>
+                        <div><strong>Korean</strong><p>쿠 → く, ク, ぐ, グ</p></div>
+                    </div>
+
+                    <h2>Related tools</h2>
+                    <ul class="link-list">
+                        <li><a href="/tools/width-converter/">Full/Half Width</a></li>
+                        <li><a href="/tools/kana-converter/">Hiragana / Katakana</a></li>
+                        <li><a href="/tools/genko-yoshi-viewer/">Genko Paper</a></li>
+                        <li><a href="/tools/kaomoji-copy/">Kaomoji</a></li>
+                        <li><a href="/tools/japanese-era-converter/">Japanese Era</a></li>
+                    </ul>
+                </section>
+
+                <!-- Horizontal ad slot -->
+                <aside class="ad-slot horizontal-ad" aria-label="Advertisement"></aside>
+
+                <!-- Extra article section -->
+                <article class="guide-section article-extra" aria-labelledby="kana-pad-extra-guide-heading">
+
+                    <h2 id="kana-pad-extra-guide-heading">Type Hiragana and Katakana Without a Japanese Keyboard</h2>
+
+                    <p>
+                        There are many situations where you need to enter Japanese text
+                        but do not have a Japanese keyboard or IME set up
+                        — a work computer, a shared device, a mobile browser where switching input languages is inconvenient,
+                        or simply a machine you use too rarely to bother configuring.
+                        Kana Pad solves this by letting you click or tap characters directly
+                        from an on-screen gojūon grid, with no installation and no settings to change.
+                    </p>
+
+                    <section>
+                        <h3>📌 When Kana Pad comes in handy</h3>
+                        <div class="table-scroll">
+                            <table class="seo-guide-table">
+                                <thead>
+                                    <tr>
+                                        <th>Situation</th>
+                                        <th>How Kana Pad helps</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>No Japanese keyboard or IME on the device</strong></td>
+                                        <td>Enter kana characters directly from the browser — no system settings needed.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Japanese shopping or booking sites</strong></td>
+                                        <td>Quickly compose product names, furigana readings, or short Japanese phrases for form fields.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Mobile, on the go</strong></td>
+                                        <td>Open in any mobile browser and tap characters — no app to install. Bookmark it for repeat use.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Japanese punctuation and special symbols</strong></td>
+                                        <td>Insert the long vowel mark (ー), Japanese comma (、), period (。), brackets (「」), and more with one tap.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3>1. Entering kana without setting up a Japanese keyboard</h3>
+                        <p>
+                            If you only occasionally need Japanese, setting up an IME and learning a romaji or kana input method
+                            can feel like more trouble than it's worth.
+                            Kana Pad displays the full gojūon character table on screen so you can find
+                            and tap any hiragana or katakana character visually — no memorizing keyboard layouts required.
+                        </p>
+                        <p>
+                            When you need to type a Japanese word in a search box, fill in a furigana field on a form,
+                            or add a short phrase to a message, compose the text in Kana Pad and copy it across in one step.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>2. Characters available in Kana Pad</h3>
+                        <p>
+                            Beyond the basic hiragana and katakana tables, Kana Pad includes characters
+                            that are harder to find on a standard keyboard.
+                            Switch tabs to access each group instantly.
+                        </p>
+                        <ul>
+                            <li><strong>Basic hiragana and katakana:</strong> あ・い・う・え・お / ア・イ・ウ・エ・オ</li>
+                            <li><strong>Voiced and semi-voiced kana:</strong> が・ざ・だ・ば・ぱ / ガ・ザ・ダ・バ・パ series</li>
+                            <li><strong>Yōon and sokuon:</strong> ゃ・ゅ・ょ・っ / ャ・ュ・ョ・ッ</li>
+                            <li><strong>Japanese punctuation:</strong> 。　、　「 」　『 』　ー　々　… and more</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>3. Finding characters quickly with search</h3>
+                        <p>
+                            Rather than scanning the grid manually, type in the search box to narrow down results instantly.
+                            Search accepts romaji, kana, and Korean phonetic input.
+                        </p>
+                        <ul>
+                            <li>Type <code>ka</code> → <code>か</code>, <code>カ</code></li>
+                            <li>Type <code>つ</code> → <code>つ</code>, <code>っ</code>, <code>ツ</code>, <code>ッ</code></li>
+                            <li>Type <code>쿠</code> (Korean) → <code>く</code>, <code>ク</code>, <code>ぐ</code>, <code>グ</code></li>
+                        </ul>
+                        <p>
+                            This is especially useful for tricky characters like small kana and voiced variants
+                            that are easy to confuse at a glance.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>4. Japanese punctuation and symbols</h3>
+                        <p>
+                            Japanese writing uses <code>、</code> (toten) and <code>。</code> (kuten)
+                            instead of the standard comma and period.
+                            Dialogue and quotations use <code>「 」</code> and <code>『 』</code> brackets.
+                            Loanwords written in katakana often include the long vowel mark <code>ー</code>.
+                        </p>
+                        <p>
+                            These symbols can be hard to locate on a non-Japanese keyboard.
+                            Keep Kana Pad open as a secondary input panel and grab any symbol you need with a single click.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>5. Passing text to other tools</h3>
+                        <p>
+                            Copy the composed text and paste it wherever you need it,
+                            or send it directly to another MojiHako tool for further processing.
+                        </p>
+                        <ul>
+                            <li><a href="/tools/width-converter/"><strong>Full/Half Width:</strong></a>
+                                adjust character width if a form requires half-width or full-width katakana</li>
+                            <li><a href="/tools/kana-converter/"><strong>Hiragana / Katakana Converter:</strong></a>
+                                switch between hiragana and katakana after composing</li>
+                            <li><a href="/tools/genko-yoshi-viewer/"><strong>Genko Paper:</strong></a>
+                                preview the composed text in a vertical manuscript grid</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>6. Keyboard-only operation</h3>
+                        <p>
+                            Every feature is accessible without a mouse.
+                        </p>
+                        <ul>
+                            <li><strong>Arrow keys:</strong> move within the character grid</li>
+                            <li><strong>Enter or Space:</strong> insert the selected character</li>
+                            <li><strong>Tab / Shift+Tab:</strong> move between the text area, action buttons, tabs, and character grid</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>FAQ</h3>
+
+                        <h4>Q. Is my text sent to a server?</h4>
+                        <p>
+                            No. Your text is processed locally in your browser and is not sent to our server.
+                        </p>
+
+                        <h4>Q. Does it work on smartphones?</h4>
+                        <p>
+                            Yes. Kana Pad works in mobile browsers.
+                            If you use it regularly, add it to your browser bookmarks or home screen for quick access.
+                        </p>
+
+                        <h4>Q. I typed in hiragana — can I switch it to katakana?</h4>
+                        <p>
+                            Yes. Copy the composed text and paste it into the Hiragana / Katakana Converter.
+                            Katakana → hiragana works the same way.
+                        </p>
+
+                        <h4>Q. Can I type half-width katakana?</h4>
+                        <p>
+                            Kana Pad outputs standard hiragana and katakana by default.
+                            If you need half-width katakana like <code>ｶﾀｶﾅ</code>, send the result to the Full/Half Width converter.
+                        </p>
+                        <p><a href="/tools/width-converter/"><strong>Go to Full/Half Width Converter</strong></a></p>
+
+                    </section>
+                </article>
+
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <nav class="footer-nav" aria-label="Site links">
+                    <div class="footer-link-group">
+                        <a href="#top">Back to top</a>
+                        <a href="/tools/width-converter/">Full/Half Width</a>
+                        <a href="/tools/kana-converter/">Kana Converter</a>
+                        <a aria-current="page" href="./">Kana Pad</a>
+                        <a href="/tools/genko-yoshi-viewer/">Genko Paper</a>
+                        <a href="/tools/japanese-era-converter/">Japanese Era</a>
+                        <a href="/tools/kaomoji-copy/">Kaomoji</a>
+                        <a href="/#tool-list">All Tools</a>
+                    </div>
+                    <div class="footer-link-group">
+                        <a href="/about.html">About / Contact</a>
+                        <a href="/terms.html">Terms</a>
+                        <a href="/privacy.html">Privacy Policy</a>
+                    </div>
+                </nav>
+                <p class="footer-note">Your text stays in your browser and is not sent to our server.</p>
+                <p class="copyright">© 2026 MojiHako. All rights reserved.</p>
+            </div>
+        </footer>
+        <script src="/assets/js/i18n.js"></script>
+        <script src="/assets/js/app.js"></script>
+    </body>
+</html>

@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Japanese Era Converter - Reiwa, Heisei, Showa, Taisho, Meiji | MojiHako</title>
+        <meta name="description"
+              content="Convert Gregorian dates to Japanese era notation (gengō): Reiwa, Heisei, Showa, Taisho, and Meiji. Shows kanji, romanization, abbreviations such as R1/H31/S64, and gannen notation. Free, browser-based.">
+
+        <!-- Canonical -->
+        <link rel="canonical" href="https://ezyno.github.io/japanese-text-converter/tools/japanese-era-converter/">
+
+        <!-- Icons -->
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+        <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="manifest" href="/site.webmanifest">
+
+        <!-- Style -->
+        <link rel="stylesheet" href="/style.css">
+
+        <!-- Schema -->
+        <script type="application/ld+json">
+         {
+             "@context": "https://schema.org",
+             "@type": "WebApplication",
+             "name": "Japanese Era Converter",
+             "alternateName": "元号変換器",
+             "url": "https://ezyno.github.io/japanese-text-converter/tools/japanese-era-converter/",
+             "inLanguage": "en",
+             "applicationCategory": "UtilitiesApplication",
+             "operatingSystem": "Any",
+             "isAccessibleForFree": true,
+             "description": "Convert any Gregorian date to a Japanese era (gengō): Reiwa, Heisei, Showa, Taisho, and Meiji. Shows kanji, romanization, abbreviation, and gannen notation.",
+             "offers": {
+                 "@type": "Offer",
+                 "price": "0",
+                 "priceCurrency": "USD"
+             },
+             "creator": {
+                 "@type": "Organization",
+                 "name": "MojiHako",
+                 "url": "https://ezyno.github.io/japanese-text-converter/"
+             }
+         }
+        </script>
+
+    </head>
+    <body id="top">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <header class="site-header">
+            <div class="header-inner">
+                <a class="brand" href="/" aria-label="MojiHako home">
+                    <img class="brand-mark" src="/assets/images/mojihako-brand-logo-origin.svg" alt="" width="34" height="34">
+                    <span class="brand-word"><span class="brand-moji">Moji</span><span class="brand-hako">Hako</span></span>
+                </a>
+                <nav class="language-nav" aria-label="Language">
+                    <a href="/ko/">한국어</a>
+                    <a href="/ja/">日本語</a>
+                    <a aria-current="page" href="/">English</a>
+                </nav>
+            </div>
+            <nav class="tool-nav" aria-label="Tools">
+                <a href="/tools/width-converter/">Full/Half Width</a>
+                <a href="/tools/kana-converter/">Kana Converter</a>
+                <a href="/tools/kana-pad/">Kana Pad</a>
+                <a href="/tools/genko-yoshi-viewer/">Genko Paper</a>
+                <a aria-current="page" href="./">Japanese Era</a>
+                <a href="/tools/kaomoji-copy/">Kaomoji</a>
+                <a href="/#tool-list">All Tools</a>
+            </nav>
+        </header>
+
+        <!-- Main content -->
+        <main id="main" class="page-shell">
+
+            <!-- Desktop ad slot -->
+            <aside class="ad-slot desktop-ad" aria-label="Advertisement"></aside>
+
+            <!-- Main tool -->
+            <div class="content-column">
+                <section class="intro">
+                    <div class="tool-title-row">
+                        <h1>Japanese Era Converter</h1>
+                    </div>
+                    <p>
+                        Convert a Gregorian date to the corresponding Japanese era (gengō).
+                        Covers the major modern eras — Reiwa (令和), Heisei (平成), Showa (昭和), Taisho (大正), and Meiji (明治)
+                        — with selected older eras included for historical reference.
+                    </p>
+                </section>
+
+                <section class="tool-panel" aria-label="Japanese era conversion tool">
+                    <label class="field-label" for="era-date">Gregorian date</label>
+                    <div class="date-row">
+                        <input
+                            id="era-date"
+                            class="date-input"
+                            type="text"
+                            value="2019-05-01"
+                            inputmode="numeric"
+                            autocomplete="off"
+                            maxlength="10"
+                            pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
+                        >
+
+                        <div class="era-options" aria-label="Display options">
+                            <span class="option-title">Display options</span>
+                            <label class="option-check">
+                                <input id="era-gannen" type="checkbox" checked>
+                                Use gannen
+                            </label>
+                            <label class="option-check">
+                                <input id="era-roman" type="checkbox" checked>
+                                Show romanization and abbreviation
+                            </label>
+                            <label class="option-check">
+                                <input id="era-korean" type="checkbox">
+                                Show Korean reading
+                            </label>
+                        </div>
+
+                    </div>
+                    <div class="era-preset-row" aria-label="Date navigation">
+                        <button class="era-preset-button" data-era-relative="-1" type="button">← 1 day</button>
+                        <button class="era-preset-button" data-era-relative="0" type="button">Today</button>
+                        <button class="era-preset-button" data-era-relative="1" type="button">1 day →</button>
+                    </div>
+                    <div class="era-year-jump-row" aria-label="Year navigation">
+                        <button class="era-preset-button" data-year-jump="-10" type="button">← 10 yrs</button>
+                        <button class="era-preset-button" data-year-jump="-1" type="button">← 1 yr</button>
+                        <button class="era-preset-button" data-year-jump="1" type="button">1 yr →</button>
+                        <button class="era-preset-button" data-year-jump="10" type="button">10 yrs →</button>
+                    </div>
+                    <div class="era-start-row" aria-label="Jump to era start dates">
+                        <button class="era-start-button" data-era-date="2019-05-01" data-era-start="reiwa" type="button">
+                            Reiwa start</button>
+                        <button class="era-start-button" data-era-date="1989-01-08" data-era-start="heisei" type="button">
+                            Heisei start</button>
+                        <button class="era-start-button" data-era-date="1926-12-25" data-era-start="showa" type="button">
+                            Showa start</button>
+                        <button class="era-start-button" data-era-date="1912-07-30" data-era-start="taisho" type="button">
+                            Taisho start</button>
+                        <button class="era-start-button" data-era-date="1868-01-25" data-era-start="meiji" type="button">
+                            Meiji start</button>
+                        <button class="era-start-button" data-era-date="0645-06-19" data-era-start="taika" type="button">
+                            Taika start</button>
+                    </div>
+                    <output id="era-output" class="era-output" aria-live="polite"></output>
+                    <div class="handoff-links" data-handoff-source="era-output" aria-label="Send result to another tool">
+                        <span>Send result to another tool</span>
+                        <a data-handoff-target="/tools/kana-pad/" href="/tools/kana-pad/">Kana Pad</a>
+                        <a data-handoff-target="/tools/width-converter/" href="/tools/width-converter/">Full/Half Width</a>
+                        <a data-handoff-target="/tools/genko-yoshi-viewer/" href="/tools/genko-yoshi-viewer/">Genko Paper</a>
+                    </div>
+                    <p class="note"> Example: 2019-04-30 is 平成31年 / Heisei 31, while 2019-05-01 is 令和元年 / Reiwa 1 (gannen). </p>
+                </section>
+
+                <!-- Mobile ad slot -->
+                <aside class="ad-slot mobile-ad" aria-label="Advertisement"></aside>
+
+                <!-- How to use -->
+                <section class="guide-section" aria-labelledby="guide-heading">
+                    <h2 id="guide-heading">How to use</h2>
+                    <ol>
+                        <li>Enter a date in YYYY-MM-DD format.</li>
+                        <li>Choose which notation to show: gannen (元年), Korean reading, and/or romanization/abbreviation.</li>
+                        <li>Read the Japanese era result in the output area.</li>
+                    </ol>
+
+                    <h2>Examples</h2>
+                    <div class="example-grid">
+                        <div><strong>令和 Reiwa</strong><p>2019-05-01 → <br>令和元年5月1日 / <br>Reiwa 1 / R1</p></div>
+                        <div><strong>平成 Heisei</strong><p>2019-04-30 → <br>平成31年4月30日 / <br>Heisei 31 / H31</p></div>
+                        <div><strong>昭和 Showa</strong><p>1989-01-07 → <br>昭和64年1月7日 / <br>Showa 64 / S64</p></div>
+                    </div>
+
+                    <h2>Important note</h2>
+                    <p>
+                        The exact date an era changes matters.
+                        The same calendar year can span two different eras depending on the month and day.
+                    </p>
+                    <p>
+                        For example, April 30, 2019 is still Heisei, while May 1, 2019 is the first day of Reiwa.
+                    </p>
+
+                    <h2>Related tools</h2>
+                    <ul class="link-list">
+                        <li><a href="/tools/width-converter/">Full/Half Width</a></li>
+                        <li><a href="/tools/kana-converter/">Hiragana / Katakana</a></li>
+                        <li><a href="/tools/kana-pad/">Kana Pad</a></li>
+                        <li><a href="/tools/genko-yoshi-viewer/">Genko Paper</a></li>
+                        <li><a href="/tools/kaomoji-copy/">Kaomoji</a></li>
+                    </ul>
+                </section>
+
+                <!-- Horizontal ad slot -->
+                <aside class="ad-slot horizontal-ad" aria-label="Advertisement"></aside>
+
+                <!-- Extra article section -->
+                <article class="guide-section article-extra" aria-labelledby="era-extra-guide-heading">
+
+                    <h2 id="era-extra-guide-heading">Japanese Era (Gengō) and Gregorian Date Conversion Guide</h2>
+
+                    <p>
+                        Japanese official documents, contracts, résumés, government forms, receipts, and warranties
+                        often use the Japanese era system (元号, gengō) alongside or instead of the Gregorian calendar.
+                        Questions like "What year AD is Heisei 31?" or "When exactly was Showa 64?" come up
+                        whenever you work with Japanese paperwork or historical records.
+                    </p>
+                    <p>
+                        This converter takes a Gregorian date and calculates the correct Japanese era name and year,
+                        with options to show kanji notation, romanization, and abbreviation codes (R1, H31, S64).
+                        Because an era can change mid-year, knowing the exact month and day
+                        — not just the year — is essential for accuracy.
+                    </p>
+
+                    <section>
+                        <h3>📌 Major Japanese eras at a glance</h3>
+                        <div class="table-scroll">
+                            <table class="seo-guide-table">
+                                <thead>
+                                    <tr>
+                                        <th>Era</th>
+                                        <th>Romanization</th>
+                                        <th>Start date</th>
+                                        <th>Abbreviation examples</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>令和</strong></td>
+                                        <td>Reiwa</td>
+                                        <td>2019-05-01</td>
+                                        <td><code>R1</code>, <code>R6</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>平成</strong></td>
+                                        <td>Heisei</td>
+                                        <td>1989-01-08</td>
+                                        <td><code>H1</code>, <code>H31</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>昭和</strong></td>
+                                        <td>Showa</td>
+                                        <td>1926-12-25</td>
+                                        <td><code>S1</code>, <code>S64</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>大正</strong></td>
+                                        <td>Taisho</td>
+                                        <td>1912-07-30</td>
+                                        <td><code>T1</code>, <code>T15</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>明治</strong></td>
+                                        <td>Meiji</td>
+                                        <td>1868-01-25</td>
+                                        <td><code>M1</code>, <code>M45</code></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3>1. What is the Japanese era system?</h3>
+                        <p>
+                            The Japanese era system (元号, gengō) assigns a name to each imperial reign.
+                            Dates are written as the era name followed by the year number within that era
+                            — for example <code>令和6年</code>, <code>平成31年</code>, or <code>昭和64年</code>.
+                            This system is commonly used in Japanese paperwork and records,
+                            including official forms, personal history documents, contracts, and older materials,
+                            either on its own or alongside the Gregorian year.
+                        </p>
+                        <p>
+                            For instance, <code>2019-05-01</code> is the first day of Reiwa and is written <code>令和元年5月1日</code>.
+                            The previous day, <code>2019-04-30</code>, still falls in Heisei and is written <code>平成31年4月30日</code>.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>2. Why the same calendar year can belong to two different eras</h3>
+                        <p>
+                            A new era begins on a specific date, not at the start of a year,
+                            so looking up the year alone is not enough.
+                            In 2019, for example, April 30 is Heisei 31 and May 1 is Reiwa 1 (gannen).
+                        </p>
+                        <ul>
+                            <li><code>2019-04-30</code> → <strong>平成31年4月30日</strong> / Heisei 31</li>
+                            <li><code>2019-05-01</code> → <strong>令和元年5月1日</strong> / Reiwa 1 (gannen)</li>
+                            <li><code>1989-01-07</code> → <strong>昭和64年1月7日</strong> / Showa 64</li>
+                            <li><code>1989-01-08</code> → <strong>平成元年1月8日</strong> / Heisei 1 (gannen)</li>
+                        </ul>
+                        <p>
+                            Because a single day's difference can mean a different era, always enter the full date
+                            — month and day included — rather than the year alone.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>3. What is gannen (元年)?</h3>
+                        <p>
+                            In Japanese convention, the first year of a new era is written <code>元年</code>
+                            (gannen, meaning "founding year") rather than <code>1年</code>.
+                            So the first year of Reiwa is officially <code>令和元年</code>, not <code>令和1年</code>,
+                            though both are understood.
+                        </p>
+                        <p>
+                            Toggle the <strong>Use gannen</strong> option to switch
+                            between <code>元年</code> and <code>1年</code> notation.
+                            Match the format required by your document or form.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>4. Quick conversion formulas</h3>
+                        <p>
+                            For a rough mental calculation, add the following offset to the era year to get the Gregorian year.
+                            Keep in mind that transition years require checking the exact date.
+                        </p>
+                        <ul>
+                            <li><strong>Reiwa (令和):</strong> era year + 2018 = Gregorian year</li>
+                            <li><strong>Heisei (平成):</strong> era year + 1988 = Gregorian year</li>
+                            <li><strong>Showa (昭和):</strong> era year + 1925 = Gregorian year</li>
+                            <li><strong>Taisho (大正):</strong> era year + 1911 = Gregorian year</li>
+                            <li><strong>Meiji (明治):</strong> era year + 1867 = Gregorian year</li>
+                        </ul>
+                        <p>
+                            Example: Heisei 31 → 31 + 1988 = 2019.
+                            But note that only the portion of 2019 up to April 30 is Heisei 31; from May 1 it becomes Reiwa 1.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>5. When you need Japanese era dates</h3>
+                        <ul>
+                            <li><strong>Résumés and job applications:</strong>
+                                date of birth and employment history are often written in era format on Japanese résumé forms (履歴書)</li>
+                            <li><strong>Visa and government forms:</strong>
+                                Japanese official forms may require dates in era notation</li>
+                            <li><strong>Contracts, real estate, and financial documents:</strong>
+                                contract dates or validity periods written in era format</li>
+                            <li><strong>Receipts and warranties:</strong>
+                                purchase date or warranty period shown in Japanese era</li>
+                            <li><strong>Translation and research:</strong>
+                                converting era dates in Japanese documents to Gregorian for reference</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>6. What are the abbreviation codes R1, H31, S64?</h3>
+                        <p>
+                            Japanese eras are often abbreviated using the initial letter of
+                            their romanization followed by the year number.
+                            Reiwa = <code>R</code>, Heisei = <code>H</code>, Showa = <code>S</code>,
+                            Taisho = <code>T</code>, Meiji = <code>M</code>.
+                        </p>
+                        <ul>
+                            <li>令和元年 → <code>R1</code></li>
+                            <li>平成31年 → <code>H31</code></li>
+                            <li>昭和64年 → <code>S64</code></li>
+                            <li>大正15年 → <code>T15</code></li>
+                            <li>明治45年 → <code>M45</code></li>
+                        </ul>
+                        <p>
+                            These codes may appear on Japanese driver's licenses, insurance cards,
+                            and various official forms where space is limited.
+                        </p>
+                    </section>
+
+                    <section>
+                        <div class="shortcut-box">
+                            <h4>🛑 Checklist before filling in a Japanese era date</h4>
+                            <ul>
+                                <li>Have you entered the full date — month and day, not just the year?</li>
+                                <li>Is the date close to an era transition boundary?</li>
+                                <li>Does the form require gannen (元年) notation or the numeral 1?</li>
+                                <li>Which notation does the form expect — kanji, romanization, or abbreviation?</li>
+                                <li>For official submissions, have you confirmed the venue's date format requirements?</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3>FAQ</h3>
+
+                        <h4>Q. What Japanese era year is today?</h4>
+                        <p>
+                            Click the <strong>Today</strong> button to instantly see the current date in Japanese era notation.
+                        </p>
+
+                        <h4>Q. Are Heisei 31 and Reiwa 1 both in 2019?</h4>
+                        <p>
+                            Yes — both fall within the Gregorian year 2019, but they cover different date ranges.
+                            Heisei 31 runs through April 30, 2019; Reiwa 1 begins on May 1, 2019.
+                        </p>
+
+                        <h4>Q. Why is Showa 64 so short?</h4>
+                        <p>
+                            Showa 64 covers only January 1–7, 1989. Heisei 1 began on January 8, 1989.
+                        </p>
+
+                        <h4>Q. Why does Meiji 1 start on January 25, 1868?</h4>
+                        <p>
+                            The official proclamation date and the retroactively applied start date of Meiji differ.
+                            This tool uses <code>1868-01-25</code> as the Meiji 1 start date, based on the retroactively applied reference date.
+                        </p>
+
+                        <h4>Q. Can I look up eras older than Meiji?</h4>
+                        <p>
+                            This tool focuses on the modern eras from Meiji onward.
+                            Older eras such as Taika (大化) are available as historical reference start dates, but for ancient dates or academic work, consult the original source's calendar system.
+                        </p>
+                    </section>
+
+                </article>
+
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <nav class="footer-nav" aria-label="Site links">
+                    <div class="footer-link-group">
+                        <a href="#top">Back to top</a>
+                        <a href="/tools/width-converter/">Full/Half Width</a>
+                        <a href="/tools/kana-converter/">Kana Converter</a>
+                        <a href="/tools/kana-pad/">Kana Pad</a>
+                        <a href="/tools/genko-yoshi-viewer/">Genko Paper</a>
+                        <a aria-current="page" href="./">Japanese Era</a>
+                        <a href="/tools/kaomoji-copy/">Kaomoji</a>
+                        <a href="/#tool-list">All Tools</a>
+                    </div>
+                    <div class="footer-link-group">
+                        <a href="/about.html">About / Contact</a>
+                        <a href="/terms.html">Terms</a>
+                        <a href="/privacy.html">Privacy Policy</a>
+                    </div>
+                </nav>
+                <p class="footer-note">Your text stays in your browser and is not sent to our server.</p>
+                <p class="copyright">© 2026 MojiHako. All rights reserved.</p>
+            </div>
+        </footer>
+        <script src="/assets/js/i18n.js"></script>
+        <script src="/assets/js/app.js"></script>
+    </body>
+</html>

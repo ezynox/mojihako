@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Hiragana / Katakana Converter - Japanese Kana Converter | MojiHako</title>
+        <meta name="description"
+              content="Convert hiragana to katakana or katakana to hiragana instantly in your browser. Kanji, Latin letters, and digits are left unchanged. Free Japanese kana converter.">
+
+        <!-- Canonical -->
+        <link rel="canonical" href="https://ezyno.github.io/japanese-text-converter/tools/kana-converter/">
+
+        <!-- Icons -->
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+        <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="manifest" href="/site.webmanifest">
+
+        <!-- Style -->
+        <link rel="stylesheet" href="/style.css">
+
+        <!-- Schema -->
+        <script type="application/ld+json">
+         {
+             "@context": "https://schema.org",
+             "@type": "WebApplication",
+             "name": "Hiragana Katakana Converter",
+             "alternateName": "ひらがなカタカナ変換",
+             "url": "https://ezyno.github.io/japanese-text-converter/tools/kana-converter/",
+             "inLanguage": "en",
+             "applicationCategory": "UtilitiesApplication",
+             "operatingSystem": "Any",
+             "isAccessibleForFree": true,
+             "description": "Convert hiragana to katakana or katakana to hiragana instantly in your browser. Kanji, Latin letters, and digits are left unchanged.",
+             "offers": {
+                 "@type": "Offer",
+                 "price": "0",
+                 "priceCurrency": "USD"
+             },
+             "creator": {
+                 "@type": "Organization",
+                 "name": "MojiHako",
+                 "url": "https://ezyno.github.io/japanese-text-converter/"
+             }
+         }
+        </script>
+
+    </head>
+    <body id="top">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <header class="site-header">
+            <div class="header-inner">
+                <a class="brand" href="/" aria-label="MojiHako home">
+                    <img class="brand-mark" src="/assets/images/mojihako-brand-logo-origin.svg" alt="" width="34" height="34">
+                    <span class="brand-word"><span class="brand-moji">Moji</span><span class="brand-hako">Hako</span></span>
+                </a>
+                <nav class="language-nav" aria-label="Language">
+                    <a href="/ko/">한국어</a>
+                    <a href="/ja/">日本語</a>
+                    <a aria-current="page" href="/">English</a>
+                </nav>
+            </div>
+            <nav class="tool-nav" aria-label="Tools">
+                <a href="/tools/width-converter/">Full/Half Width</a>
+                <a aria-current="page" href="./">Kana Converter</a>
+                <a href="/tools/kana-pad/">Kana Pad</a>
+                <a href="/tools/genko-yoshi-viewer/">Genko Paper</a>
+                <a href="/tools/japanese-era-converter/">Japanese Era</a>
+                <a href="/tools/kaomoji-copy/">Kaomoji</a>
+                <a href="/#tool-list">All Tools</a>
+            </nav>
+        </header>
+
+        <!-- Main content -->
+        <main id="main" class="page-shell">
+
+            <!-- Desktop ad slot -->
+            <aside class="ad-slot desktop-ad" aria-label="Advertisement"></aside>
+
+            <!-- Main tool -->
+            <div class="content-column">
+                <section class="intro">
+                    <div class="tool-title-row">
+                        <h1>Hiragana / Katakana Converter</h1>
+                    </div>
+                    <p>
+                        Convert Japanese kana between hiragana and katakana instantly.
+                        Kanji, Latin letters, and digits are left unchanged.
+                    </p>
+                </section>
+
+                <section class="tool-panel converter-tool" aria-label="Hiragana / Katakana conversion tool">
+                    <div class="input-header">
+                        <label class="field-label" for="kana-input">Input</label>
+                    </div>
+                    <textarea id="kana-input" class="text-box converter-textarea" data-receive-text rows="4" placeholder="Example: ひらがな カタカナ 東京 abc 123"></textarea>
+
+                    <fieldset class="option-grid" aria-label="Conversion mode">
+                        <legend>Conversion mode</legend>
+                        <label><input name="kana-mode" type="radio" value="hira-to-kata" checked> Hiragana → Katakana</label>
+                        <label><input name="kana-mode" type="radio" value="kata-to-hira"> Katakana → Hiragana</label>
+                    </fieldset>
+
+                    <div class="action-row convert-action-row">
+                        <label class="live-toggle-inline"><input data-live-toggle="kana" type="checkbox" checked><span>Live</span></label>
+                        <button class="primary-button" data-convert="kana" type="button" hidden>Convert</button>
+                    </div>
+
+                    <div class="result-header">
+                        <label class="field-label" for="kana-output">Result</label>
+                        <div class="result-actions">
+                            <button class="copy-button" data-copy="kana" type="button">Copy</button>
+                            <button class="secondary-button" data-clear="kana" type="button">Clear</button>
+                        </div>
+                    </div>
+                    <textarea id="kana-output" class="text-box converter-textarea output-box" rows="4" readonly placeholder="Converted text will appear here."></textarea>
+                    <div class="handoff-links" data-handoff-source="kana-output" aria-label="Send result to another tool">
+                        <span>Send result to another tool</span>
+                        <a data-handoff-target="/tools/width-converter/" href="/tools/width-converter/">Full/Half Width</a>
+                        <a data-handoff-target="/tools/kana-pad/" href="/tools/kana-pad/">Kana Pad</a>
+                        <a data-handoff-target="/tools/genko-yoshi-viewer/" href="/tools/genko-yoshi-viewer/">Genko Paper</a>
+                    </div>
+                    <p class="note">Kanji readings are not inferred. This tool only converts hiragana and katakana that are already present in the input.</p>
+                </section>
+
+                <!-- Mobile ad slot -->
+                <aside class="ad-slot mobile-ad" aria-label="Advertisement"></aside>
+
+                <!-- How to use -->
+                <section class="guide-section" aria-labelledby="guide-heading">
+                    <h2 id="guide-heading">How to use</h2>
+                    <ol>
+                        <li>Paste the kana text you want to convert into the input box.</li>
+                        <li>Select Hiragana → Katakana or Katakana → Hiragana.</li>
+                        <li>With Live mode on, the result updates automatically as you type.</li>
+                        <li>Turn Live mode off to convert manually with the Convert button.</li>
+                    </ol>
+
+                    <h2>Examples</h2>
+                    <div class="example-grid">
+                        <div><strong>Hiragana → Katakana</strong><p>とうきょう → トウキョウ</p></div>
+                        <div><strong>Katakana → Hiragana</strong><p>カタカナ → かたかな</p></div>
+                        <div><strong>Other characters unchanged</strong><p>東京 ab123 → 東京 ab123</p></div>
+                    </div>
+
+                    <h2>Note</h2>
+                    <p>This tool does not infer the reading of kanji. Converting '東京' to 'とうきょう', for example, requires a separate furigana tool.</p>
+
+                    <h2>Related tools</h2>
+                    <ul class="link-list">
+                        <li><a href="/tools/width-converter/">Full/Half Width</a></li>
+                        <li><a href="/tools/kana-pad/">Kana Pad</a></li>
+                        <li><a href="/tools/genko-yoshi-viewer/">Genko Paper</a></li>
+                        <li><a href="/tools/kaomoji-copy/">Kaomoji</a></li>
+                        <li><a href="/tools/japanese-era-converter/">Japanese Era</a></li>
+                    </ul>
+                </section>
+
+                <!-- Horizontal ad slot -->
+                <aside class="ad-slot horizontal-ad" aria-label="Advertisement"></aside>
+
+                <!-- Extra article section -->
+                <article class="guide-section article-extra" aria-labelledby="kana-extra-guide-heading">
+
+                    <h2 id="kana-extra-guide-heading">How to Convert Hiragana and Katakana</h2>
+
+                    <p>
+                        When working with Japanese text you will sometimes need to switch between hiragana and katakana.
+                        A word or two can be retyped by hand,
+                        but converting longer passages or word lists one character at a time quickly becomes tedious.
+                        This converter swaps the kana form of every character in your text
+                        while leaving kanji, Latin letters, digits, and punctuation exactly as they are.
+                    </p>
+
+                    <section>
+                        <h3>📌 Hiragana vs. katakana at a glance</h3>
+                        <div class="table-scroll">
+                            <table class="seo-guide-table">
+                                <thead>
+                                    <tr>
+                                        <th>Script</th>
+                                        <th>Appearance</th>
+                                        <th>Typical uses</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Hiragana</strong><br><code>ひらがな</code></td>
+                                        <td class="text-teal">Rounded, flowing strokes</td>
+                                        <td>Native Japanese words, grammatical particles, verb/adjective endings, furigana</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Katakana</strong><br><code>カタカナ</code></td>
+                                        <td class="text-teal">Angular, straight strokes</td>
+                                        <td>Loanwords, foreign names and places, onomatopoeia, emphasis</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p>
+                            Hiragana and katakana share the same phonetic system
+                            — <code>あ</code> and <code>ア</code>, <code>か</code> and <code>カ</code> represent the same sounds.
+                            Which script is used depends on the type of word and the context.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>1. When to convert hiragana to katakana</h3>
+                        <p>
+                            Common reasons to convert hiragana to katakana include fixing loanword spelling,
+                            preparing furigana readings in the correct format, normalizing mixed kana data,
+                            and checking emphasis usage.
+                            Furigana fields on Japanese sign-up, reservation,
+                            and ticket booking pages often require katakana specifically.
+                        </p>
+                        <p>
+                            For example, if a name was entered as <code>やまだ</code> in hiragana
+                            but the form requires <code>ヤマダ</code> in katakana,
+                            use <strong>Hiragana → Katakana</strong> to fix it instantly.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>2. When to convert katakana to hiragana</h3>
+                        <p>
+                            A passage written entirely in katakana can be hard to read, especially for learners.
+                            Converting it to hiragana makes it easier to parse and study.
+                            This is useful when reading katakana vocabulary words, or when manga, game text, or novels
+                            use katakana for stylistic emphasis and you want a more familiar form.
+                        </p>
+                        <p>
+                            For example, <code>カタカナ</code> becomes <code>かたかな</code>
+                            and <code>トウキョウ</code> becomes <code>とうきょう</code>.
+                            Note that the converted result reflects phonetic form only
+                            — it does not guarantee that the output matches standard dictionary or furigana spelling.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>3. What this converter does and does not change</h3>
+
+                        <h4>Converted</h4>
+                        <ul>
+                            <li>Hiragana → Katakana: <code>とうきょう</code> → <code>トウキョウ</code></li>
+                            <li>Katakana → Hiragana: <code>カタカナ</code> → <code>かたかな</code></li>
+                            <li>Only kana characters within mixed text are converted; everything else is left unchanged.</li>
+                        </ul>
+
+                        <h4>Not converted</h4>
+                        <ul>
+                            <li>Kanji: <code>東京</code></li>
+                            <li>Latin letters: <code>abc</code></li>
+                            <li>Digits: <code>123</code></li>
+                            <li>Symbols and punctuation</li>
+                        </ul>
+
+                        <p>
+                            This tool converts the form of kana that is already present — it does not read or infer kanji.
+                            <code>東京</code> will not be converted to <code>とうきょう</code> or <code>トウキョウ</code>.
+                            If you need kanji readings, a separate furigana (yomigana) tool is required.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>4. Situations where kana conversion is useful</h3>
+                        <ul>
+                            <li>Comparing hiragana and katakana forms while studying Japanese</li>
+                            <li>Matching a furigana field that requires hiragana or katakana specifically</li>
+                            <li>Normalizing kana in copied Japanese text to a single script</li>
+                            <li>Reading katakana dialogue in games, manga, or novels as hiragana</li>
+                            <li>Batch-converting kana notation during document editing or data cleanup</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>5. What about half-width katakana?</h3>
+                        <p>
+                            Half-width katakana like <code>ｶﾀｶﾅ</code> is a different character set
+                            from standard full-width katakana <code>カタカナ</code>.
+                            This converter handles standard hiragana and full-width katakana only.
+                            To convert between half-width and full-width katakana, use the Full/Half Width converter.
+                        </p>
+
+                        <a href="/tools/width-converter/"><strong>Go to Full / Half Width Converter</strong></a>
+                    </section>
+
+                    <section>
+                        <div class="shortcut-box">
+                            <h4>🛑 Checklist before converting</h4>
+                            <ul>
+                                <li>Check the conversion direction: hiragana → katakana, or katakana → hiragana?</li>
+                                <li>Text containing kanji will only have its kana portions converted.</li>
+                                <li>For half-width katakana conversion, use the Full/Half Width converter instead.</li>
+                                <li>For important fields like names, addresses, or bookings, review the result after converting.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3>FAQ</h3>
+
+                        <h4>Q. Is my text sent to a server?</h4>
+                        <p>
+                            No. Your text is processed locally in your browser and is not sent to our server.
+                        </p>
+
+                        <h4>Q. Can I convert kanji to hiragana or katakana?</h4>
+                        <p>
+                            No. This tool does not infer kanji readings.
+                            <code>東京</code> will remain as-is
+                            and will not be automatically converted to <code>とうきょう</code> or <code>トウキョウ</code>.
+                        </p>
+
+                        <h4>Q. Can I convert a long passage all at once?</h4>
+                        <p>
+                            Yes. Anything you can paste into the input box is converted in one pass.
+                            In longer text, only the hiragana and katakana characters are changed;
+                            kanji, Latin letters, and digits remain unchanged.
+                        </p>
+                    </section>
+                </article>
+
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <nav class="footer-nav" aria-label="Site links">
+                    <div class="footer-link-group">
+                        <a href="#top">Back to top</a>
+                        <a href="/tools/width-converter/">Full/Half Width</a>
+                        <a aria-current="page" href="./">Kana Converter</a>
+                        <a href="/tools/kana-pad/">Kana Pad</a>
+                        <a href="/tools/genko-yoshi-viewer/">Genko Paper</a>
+                        <a href="/tools/japanese-era-converter/">Japanese Era</a>
+                        <a href="/tools/kaomoji-copy/">Kaomoji</a>
+                        <a href="/#tool-list">All Tools</a>
+                    </div>
+                    <div class="footer-link-group">
+                        <a href="/about.html">About / Contact</a>
+                        <a href="/terms.html">Terms</a>
+                        <a href="/privacy.html">Privacy Policy</a>
+                    </div>
+                </nav>
+                <p class="footer-note">Your text stays in your browser and is not sent to our server.</p>
+                <p class="copyright">© 2026 MojiHako. All rights reserved.</p>
+            </div>
+        </footer>
+        <script src="/assets/js/i18n.js"></script>
+        <script src="/assets/js/app.js"></script>
+    </body>
+</html>

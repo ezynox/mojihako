@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Genko Paper Viewer - Japanese Manuscript Grid &amp; Page Count | MojiHako</title>
+        <meta name="description"
+              content="Preview text in a Japanese vertical manuscript grid (genkō yōshi) and calculate character count and page count for 200-character and 400-character formats. Free, browser-based.">
+
+        <!-- Canonical -->
+        <link rel="canonical" href="https://ezyno.github.io/japanese-text-converter/tools/genko-yoshi-viewer/">
+
+        <!-- Icons -->
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+        <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="manifest" href="/site.webmanifest">
+
+        <!-- Style -->
+        <link rel="stylesheet" href="/style.css">
+
+        <!-- Schema -->
+        <script type="application/ld+json">
+         {
+             "@context": "https://schema.org",
+             "@type": "WebApplication",
+             "name": "Genko Paper Viewer",
+             "alternateName": "原稿用紙ビューア",
+             "url": "https://ezyno.github.io/japanese-text-converter/tools/genko-yoshi-viewer/",
+             "inLanguage": "en",
+             "applicationCategory": "UtilitiesApplication",
+             "operatingSystem": "Any",
+             "isAccessibleForFree": true,
+             "description": "Preview text in a Japanese vertical manuscript grid (genkō yōshi) and calculate character count and page count for 200-character and 400-character formats.",
+             "offers": {
+                 "@type": "Offer",
+                 "price": "0",
+                 "priceCurrency": "USD"
+             },
+             "creator": {
+                 "@type": "Organization",
+                 "name": "MojiHako",
+                 "url": "https://ezyno.github.io/japanese-text-converter/"
+             }
+         }
+        </script>
+
+    </head>
+    <body id="top">
+        <a class="skip-link" href="#main">Skip to content</a>
+        <header class="site-header">
+            <div class="header-inner">
+                <a class="brand" href="/" aria-label="MojiHako home">
+                    <img class="brand-mark" src="/assets/images/mojihako-brand-logo-origin.svg" alt="" width="34" height="34">
+                    <span class="brand-word"><span class="brand-moji">Moji</span><span class="brand-hako">Hako</span></span>
+                </a>
+                <nav class="language-nav" aria-label="Language">
+                    <a href="/ko/">한국어</a>
+                    <a href="/ja/">日本語</a>
+                    <a aria-current="page" href="/">English</a>
+                </nav>
+            </div>
+            <nav class="tool-nav" aria-label="Tools">
+                <a href="/tools/width-converter/">Full/Half Width</a>
+                <a href="/tools/kana-converter/">Kana Converter</a>
+                <a href="/tools/kana-pad/">Kana Pad</a>
+                <a aria-current="page" href="./">Genko Paper</a>
+                <a href="/tools/japanese-era-converter/">Japanese Era</a>
+                <a href="/tools/kaomoji-copy/">Kaomoji</a>
+                <a href="/#tool-list">All Tools</a>
+            </nav>
+        </header>
+
+        <!-- Main content -->
+        <main id="main" class="page-shell">
+
+            <!-- Desktop ad slot -->
+            <aside class="ad-slot desktop-ad" aria-label="Advertisement"></aside>
+
+            <!-- Main tool -->
+            <div class="content-column">
+                <section class="intro">
+                    <div class="tool-title-row">
+                        <h1 data-i18n-text="genko.title">Vertical Genko Paper Viewer</h1>
+                    </div>
+                    <p data-i18n-text="genko.description">
+                        Lay out text in a Japanese vertical manuscript grid and calculate sheet counts for 200- and 400-character formats.
+                    </p>
+                </section>
+
+                <div class="genko-control-grid" data-genko-tool>
+                    <section class="tool-panel genko-input-panel" aria-labelledby="genko-input-heading">
+                        <h2 id="genko-input-heading" data-i18n-text="genko.inputHeading">Text Input</h2>
+                        <label class="field-label" for="genko-input" data-i18n-text="genko.textLabel">Text for the manuscript grid</label>
+                        <textarea id="genko-input" class="text-box genko-textarea" data-genko-input data-i18n-placeholder="placeholders.genkoInput" rows="10"
+                                  placeholder="Type or paste text here, or load a .txt file.">
+吾輩は猫である。
+名前はまだ無い。
+
+どこで生れたかとんと見当がつかぬ。
+                        </textarea>
+                        <div class="genko-file-row">
+                            <label class="file-label" for="genko-file" data-i18n-text="genko.fileLabel">
+                                Load text file (.txt or .md)
+                            </label>
+                            <input id="genko-file" class="file-input" data-genko-file type="file" accept=".txt,.md,text/plain,text/markdown">
+                        </div>
+                        <p class="note" data-i18n-text="genko.filePrivacy">
+                            Files are read only in your browser and are not uploaded to a server.
+                        </p>
+                        <p class="status-line" data-genko-file-status aria-live="polite"></p>
+                    </section>
+
+                    <section class="tool-panel genko-settings-panel" aria-labelledby="genko-settings-heading">
+                        <h2 id="genko-settings-heading" data-i18n-text="genko.settings">Settings</h2>
+
+                        <fieldset class="option-grid genko-option-grid">
+                            <legend data-i18n-text="genko.paperKind">Paper Format</legend>
+                            <label><input name="genko-paper" type="radio" value="400" checked>
+                                <span data-i18n-text="genko.paper400">400 characters</span></label>
+                            <label><input name="genko-paper" type="radio" value="200">
+                                <span data-i18n-text="genko.paper200">200 characters</span></label>
+                        </fieldset>
+
+                        <fieldset class="option-grid genko-option-grid">
+                            <legend data-i18n-text="genko.viewMode">View Mode</legend>
+                            <label><input name="genko-view-mode" type="radio" value="paged" checked>
+                                <span data-i18n-text="genko.pagedView">Paged view</span></label>
+                            <label><input name="genko-view-mode" type="radio" value="all">
+                                <span data-i18n-text="genko.allView">Continuous view</span></label>
+                        </fieldset>
+
+                        <fieldset class="option-grid genko-option-grid genko-display-options">
+                            <legend data-i18n-text="genko.options">Display Options</legend>
+                            <label><input id="genko-grid-toggle" data-genko-grid-toggle type="checkbox" checked>
+                                <span data-i18n-text="genko.showGrid">Show manuscript grid</span></label>
+                            <label><input data-genko-indent type="checkbox" checked>
+                                <span data-i18n-text="genko.indentParagraph">Indent first cell of paragraphs</span></label>
+                            <label><input data-genko-remove-blank-lines type="checkbox">
+                                <span data-i18n-text="genko.removeBlankLines">Remove blank lines</span></label>
+                            <label><input data-genko-linebreaks type="checkbox" checked>
+                                <span data-i18n-text="genko.respectLineBreaks">Respect line breaks</span></label>
+                            <label><input data-genko-kinsoku type="checkbox" checked>
+                                <span data-i18n-text="genko.kinsoku">Apply basic kinsoku handling</span></label>
+                            <p class="note genko-kinsoku-note" data-i18n-text="genko.kinsokuNote">
+                                Closing punctuation and closing brackets are kept away from the beginning of a line.
+                            </p>
+                        </fieldset>
+                    </section>
+                </div>
+
+                <section class="tool-panel genko-stats-panel" aria-labelledby="genko-stats-heading" aria-live="polite">
+                    <h2 id="genko-stats-heading" data-i18n-text="genko.stats">Stats</h2>
+                    <dl class="genko-stats-grid">
+                        <div>
+                            <dt data-i18n-text="genko.totalCharacters">Total characters</dt>
+                            <dd data-genko-stat="total">0 chars</dd>
+                        </div>
+                        <div>
+                            <dt data-i18n-text="genko.noSpaceCharacters">Characters excluding spaces</dt>
+                            <dd data-genko-stat="noSpaces">0 chars</dd>
+                        </div>
+                        <div>
+                            <dt data-i18n-text="genko.lineCount">Lines</dt>
+                            <dd data-genko-stat="lines">0 lines</dd>
+                        </div>
+                        <div>
+                            <dt data-i18n-text="genko.rawSheets">Sheets (by characters)</dt>
+                            <dd data-genko-stat="rawSheets">0 lines</dd>
+                        </div>
+                        <div>
+                            <dt data-i18n-text="genko.layoutSheets">Sheets (by layout)</dt>
+                            <dd data-genko-stat="layoutSheets">0 sheets</dd>
+                        </div>
+                    </dl>
+                </section>
+
+                <section class="tool-panel genko-viewer-panel" aria-labelledby="genko-viewer-heading">
+                    <div class="genko-viewer-header">
+                        <h2 id="genko-viewer-heading" data-i18n-text="genko.viewer">Manuscript Viewer</h2>
+                        <div class="genko-pager" data-genko-pager>
+                            <button class="secondary-button" data-genko-action="first" type="button" data-i18n-text="genko.first">First</button>
+                            <button class="secondary-button" data-genko-action="prev" type="button" data-i18n-text="genko.prev">Previous</button>
+                            <button class="secondary-button" data-genko-action="next" type="button" data-i18n-text="genko.next">Next</button>
+                            <button class="secondary-button" data-genko-action="last" type="button" data-i18n-text="genko.last">Last</button>
+                            <label class="sr-only" for="genko-page-input" data-i18n-text="genko.pageNumber">Page number</label>
+                            <input id="genko-page-input" class="page-number-input" data-genko-page-input type="number" min="1" value="1">
+                            <span class="genko-page-total">/ <span data-genko-total-pages-control>1</span></span>
+                            <button class="secondary-button" data-genko-action="go" type="button" data-i18n-text="genko.go">Go</button>
+                        </div>
+                    </div>
+                    <div class="genko-viewer-scroll" data-genko-viewer aria-live="polite"></div>
+                </section>
+
+                <div class="handoff-links genko-handoff-links" data-handoff-source="genko-input" aria-label="Send result to another tool">
+                    <span>Send result to another tool</span>
+                    <a data-handoff-target="/tools/kana-converter/" href="/tools/kana-converter/">Hiragana/Katakana</a>
+                    <a data-handoff-target="/tools/width-converter/" href="/tools/width-converter/">Full/Half Width</a>
+                    <a data-handoff-target="/tools/kana-pad/" href="/tools/kana-pad/">Kana Pad</a>
+                </div>
+
+                <!-- Mobile ad slot -->
+                <aside class="ad-slot mobile-ad" aria-label="Advertisement"></aside>
+
+                <!-- How to use -->
+                <section class="guide-section" aria-labelledby="guide-heading">
+                    <h2 id="guide-heading">What is Genko Yoshi?</h2>
+                    <p>
+                        Genko yoshi (原稿用紙, genkō yōshi) is a type of Japanese manuscript paper with a fixed grid of cells,
+                        one character per cell. In vertical layout, characters run top to bottom and columns proceed right to left.
+                    </p>
+
+                    <h2>200-character vs. 400-character format</h2>
+                    <p>
+                        A 400-character sheet has 20 characters per column across 20 columns (20×20).
+                        A 200-character sheet has 20 characters per column across 10 columns (20×10).
+                    </p>
+
+                    <h2>Basic layout rules</h2>
+                    <p>
+                        Each character occupies one cell. Line breaks advance to the next column.
+                        With the paragraph indent option on, the first cell of each new paragraph is left empty.
+                        Punctuation and brackets each occupy one cell.
+                    </p>
+
+                    <p>
+                        For text with spaces between words (such as Korean or romanized text),
+                        a space that would land in the first cell of a column is skipped
+                        so the column does not open with a blank cell.
+                    </p>
+
+                    <p>
+                        With basic kinsoku handling on, closing punctuation and brackets
+                        — such as <code>。</code>, <code>、</code>, and <code>」</code> —
+                        are kept from appearing at the top of a column by tucking them
+                        alongside the last character of the previous column.
+                    </p>
+
+                    <h2>Character-count sheets vs. layout sheets</h2>
+                    <p>
+                        "Sheets by character count" divides the total character count by the sheet size.
+                        "Sheets by actual layout" accounts for real cell usage:
+                        line breaks, blank lines, paragraph indents, and kinsoku handling —
+                        all of which consume cells without adding characters.
+                    </p>
+
+                    <h2>Loading TXT files</h2>
+                    <p>
+                        Files are read using the browser File API only. No text or file content is sent to a server.
+                    </p>
+
+                    <h2>Note</h2>
+                    <p>
+                        Manuscript formatting rules vary by school, contest, publisher, and submission guidelines.
+                        This tool is a layout preview aid, not a substitute for professional typesetting.
+                        Always check the specific rules of your submission venue.
+                    </p>
+
+                    <h2>Related tools</h2>
+                    <ul class="link-list">
+                        <li><a href="/tools/width-converter/">Full / Half Width</a></li>
+                        <li><a href="/tools/kana-converter/">Hiragana / Katakana</a></li>
+                        <li><a href="/tools/kana-pad/">Kana Pad</a></li>
+                        <li><a href="/tools/kaomoji-copy/">Kaomoji</a></li>
+                        <li><a href="/tools/japanese-era-converter/">Japanese Era</a></li>
+                    </ul>
+                </section>
+
+                <!-- Horizontal ad slot -->
+                <aside class="ad-slot horizontal-ad" aria-label="Advertisement"></aside>
+
+                <!-- Extra article section -->
+                <article class="guide-section article-extra" aria-labelledby="genko-yoshi-extra-guide-heading">
+
+                    <h2 id="genko-yoshi-extra-guide-heading">
+                        Japanese Manuscript Paper (Genkō Yōshi): Layout and Page Count Guide
+                    </h2>
+
+                    <p>
+                        When preparing a Japanese writing assignment, essay, contest submission, or translation,
+                        you may need to check how your text actually fits on manuscript paper.
+                        Genkō yōshi (原稿用紙) — also written genko yoshi — is a traditional Japanese manuscript grid
+                        where each character occupies one square cell, text runs top to bottom,
+                        and columns proceed from right to left.
+                        Because paragraph indentation, line breaks, and punctuation placement can all affect the layout,
+                        a simple character count alone cannot reliably predict how many sheets your text will fill.
+                    </p>
+
+                    <p>
+                        This viewer lays out your text on a genkō yōshi grid and calculates total characters,
+                        characters excluding spaces, raw sheet count by character count, and actual sheet count by layout
+                        — all switchable between 400-character and 200-character formats.
+                    </p>
+
+                    <section>
+                        <h3>📌 When you need a genko paper viewer</h3>
+                        <div class="table-scroll">
+                            <table class="seo-guide-table">
+                                <thead>
+                                    <tr>
+                                        <th>Situation</th>
+                                        <th>How this tool helps</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Japanese writing assignment</strong></td>
+                                        <td>Preview vertical layout and paragraph placement before submitting.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Contest or journal submission</strong></td>
+                                        <td>Calculate approximate sheet count against a 400- or 200-character limit.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Translation or creative writing review</strong></td>
+                                        <td>See how horizontally composed text looks in a vertical genkō yōshi grid.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Character count with and without spaces</strong></td>
+                                        <td>Compare total characters against the space-excluded count side by side.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section>
+
+                        <h3>1. What is genkō yōshi?</h3>
+                        <p>
+                            Genkō yōshi (原稿用紙), or genko yoshi, is a type of manuscript paper
+                            divided into a uniform grid of cells.
+                            As a rule, one character is written in each cell.
+                            In the traditional vertical writing style (tategumi), characters are placed top to bottom,
+                            and columns run from right to left across the page.
+                        </p>
+
+                        <ul>
+                            <li><strong>400-character genkō yōshi:</strong> 20 characters per column across 20 columns (<strong>20×20</strong>)</li>
+                            <li><strong>200-character genkō yōshi:</strong> 20 characters per column across 10 columns (<strong>20×10</strong>)</li>
+                        </ul>
+
+                        <p>
+                            As a rough guide, one 400-character sheet is about the amount of text you see
+                            across a two-page spread in a typical Japanese paperback book,
+                            while one 200-character sheet is closer to the amount on a single page.
+                            When an assignment, contest, or submission guideline specifies a length such as
+                            “within 5 sheets,” always confirm which sheet format is meant.
+                        </p>
+                    </section>
+
+
+                    <section>
+                        <h3>2. Why raw character count and actual sheet count differ</h3>
+                        <p>
+                            Dividing your character count by 400 or 200 gives only an approximation.
+                            On actual genkō yōshi, several factors consume cells without adding characters:
+                        </p>
+                        <ul>
+                            <li><strong>Sheets by character count:</strong>
+                                total characters ÷ cells per sheet</li>
+                            <li><strong>Sheets by actual layout:</strong>
+                                reflects line breaks, blank lines, paragraph indents, and kinsoku handling</li>
+                        </ul>
+                        <p>
+                            For example, a text under 400 characters can still run onto a second sheet
+                            if it has many short paragraphs or frequent line breaks.
+                            Check both figures when matching a required page count.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>3. Basic genkō yōshi layout rules</h3>
+                        <p>
+                            Toggle the options in this tool to see how each rule affects the layout in real time.
+                        </p>
+                        <ul>
+                            <li><strong>Paragraph indent:</strong>
+                                the first cell of each new paragraph is left blank as an indent.</li>
+                            <li><strong>Respect line breaks:</strong>
+                                explicit line breaks in your text advance to the next column.</li>
+                            <li><strong>Remove blank lines:</strong>
+                                empty lines in the input text can be ignored in the layout</li>
+                            <li><strong>Kinsoku handling:</strong>
+                                closing punctuation and brackets are prevented from appearing at the top of a column.</li>
+                        </ul>
+                        <p>
+                            Characters like <code>。</code>, <code>、</code>, and <code>」</code> look awkward at the head of a column.
+                            With basic kinsoku on, they are tucked alongside the last character of the preceding column,
+                            keeping the layout closer to standard manuscript form.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>4. 400-character vs. 200-character genko paper</h3>
+                        <p>
+                            The 400-character sheet (genkō yōshi 400-ji) is the standard format
+                            for Japanese writing assignments, literary manuscripts, and contest submissions.
+                            Its larger capacity makes it practical for longer texts.
+                        </p>
+                        <p>
+                            The 200-character sheet has half as many columns per page
+                            and is suited to shorter texts or practice writing.
+                            The same text will usually require more sheets in the 200-character format than in the 400-character format.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>5. Loading TXT and MD files — privacy note</h3>
+                        <p>
+                            You can load text written in Notepad, a Markdown editor, or any other writing tool
+                            as a <code>.txt</code> or <code>.md</code> file — no need to copy and paste long documents each time.
+                        </p>
+                        <p>
+                            File loading uses the browser File API. Neither your typed text nor any loaded file content is sent to an external server; all processing happens locally in your browser.
+                        </p>
+
+                        <div class="shortcut-box">
+                            <h4>🛑 Checklist before submitting your manuscript</h4>
+                            <ul>
+                                <li>Is the required format a 400-character sheet or a 200-character sheet?</li>
+                                <li>Does the submission count sheets by raw character count or by actual layout?</li>
+                                <li>Does the paragraph indent setting match the submission guidelines?</li>
+                                <li>Is the space handling option consistent with the intended text?</li>
+                                <li>Do punctuation marks and closing brackets appear in awkward positions in the preview?</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3>FAQ</h3>
+
+                        <h4>Q. Can non-Japanese text be laid out on the grid?</h4>
+                        <p>
+                            Yes. Text containing kanji, hiragana, katakana, Korean, Latin letters, digits,
+                            and symbols can all be placed on the grid.
+                        </p>
+
+                        <p>
+                            In this viewer, full-width Latin letters and digits
+                            such as <code>Ａ</code>, <code>Ｂ</code>, and <code>１</code>
+                            are treated like Japanese full-width characters:
+                            they occupy one cell each without rotation.
+                            Half-width Latin letters and digits are rotated and grouped in pairs,
+                            with up to two characters placed in one cell.
+                        </p>
+
+                        <h4>Q. Are spaces and line breaks counted as characters?</h4>
+                        <p>
+                            The tool displays both total characters and characters excluding spaces.
+                            The "sheets by actual layout" count also factors in line breaks, blank lines, and paragraph indents,
+                            since these all occupy column space.
+                        </p>
+
+                        <h4>Q. Can I print or save the layout as a file?</h4>
+                        <p>
+                            This tool is designed for browser-based layout preview and character counting.
+                            For a printable or submittable manuscript file,
+                            please use the official form or template provided by your submission venue.
+                        </p>
+                    </section>
+                </article>
+
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <nav class="footer-nav" aria-label="Site links">
+                    <div class="footer-link-group">
+                        <a href="#top">Back to top</a>
+                        <a href="/tools/width-converter/">Full/Half Width</a>
+                        <a href="/tools/kana-converter/">Kana Converter</a>
+                        <a href="/tools/kana-pad/">Kana Pad</a>
+                        <a aria-current="page" href="./">Genko Paper</a>
+                        <a href="/tools/japanese-era-converter/">Japanese Era</a>
+                        <a href="/tools/kaomoji-copy/">Kaomoji</a>
+                        <a href="/#tool-list">All Tools</a>
+                    </div>
+                    <div class="footer-link-group">
+                        <a href="/about.html">About / Contact</a>
+                        <a href="/terms.html">Terms</a>
+                        <a href="/privacy.html">Privacy Policy</a>
+                    </div>
+                </nav>
+                <p class="footer-note">Your text stays in your browser and is not sent to our server.</p>
+                <p class="copyright">© 2026 MojiHako. All rights reserved.</p>
+            </div>
+        </footer>
+        <script src="/assets/js/i18n.js"></script>
+        <script src="/assets/js/genko-viewer.js"></script>
+    </body>
+</html>

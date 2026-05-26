@@ -19,8 +19,12 @@ desktop.ini
 .env
 .env.*
 
-# Perl
+# Scripts
+/scripts/
 *.pl
+*.sh
+*.ps1
+
 
 # Build output
 /dist/

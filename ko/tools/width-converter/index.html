@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>전각 반각 변환 - 일본어 문자 폭 변환 | MojiHako</title>
+        <meta name="description"
+              content= "일본어 전각 반각 변환기로 전각 ASCII, 반각 ASCII, 반각 가타카나, 전각 공백, nfkc 정규화를 브라우저에서 바로 처리합니다.">
+
+        <!-- Canonical -->
+        <link rel="canonical" href="https://ezyno.github.io/japanese-text-converter/tools/width-converter/">
+
+        <!-- Icons -->
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+        <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="manifest" href="/site.webmanifest">
+
+        <!-- Style -->
+        <link rel="stylesheet" href="/style.css">
+
+        <!-- Schema -->
+        <script type="application/ld+json">
+         {
+             "@context": "https://schema.org",
+             "@type": "WebApplication",
+             "name": "전각/반각 변환기",
+             "alternateName": "Full-width Half-width Converter",
+             "url": "https://ezyno.github.io/japanese-text-converter/tools/width-converter/",
+             "inLanguage": "ko",
+             "applicationCategory": "UtilitiesApplication",
+             "operatingSystem": "Any",
+             "isAccessibleForFree": true,
+             "description": "일본어 텍스트의 전각 ASCII, 반각 ASCII, 반각 가타카나, 스페이스, NFKC 정규화를 브라우저에서 바로 변환하는 무료 웹 도구입니다.",
+             "offers": {
+                 "@type": "Offer",
+                 "price": "0",
+                 "priceCurrency": "USD"
+             },
+             "creator": {
+                 "@type": "Organization",
+                 "name": "MojiHako",
+                 "url": "https://ezyno.github.io/japanese-text-converter/"
+             }
+         }
+        </script>
+
+
+    </head>
+    <body id="top">
+        <a class="skip-link" href="#main">본문으로 이동</a>
+        <header class="site-header">
+            <div class="header-inner">
+                <a class="brand" href="/ko/" aria-label="MojiHako 홈">
+                    <img class="brand-mark" src="/assets/images/mojihako-brand-logo-origin.svg" alt="" width="34" height="34">
+                    <span class="brand-word"><span class="brand-moji">Moji</span><span class="brand-hako">Hako</span></span>
+                </a>
+                <nav class="language-nav" aria-label="언어 선택">
+                    <a aria-current="page" href="/ko/">한국어</a>
+                    <a href="/ja/">日本語</a>
+                    <a href="/">English</a>
+                </nav>
+            </div>
+            <nav class="tool-nav" aria-label="도구 메뉴">
+                <a aria-current="page" href="./">전각/반각</a>
+                <a href="/ko/tools/kana-converter/">가나 변환</a>
+                <a href="/ko/tools/kana-pad/">일본어 입력</a>
+                <a href="/ko/tools/genko-yoshi-viewer/">원고지</a>
+                <a href="/ko/tools/japanese-era-converter/">일본 연호</a>
+                <a href="/ko/tools/kaomoji-copy/">카오모지</a>
+                <a href="/ko/#tool-list">도구 목록</a>
+            </nav>
+        </header>
+
+        <!-- Main content -->
+        <main id="main" class="page-shell">
+
+            <!-- Desktop ad slot -->
+            <aside class="ad-slot desktop-ad" aria-label="광고 영역"><span></span></aside>
+
+            <!-- Main tool -->
+            <div class="content-column">
+                <section class="intro">
+                    <div class="tool-title-row">
+                        <h1>전각/반각 변환기</h1>
+                    </div>
+                    <p>일본 웹사이트의 입력 양식이나 주소, 이름, 상품명 등을 정리할 때 자주 필요한 전각 문자와
+                        반각 문자를 빠르게 변환합니다.</p>
+                </section>
+
+                <section class="tool-panel converter-tool" aria-label="전각/반각 변환 도구">
+                    <div class="input-header">
+                        <label class="field-label" for="width-input">입력</label>
+                    </div>
+                    <textarea id="width-input" class="text-box converter-textarea code-ascii width-textarea" data-receive-text rows="4" placeholder="예: ＡＢＣ１２３ ｶﾀｶﾅ ① Ⅳ"></textarea>
+
+                    <fieldset class="option-grid" aria-label="전각 반각 변환 옵션">
+                        <legend>변환 방식</legend>
+                        <label><input name="width-mode" type="radio" value="full-kana-to-half" checked>
+                            전각 가타카나 → 반각 가타카나</label>
+                        <label><input name="width-mode" type="radio" value="half-kana-to-full">
+                            반각 가타카나 → 전각 가타카나</label>
+                        <label><input name="width-mode" type="radio" value="full-to-half">
+                            전각 ASCII → 반각 ASCII</label>
+                        <label><input name="width-mode" type="radio" value="half-to-full">
+                            반각 ASCII → 전각 ASCII</label>
+                        <label><input name="width-mode" type="radio" value="full-space-to-half">
+                            전각 공백 → 반각 공백</label>
+                        <label><input name="width-mode" type="radio" value="half-space-to-full">
+                            반각 공백 → 전각 공백</label>
+                        <label><input name="width-mode" type="radio" value="nfkc">
+                            NFKC 정규화</label>
+                    </fieldset>
+
+                    <div class="action-row convert-action-row">
+                        <label class="live-toggle-inline"><input data-live-toggle="width" type="checkbox" checked><span>자동 변환</span></label>
+                        <button class="primary-button" data-convert="width" type="button" hidden>변환</button>
+                    </div>
+
+                    <div class="result-header">
+                        <label class="field-label" for="width-output">결과</label>
+                        <div class="result-actions">
+                            <button class="copy-button" data-copy="width" type="button">복사</button>
+                            <button class="secondary-button" data-clear="width" type="button">삭제</button>
+                        </div>
+                    </div>
+                    <textarea id="width-output" class="text-box converter-textarea code-ascii width-textarea output-box" rows="4" readonly placeholder="변환 결과가 여기에 표시됩니다."></textarea>
+                    <div class="handoff-links" data-handoff-source="width-output" aria-label="결과를 다른 도구로 보내기">
+                        <span>결과를 다른 도구로 보내기</span>
+                        <a data-handoff-target="/ko/tools/kana-converter/" href="/ko/tools/kana-converter/">히라가나/가타카나</a>
+                        <a data-handoff-target="/ko/tools/kana-pad/" href="/ko/tools/kana-pad/">Kana Pad</a>
+                        <a data-handoff-target="/ko/tools/genko-yoshi-viewer/" href="/ko/tools/genko-yoshi-viewer/">원고지</a>
+                    </div>
+                    <p class="note">
+                        <!-- 느낌표 강조 -->
+                        <span class="note-icon" aria-hidden="true">!</span>
+                        NFKC 정규화는 <code>①</code>, <code>Ⅳ</code>
+                        같은 호환 문자까지 함께 변환하므로, 원문 형태를 그대로 보존해야 할 때는 변환 결과를 꼭 확인하세요.</p>
+                </section>
+
+                <!-- Desktop ad slot -->
+                <aside class="ad-slot mobile-ad" aria-label="광고 영역"><span></span></aside>
+
+                <!-- Guide section -->
+                <section class="guide-section" aria-labelledby="guide-heading">
+                    <h2 id="guide-heading">사용 방법</h2>
+                    <ul>
+                        <li>입력창에 변환할 텍스트를 붙여넣습니다.</li>
+                        <li>원하는 변환 방식을 선택합니다.</li>
+                        <li>자동 변환이 켜져 있으면 결과가 실시간으로 나타납니다.</li>
+                        <li>자동 변환을 끄면 [변환] 버튼으로 직접 변환할 수 있습니다.</li>
+                        <li>[복사] 버튼을 눌러 필요한 곳에 붙여넣으세요.</li>
+                    </ul>
+                    <h2>변환 예시</h2>
+                    <div class="example-grid">
+                        <div><strong>전각 가타카나 → 반각 가타카나</strong>
+                            <p><code>ガッツポーズ → ｶﾞｯﾂﾎﾟｰｽﾞ</code></p></div>
+                        <div><strong>반각 가타카나 → 전각 가타카나</strong>
+                            <p><code>ｶﾞｯﾂﾎﾟｰｽﾞ → ガッツポーズ</code></p></div>
+                        <div><strong>전각 ASCII → 반각 ASCII</strong>
+                            <p><code>ＡＢ１２ → AB12</code></p></div>
+                        <div><strong>반각 ASCII → 전각 ASCII</strong>
+                            <p><code>AB12 → ＡＢ１２</code></p></div>
+                        <div><strong>전각 공백 → 반각 공백</strong>
+                            <p><code>Ａ　Ｂ → Ａ Ｂ</code></p></div>
+                        <div><strong>반각 공백 → 전각 공백</strong>
+                            <p><code>A B → A　B</code></p></div>
+                        <div><strong>NFKC 정규화</strong>
+                            <p><code>① Ⅳ ㍿ → 1 IV 株式会社</code></p></div>
+                    </div>
+
+                    <h2>전각과 반각의 차이</h2>
+                    <p>
+                        전각 문자는 정사각형 모양으로 한 글자 폭이 넓은 문자이며,
+                        반각 문자는 일반 영문이나 숫자처럼 폭이 절반으로 좁은 문자입니다.
+                    </p>
+                    <p>일본 사이트는 이름, 주소, 전화번호, 상품명을 입력할 때 전각과 반각 구분이 필요하기도 합니다.</p>
+                    <h2>NFKC 정규화란</h2>
+                    <p>NFKC 정규화는 컴퓨터가 다른 글자로 인식하는 복잡한 특수문자(<code>①, Ⅳ</code>)나
+                        전각 문자(<code>Ａ, １</code>)를 표준적인 일반 텍스트
+                        (<code>1, IV, A, 1</code>)로 통일해 주는 기능입니다.</p>
+                    <p>텍스트에 섞여 있는 입력 오류나 불필요한 기호들을 표준 유니코드로 한 번에 정돈해 주기 때문에,
+                        웹사이트 검색이나 데이터 분석을 할 때 정확도를 높여줍니다.</p>
+
+                    <h2>관련 도구</h2>
+                    <ul class="link-list">
+                        <li><a href="/ko/tools/kana-converter/">히라가나/가타카나</a></li>
+                        <li><a href="/ko/tools/kana-pad/">Kana Pad</a></li>
+                        <li><a href="/ko/tools/genko-yoshi-viewer/">원고지</a></li>
+                        <li><a href="/ko/tools/kaomoji-copy/">카오모지</a></li>
+                        <li><a href="/ko/tools/japanese-era-converter/">일본 연호</a></li>
+                    </ul>
+                </section>
+
+                <!-- Horizontal ad slot -->
+                <aside class="ad-slot horizontal-ad" aria-label="광고 영역"><span></span></aside>
+
+                <!-- Extra article section -->
+                <article class="guide-section article-extra" aria-labelledby="width-extra-guide-heading">
+
+                    <h2 id="width-extra-guide-heading">일본 사이트 입력 오류 해결을 위한 전각·반각 변환 가이드</h2>
+
+                    <p>
+                        일본 웹사이트에서 회원가입을 하거나 아마존·메루카리 직구, 호텔 예약 등을 진행할 때
+                        <strong>“전각으로 입력해 주세요(全角で入力してください)”</strong> 또는
+                        <strong>“반각으로 입력해 주세요(半角で入力してください)”</strong>라는 오류 메시지 때문에 막히는 경우가 많습니다.
+                        이는 전각과 반각, 즉 문자 폭을 구분해서 처리하는 입력 양식 때문입니다.
+                        아래 안내에 따라 오류 원인을 확인하고 필요한 형식으로 간편하게 변환해 보세요.
+                    </p>
+
+                    <section>
+                        <h3>📌 일본 사이트 가입·주소 입력시 전각/반각 기준</h3>
+                        <div class="table-scroll">
+                            <table class="seo-guide-table">
+                                <thead>
+                                    <tr>
+                                        <th>입력 항목</th>
+                                        <th>주요 요구 형식</th>
+                                        <th>올바른 예시</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>이름 후리가나 (가타카나)</strong></td>
+                                        <td class="text-teal">전각 가타카나를 요구하는 경우가 많음</td>
+                                        <td><code>ヤマダ</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>우편번호 / 전화번호</strong></td>
+                                        <td class="text-orange">반각 숫자 권장, 하이픈 허용 여부 확인</td>
+                                        <td><code>1234567</code> / <code>01012345678</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>주소지 번지수 / 방 번호</strong></td>
+                                        <td>사이트별로 다름, 오류 시 반각/전각 전환</td>
+                                        <td><code>1-2-3</code> 또는 <code>１－２－３</code></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>이메일 주소 / 비밀번호</strong></td>
+                                        <td class="text-orange">반각 영문/숫자 사용</td>
+                                        <td><code>moji@hako.com</code></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3>1. 전각 문자와 반각 문자의 차이점</h3>
+
+                        <ul>
+                            <li><strong>전각 문자:</strong>정사각형(1:1 비율) 모양으로, 한 글자가 온전한 한 칸 폭을 차지</li>
+                            <li><strong>반각 문자:</strong>전각의 절반(1:0.5 비율)으로 일반적인 영문이나 숫자처럼 차지하는 폭이 좁음</li>
+                        </ul>
+
+                        <h4>
+                            ❓ 일본 직구 사이트에서 전각 오류가 왜 생기나요?
+                        </h4>
+                        <p>
+                            겉보기에는 비슷해 보이는 알파벳 <code>A</code>와 <code>Ａ</code>, 숫자 <code>1</code>과 <code>１</code>,
+                            가타카나 <code>ｶ</code>와 <code>カ</code>를 컴퓨터 시스템은 서로 다른 문자로 인식합니다.
+                            주소를 복사해서 붙여넣거나, 다른 앱에서 텍스트를 가져오거나, 스마트폰의 자동 완성 기능을 쓰면
+                            전각과 반각이 의도치 않게 섞여 들어가 오류가 발생하곤 합니다.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>2. 가타카나 후리가나 입력: 전각 vs 반각</h3>
+                        <p>
+                            일본 웹사이트의 이름 후리가나 입력란은 <strong>전각 가타카나</strong>를 요구하는 경우가 많습니다.
+                            만약 여권 영문 이름을 가타카나로 변환하여 입력하였는데 오류가 난다면,
+                            문자 폭이 좁은 <strong>반각 가타카나</strong>로 입력되었기 때문일 수 있습니다.
+                            이럴 때는 본 페이지의 <strong>[반각 가타카나 → 전각 가타카나]</strong> 기능을 이용하여 변환 가능합니다.
+                        </p>
+                        <p>
+                            <em>※단, 일부 오래된 예약 시스템이나 배송 시스템에서는 반각 가타카나(半角カナ)를 요구하는 경우도 있으니,
+                                오류 안내 메시지를 꼭 확인해 주세요.</em>
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>3. 전각 숫자와 반각 숫자가 다른 점</h3>
+                        <p>
+                            전각 숫자는 <code>１２３４</code>처럼 정사각형(1:1 비율)에 가까운 폭을 차지하며,
+                            반각 숫자는 일반적인 영문 숫자 폭인 <code>1234</code>입니다.
+                            결제 카드 번호, 우편번호, 전화번호 칸에 전각 숫자가 들어가면 오류가 발생하기도 하므로
+                            <strong>[전각 ASCII → 반각 ASCII]</strong>를 통해 숫자를 반각으로 정리할 수 있습니다.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>4. 눈에 잘 보이지 않는 전각 공백 문제</h3>
+                        <p>
+                            찾기 까다로운 입력 오류 원인 중 하나는 <strong>공백</strong>입니다.
+                            일본어 입력기가 켜진 상태에서 띄어쓰기를 하면 일반 공백이 아니라
+                            넓은 전각 공백(<code>　</code>)이 입력될 수 있습니다.
+                            성과 이름 사이, 주소 중간, 건물명 앞뒤에 전각 공백이 포함되어 있으면
+                            사이트가 입력값을 제대로 인식하지 못할 수 있습니다.
+                            오류 원인을 찾기 어렵다면 <strong>[전각 공백 → 반각 공백]</strong> 변환을 실행해 보시기 바랍니다.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>5. 대량의 데이터 정리는 'NFKC 정규화'로 한 번에</h3>
+                        <p>
+                            일본 상품명을 대량으로 수집해 데이터 분석을 하거나, 쇼핑몰·마켓 등록용 텍스트를 정리할 때는
+                            <strong>NFKC 정규화</strong> 기능이 유용합니다.
+                            텍스트 내에 임의로 섞여 있는 호환 문자(<code>①, Ⅳ, ㍿</code> 등)와 전각 영숫자를
+                            더 표준적인 일반 텍스트(<code>1, IV, 株式会社</code>, 일반 영숫자)로 통일하여
+                            검색이나 비교가 쉬워집니다.
+                        </p>
+                    </section>
+
+                    <section>
+                        <div class="shortcut-box" style="background: #f1f3f5; padding: 15px; border-radius: 6px; margin-top: 20px;">
+                            <h4 style="margin-top:0;">🛑 일본 사이트 결제·가입 오류 발생 시 체크리스트</h4>
+                            <ul style="margin-bottom:0; padding-left:20px;">
+                                <li>전화번호·우편번호·카드번호가 <strong>반각 숫자</strong>인지 확인하세요. (예: <code>1234</code>)</li>
+                                <li>이름 후리가나 칸이 <strong>전각 가타카나</strong>인지 확인하세요. (예: <code>ヤマダ</code>)</li>
+                                <li>텍스트 사이에 눈에 보이지 않는 <strong>전각 공백(넓은 띄어쓰기)</strong>이 있는지 확인하세요.</li>
+                                <li>주소나 상품명에 <strong>특수문자(<code>①, Ⅰ</code> 등)</strong>가 포함되어 오류가 발생하지 않는지 확인하세요.</li>
+                            </ul>
+                        </div>
+                    </section>
+                </article>
+
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <nav class="footer-nav" aria-label="하단 사이트 링크">
+                    <div class="footer-link-group">
+                        <a href="#top">맨 위로 돌아가기</a>
+                        <a aria-current="page" href="./">전각/반각</a>
+                        <a href="/ko/tools/kana-converter/">가나 변환</a>
+                        <a href="/ko/tools/kana-pad/">일본어 입력</a>
+                        <a href="/ko/tools/genko-yoshi-viewer/">원고지</a>
+                        <a href="/ko/tools/japanese-era-converter/">일본 연호</a>
+                        <a href="/ko/tools/kaomoji-copy/">카오모지</a>
+                        <a href="/ko/#tool-list">도구 목록</a>
+                    </div>
+                    <div class="footer-link-group">
+                        <a href="/ko/about.html">소개</a>
+                        <a href="/ko/terms.html">이용약관</a>
+                        <a href="/ko/privacy.html">개인정보처리방침</a>
+                    </div>
+                </nav>
+                <p class="footer-note">입력한 텍스트를 서버로 전송하지 않고, 브라우저 안에서만 처리합니다.</p>
+                <p class="copyright">© 2026 MojiHako. All rights reserved.</p>
+            </div>
+        </footer>
+        <script src="/assets/js/i18n.js"></script>
+        <script src="/assets/js/app.js"></script>
+    </body>
+</html>

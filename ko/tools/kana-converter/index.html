@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>히라가나 가타카나 변환기 - 일본어 가나 변환 | MojiHako</title>
+        <meta name="description"
+              content="히라가나를 가타카나로, 가타카나를 히라가나로 브라우저에서 바로 변환하는 무료 일본어 가나 변환 도구입니다.">
+
+        <!-- Canonical -->
+        <link rel="canonical" href="https://ezyno.github.io/japanese-text-converter/tools/kana-converter/">
+
+        <!-- Icons -->
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+        <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="manifest" href="/site.webmanifest">
+
+        <!-- Style -->
+        <link rel="stylesheet" href="/style.css">
+
+        <!-- Schema -->
+        <script type="application/ld+json">
+         {
+             "@context": "https://schema.org",
+             "@type": "WebApplication",
+             "name": "히라가나 가타카나 변환기",
+             "alternateName": "Hiragana Katakana Converter",
+             "url": "https://ezyno.github.io/japanese-text-converter/tools/kana-converter/",
+             "inLanguage": "ko",
+             "applicationCategory": "UtilitiesApplication",
+             "operatingSystem": "Any",
+             "isAccessibleForFree": true,
+             "description": "히라가나를 가타카나로, 가타카나를 히라가나로 브라우저에서 바로 변환하는 무료 일본어 가나 변환 도구입니다.",
+             "offers": {
+                 "@type": "Offer",
+                 "price": "0",
+                 "priceCurrency": "USD"
+             },
+             "creator": {
+                 "@type": "Organization",
+                 "name": "MojiHako",
+                 "url": "https://ezyno.github.io/japanese-text-converter/"
+             }
+         }
+
+        </script>
+
+    </head>
+    <body id="top">
+        <a class="skip-link" href="#main">본문으로 이동</a>
+        <header class="site-header">
+            <div class="header-inner">
+                <a class="brand" href="/ko/" aria-label="MojiHako 홈">
+                    <img class="brand-mark" src="/assets/images/mojihako-brand-logo-origin.svg" alt="" width="34" height="34">
+                    <span class="brand-word"><span class="brand-moji">Moji</span><span class="brand-hako">Hako</span></span>
+                </a>
+                <nav class="language-nav" aria-label="언어 선택">
+                    <a aria-current="page" href="/ko/">한국어</a>
+                    <a href="/ja/">日本語</a>
+                    <a href="/">English</a>
+                </nav>
+            </div>
+            <nav class="tool-nav" aria-label="도구 메뉴">
+                <a href="/ko/tools/width-converter/">전각/반각</a>
+                <a aria-current="page" href="./">가나 변환</a>
+                <a href="/ko/tools/kana-pad/">일본어 입력</a>
+                <a href="/ko/tools/genko-yoshi-viewer/">원고지</a>
+                <a href="/ko/tools/japanese-era-converter/">일본 연호</a>
+                <a href="/ko/tools/kaomoji-copy/">카오모지</a>
+                <a href="/ko/#tool-list">도구 목록</a>
+            </nav>
+        </header>
+
+        <!-- Main content -->
+        <main id="main" class="page-shell">
+
+            <!-- Desktop ad slot -->
+            <aside class="ad-slot desktop-ad" aria-label="광고 영역"><span></span></aside>
+
+            <!-- Main tool -->
+            <div class="content-column">
+                <section class="intro">
+                    <div class="tool-title-row">
+                        <h1>히라가나/가타카나 변환기</h1>
+                    </div>
+                    <p>일본어 가나 문자를 히라가나 또는 가타카나로 변환합니다. 한자, 영문, 숫자는 그대로 유지됩니다.</p>
+                </section>
+
+                <section class="tool-panel converter-tool" aria-label="히라가나/가타카나 변환 도구">
+                    <div class="input-header">
+                        <label class="field-label" for="kana-input">입력</label>
+                    </div>
+                    <textarea id="kana-input" class="text-box converter-textarea" data-receive-text rows="4" placeholder="예: ひらがな カタカナ 東京 abc 123"></textarea>
+
+                    <fieldset class="option-grid" aria-label="가나 변환 옵션">
+                        <legend>변환 방식</legend>
+                        <label><input name="kana-mode" type="radio" value="hira-to-kata" checked> 히라가나 → 가타카나</label>
+                        <label><input name="kana-mode" type="radio" value="kata-to-hira"> 가타카나 → 히라가나</label>
+                    </fieldset>
+
+                    <div class="action-row convert-action-row">
+                        <label class="live-toggle-inline"><input data-live-toggle="kana" type="checkbox" checked><span>자동 변환</span></label>
+                        <button class="primary-button" data-convert="kana" type="button" hidden>변환</button>
+                    </div>
+
+                    <div class="result-header">
+                        <label class="field-label" for="kana-output">결과</label>
+                        <div class="result-actions">
+                            <button class="copy-button" data-copy="kana" type="button">복사</button>
+                            <button class="secondary-button" data-clear="kana" type="button">삭제</button>
+                        </div>
+                    </div>
+                    <textarea id="kana-output" class="text-box converter-textarea output-box" rows="4" readonly placeholder="변환 결과가 여기에 표시됩니다."></textarea>
+                    <div class="handoff-links" data-handoff-source="kana-output" aria-label="결과를 다른 도구로 보내기">
+                        <span>결과를 다른 도구로 보내기</span>
+                        <a data-handoff-target="/ko/tools/width-converter/" href="/ko/tools/width-converter/">전각/반각</a>
+                        <a data-handoff-target="/ko/tools/kana-pad/" href="/ko/tools/kana-pad/">Kana Pad</a>
+                        <a data-handoff-target="/ko/tools/genko-yoshi-viewer/" href="/ko/tools/genko-yoshi-viewer/">원고지</a>
+                    </div>
+                    <p class="note">한자의 읽는 법은 자동으로 추정하지 않습니다. 이 도구는 이미 입력된 히라가나와 가타카나만 변환합니다.</p>
+                </section>
+
+                <!-- Mobile ad slot -->
+                <aside class="ad-slot mobile-ad" aria-label="광고 영역"><span></span></aside>
+
+                <!-- Guide section -->
+                <section class="guide-section" aria-labelledby="guide-heading">
+                    <h2 id="guide-heading">사용 방법</h2>
+                    <ol>
+                        <li>입력창에 변환할 텍스트를 붙여넣습니다.</li>
+                        <li>[히라가나 → 가타카나] 또는 [가타카나 → 히라가나] 중 원하는 방식을 선택합니다.</li>
+                        <li>자동 변환이 켜져 있으면 결과가 실시간으로 나타납니다.</li>
+                        <li>자동 변환을 끄면 [변환] 버튼으로 직접 변환할 수 있습니다.</li>
+                        <li>[복사] 버튼을 눌러 필요한 곳에 붙여넣으세요.</li>
+                    </ol>
+                    <h2>변환 예시</h2>
+                    <div class="example-grid">
+                        <div><strong>히라가나 → 가타카나</strong><p>とうきょう → トウキョウ</p></div>
+                        <div><strong>가타카나 → 히라가나</strong><p>カタカナ → かたかな</p></div>
+                        <div><strong>다른 문자는 유지</strong><p>東京 ab123 → 東京 ab123</p></div>
+                    </div>
+                    <h2>주의사항</h2>
+                    <p>
+                        <span class="note-icon" aria-hidden="true">!</span>
+                        이 도구는 한자의 일본어 읽는 법을 추정하지 않습니다. 예를 들어 '東京'을 'とうきょう'로 바꾸는 기능은 별도의 후리가나 변환 도구가 필요합니다.
+                    </p>
+                    <h2>관련 도구</h2>
+                    <ul class="link-list">
+                        <li><a href="/ko/tools/width-converter/">전각/반각</a></li>
+                        <li><a href="/ko/tools/kana-pad/">Kana Pad</a></li>
+                        <li><a href="/ko/tools/genko-yoshi-viewer/">원고지</a></li>
+                        <li><a href="/ko/tools/kaomoji-copy/">카오모지</a></li>
+                        <li><a href="/ko/tools/japanese-era-converter/">일본 연호</a></li>
+                    </ul>
+                </section>
+
+                <!-- Horizontal ad slot -->
+                <aside class="ad-slot horizontal-ad" aria-label="광고 영역"><span></span></aside>
+
+                <!-- Extra article section -->
+                <article class="guide-section article-extra" aria-labelledby="kana-extra-guide-heading">
+
+                    <h2 id="kana-extra-guide-heading">히라가나·가타카나 변환 가이드</h2>
+
+                    <p>
+                        일본어 텍스트를 다루다 보면 히라가나와 가타카나를 맞바꾸어야 할 때가 있습니다.
+                        단어 몇 개 정도는 직접 고치면 되지만, 내용이 길어지면 일일이 수정하기 번거롭습니다.
+                        본 변환기는 입력된 가나 문자를 히라가나에서 가타카나로, 또는 가타카나에서 히라가나로 간편하게 바꿔줍니다.
+                        문장 속에 섞여 있는 한자, 영문, 숫자, 문장 부호는 원래 형태 그대로 유지됩니다.
+                    </p>
+
+                    <section>
+                        <h3>📌 히라가나와 가타카나의 차이점</h3>
+                        <div class="table-scroll">
+                            <table class="seo-guide-table">
+                                <thead>
+                                    <tr>
+                                        <th>문자</th>
+                                        <th>특징</th>
+                                        <th>주로 쓰이는 상황</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>히라가나</strong><br><code>ひらがな</code></td>
+                                        <td class="text-teal">둥글고 부드러운 형태</td>
+                                        <td>일본어 고유어, 조사, 동사·형용사 어미, 후리가나</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>가타카나</strong><br><code>カタカナ</code></td>
+                                        <td class="text-teal">각지고 직선적인 형태</td>
+                                        <td>외래어, 외국 인명·지명, 의성어·의태어, 강조 표현</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <p>
+                            히라가나와 가타카나는 글자 모양만 다를 뿐 발음은 기본적으로 같습니다.
+                            예를 들어 <code>あ</code>와 <code>ア</code>, <code>か</code>와 <code>カ</code>는 같은 소리를 나타냅니다.
+                            문맥과 단어의 성격에 따라 쓰임새는 달라지므로 필요에 맞춰 사용하시면 됩니다.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>1. 히라가나를 가타카나로 변환하는 경우</h3>
+                        <p>
+                            외래어 표기를 정리하거나, 가나 표기 데이터의 형식을 하나로 통일한 때 유용합니다.
+                            특히 일본 웹사이트는 회원 가입이나 티켓 예매를 할 때 이름의 발음을 적는 후리가나(혹은 요미가나) 칸에
+                            가타카나만 입력하도록 제한하는 경우도 있습니다.
+                        </p>
+
+                        <p>
+                            예를 들어 <code>やまだ</code>처럼 히라가나로 입력한 이름 표기를
+                            <code>ヤマダ</code>처럼 가타카나로 바꿔야 할 때
+                            <strong>[히라가나 → 가타카나]</strong> 변환을 사용합니다.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>2. 가타카나를 히라가나로 변환하는 경우</h3>
+                        <p>
+                            가타카나로만 길게 적힌 단어나 문장은 한눈에 읽기 까다롭습니다.
+                            일본어를 배울 때 가타카나 단어의 발음을 확인하고 싶거나,
+                            만화·소설·게임 등에서 연출상 가타카나로만 적힌 대사를 익숙한 히라가나 형태로
+                            편하게 읽고 싶을 때도 편리합니다.
+                        </p>
+
+                        <p>
+                            예를 들어 <code>カタカナ</code>는 <code>かたかな</code>로,
+                            <code>トウキョウ</code>는 <code>とうきょう</code>로 변환할 수 있습니다.
+                            다만 변환 결과가 실제 단어의 표준 표기나 자연스러운 표기를 의미하는 것은 아니므로
+                            학습용으로 사용할 때는 문맥도 함께 확인하는 것이 좋습니다.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>3. 이 변환기가 바꾸는 것과 바꾸지 않는 것</h3>
+
+                        <h4>변환되는 것</h4>
+                        <ul>
+                            <li>히라가나 → 가타카나: <code>とうきょう</code> → <code>トウキョウ</code></li>
+                            <li>가타카나 → 히라가나: <code>カタカナ</code> → <code>かたかな</code></li>
+                            <li>문장 속에 섞인 가나 문자만 선택적으로 변환</li>
+                        </ul>
+
+                        <h4>변환되지 않는 것</h4>
+                        <ul>
+                            <li>한자: <code>東京</code></li>
+                            <li>영문: <code>abc</code></li>
+                            <li>숫자: <code>123</code></li>
+                            <li>기호와 문장부호</li>
+                        </ul>
+
+                        <p>
+                            주의(한자 독음 미지원): 본 변환기는 가나로 적힌 문자의 형태만 바꿉니다.
+                            한자의 뜻이나 읽는 법을 추정해 <code>東京</code>을 <code>とうきょう</code> 또는
+                            <code>トウキョウ</code>와 같이 바꾸는 기능은 지원하지 않습니다.
+                            한자의 독음이 필요하다면 전용 후리가나 변환 도구를 이용해 주세요.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>4. 히라가나·가타카나 변환이 필요한 상황</h3>
+                        <ul>
+                            <li>일본어 학습 중 가나 표기를 비교하고 싶을 때</li>
+                            <li>이름의 후리가나를 히라가나 또는 가타카나 형식으로 맞춰야 할 때</li>
+                            <li>복사한 일본어 텍스트 안의 가나 표기를 한쪽으로 통일하고 싶을 때</li>
+                            <li>게임, 만화, 소설의 대사를 가타카나 표기로 통일하거나 그 반대로 바꾸고 싶을 때</li>
+                            <li>문서 편집이나 데이터 정리 과정에서 가나 표기를 일괄 변환해야 할 때</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>5. 반각 가타카나는 어떻게 변환하나요?</h3>
+                        <p>
+                            <code>ｶﾀｶﾅ</code>처럼 폭이 좁은 반각 가타카나는 일반적인 전각 가타카나
+                            <code>カタカナ</code>와 다른 문자입니다.
+                            이 페이지의 가나 변환기는 일반 히라가나와 전각 가타카나 간의 변환을 담당합니다.
+                            반각 가타카나를 전각 가타카나로 바꾸거나, 전각 가타카나를 반각 가타카나로 바꾸고 싶으시면
+                            <strong>전각/반각 변환기</strong>를 사용하세요.
+                        </p>
+
+                        <a href="/ko/tools/width-converter/"><strong>전각/반각 변환기로 이동하기</strong></a>
+                    </section>
+
+                    <section>
+                        <div class="shortcut-box">
+                            <h4>🛑 변환 전 체크리스트</h4>
+                            <ul>
+                                <li>히라가나로 바꿀지, 가타카나로 바꿀지 변환 방향을 확인하세요.</li>
+                                <li>한자가 포함된 텍스트는 가나 부분만 변환된다는 점을 확인하세요.</li>
+                                <li>반각 가타카나 변환이 필요하다면 전각/반각 변환기를 사용하세요.</li>
+                                <li>이름, 주소, 예약 정보처럼 중요한 입력값은 결과를 다시 확인하세요.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3>자주 묻는 질문</h3>
+
+                        <h4>Q. 입력한 텍스트가 서버로 전송되나요?</h4>
+                        <p>
+                            아니요. 입력한 텍스트는 사용자의 브라우저 안에서만 처리되며 서버로 전송되지 않습니다.
+                        </p>
+
+                        <h4>Q. 한자를 히라가나나 가타카나로 바꿀 수 있나요?</h4>
+                        <p>
+                            한자의 읽는 법은 추정하지 않습니다.
+                            예를 들어 <code>東京</code>은 그대로 유지되며,
+                            <code>とうきょう</code>이나 <code>トウキョウ</code>로 자동 변환되지 않습니다.
+                        </p>
+
+                        <h4>Q. 긴 글이나 대량의 문장도 한 번에 변환할 수 있나요?</h4>
+                        <p>
+                            입력창에 붙여넣을 수 있는 분량이라면 한 번에 변환할 수 있습니다.
+                            긴 문장에서도 히라가나와 가타카나만 바뀌고, 한자와 영숫자는 그대로 유지됩니다.
+                        </p>
+                    </section>
+                </article>
+
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <nav class="footer-nav" aria-label="하단 사이트 링크">
+                    <div class="footer-link-group">
+                        <a href="#top">맨 위로 돌아가기</a>
+                        <a href="/ko/tools/width-converter/">전각/반각</a>
+                        <a aria-current="page" href="./">가나 변환</a>
+                        <a href="/ko/tools/kana-pad/">일본어 입력</a>
+                        <a href="/ko/tools/genko-yoshi-viewer/">원고지</a>
+                        <a href="/ko/tools/japanese-era-converter/">일본 연호</a>
+                        <a href="/ko/tools/kaomoji-copy/">카오모지</a>
+                        <a href="/ko/#tool-list">도구 목록</a>
+                    </div>
+                    <div class="footer-link-group">
+                        <a href="/ko/about.html">소개</a>
+                        <a href="/ko/terms.html">이용약관</a>
+                        <a href="/ko/privacy.html">개인정보처리방침</a>
+                    </div>
+                </nav>
+                <p class="footer-note">입력한 텍스트를 서버로 전송하지 않고, 브라우저 안에서만 처리합니다.</p>
+                <p class="copyright">© 2026 MojiHako. All rights reserved.</p>
+            </div>
+        </footer>
+        <script src="/assets/js/i18n.js"></script>
+        <script src="/assets/js/app.js"></script>
+    </body>
+</html>

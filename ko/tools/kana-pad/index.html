@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>일본어 입력 패드 - 히라가나 가타카나 문자표 | MojiHako</title>
+        <meta name="description"
+              content="일본어 키보드나 IME 없이 히라가나, 가타카나, 탁음·반탁음, 작은 가나, 일본어 문장 기호를 브라우저에서 클릭·검색해 입력하고 복사하는 무료 일본어 입력 도구입니다.">
+
+        <!-- Canonical -->
+        <link rel="canonical" href="https://ezyno.github.io/japanese-text-converter/tools/kana-pad/">
+
+        <!-- Icons -->
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+        <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="manifest" href="/site.webmanifest">
+
+        <!-- Style -->
+        <link rel="stylesheet" href="/style.css">
+
+        <!-- Schema -->
+        <script type="application/ld+json">
+         {
+             "@context": "https://schema.org",
+             "@type": "WebApplication",
+             "name": "Kana Pad",
+             "alternateName": "가나 패드 일본어 히라가나 가타카나 입력기",
+             "url": "https://ezyno.github.io/japanese-text-converter/tools/kana-pad/",
+             "inLanguage": "ko",
+             "applicationCategory": "UtilitiesApplication",
+             "operatingSystem": "Any",
+             "isAccessibleForFree": true,
+             "description": "일본어 키보드나 IME 없이 히라가나, 가타카나, 탁음·반탁음, 작은 가나, 일본어 문장 기호를 브라우저에서 클릭하거나 검색해 입력하고 복사하는 무료 일본어 입력 도구입니다.",
+             "offers": {
+                 "@type": "Offer",
+                 "price": "0",
+                 "priceCurrency": "USD"
+             },
+             "creator": {
+                 "@type": "Organization",
+                 "name": "MojiHako",
+                 "url": "https://ezyno.github.io/japanese-text-converter/"
+             }
+         }
+        </script>
+
+    </head>
+    <body id="top">
+        <a class="skip-link" href="#main">본문으로 이동</a>
+        <header class="site-header">
+            <div class="header-inner">
+                <a class="brand" href="/ko/" aria-label="MojiHako 홈">
+                    <img class="brand-mark" src="/assets/images/mojihako-brand-logo-origin.svg" alt="" width="34" height="34">
+                    <span class="brand-word"><span class="brand-moji">Moji</span><span class="brand-hako">Hako</span></span>
+                </a>
+                <nav class="language-nav" aria-label="언어 선택">
+                    <a aria-current="page" href="/ko/">한국어</a>
+                    <a href="/ja/">日本語</a>
+                    <a href="/">English</a>
+                </nav>
+            </div>
+            <nav class="tool-nav" aria-label="도구 메뉴">
+                <a href="/ko/tools/width-converter/">전각/반각</a>
+                <a href="/ko/tools/kana-converter/">가나 변환</a>
+                <a aria-current="page" href="./">일본어 입력</a>
+                <a href="/ko/tools/genko-yoshi-viewer/">원고지</a>
+                <a href="/ko/tools/japanese-era-converter/">일본 연호</a>
+                <a href="/ko/tools/kaomoji-copy/">카오모지</a>
+                <a href="/ko/#tool-list">도구 목록</a>
+            </nav>
+        </header>
+
+        <!-- Main content -->
+        <main id="main" class="page-shell kana-pad-page">
+
+            <!-- Desktop ad slot -->
+            <aside class="ad-slot desktop-ad" aria-label="광고 영역"><span></span></aside>
+
+            <!-- Main tool -->
+            <div class="content-column">
+                <section class="intro">
+                    <div class="tool-title-row">
+                        <h1>Kana Pad(일본어 입력기)</h1>
+                    </div>
+                    <p>일본어 키보드나 IME가 없어도 히라가나와 가타카나, 문장 기호 등을 바로 입력합니다.</p>
+                </section>
+
+                <section class="tool-panel kana-pad-panel" data-kana-pad aria-label="Kana Pad 일본어 가나 입력 도구">
+                    <div class="kana-workspace">
+                        <div class="result-panel kana-result-panel">
+                            <div class="input-header">
+                                <label class="field-label" for="kana-pad-output">입력 결과</label>
+                                <output class="status-line" data-kana-status aria-live="polite"></output>
+                            </div>
+                            <textarea id="kana-pad-output" class="text-box kana-output" data-receive-text rows="5" placeholder="ここに入力されます"></textarea>
+
+                            <div class="action-row kana-actions result-actions" aria-label="입력 결과 작업">
+                                <button class="action-button action-button-primary" data-kana-action="copy" type="button"
+                                        aria-label="입력 결과 복사">복사</button>
+                                <button class="action-button" data-kana-action="clear" type="button"
+                                        aria-label="입력 결과 전체 삭제">삭제</button>
+                                <button class="action-button" data-kana-action="backspace" type="button"
+                                        aria-label="마지막 문자 삭제">⌫</button>
+                                <button class="action-button" data-kana-action="space" type="button"
+                                        aria-label="공백 입력">Space</button>
+                                <button class="action-button" data-kana-action="newline" type="button"
+                                        aria-label="줄바꿈 입력">↵</button>
+                            </div>
+                        </div>
+
+                        <div class="kana-picker-panel" aria-label="문자 선택">
+                            <div class="utility-toolbar kana-search-row">
+                                <label class="search-field" for="kana-pad-search">
+                                    <span class="field-label">검색</span>
+                                    <input id="kana-pad-search" class="search-input" data-kana-search type="search"
+                                           placeholder="ka, tsu, か, 가, 작은 요">
+                                </label>
+                            </div>
+                            <label class="option-check kana-layout-toggle">
+                                <input id="kana-gojuon-layout-toggle" data-kana-gojuon-layout-toggle type="checkbox">
+                                오십음도 배열
+                            </label>
+
+                            <div class="split-tool-layout">
+                                <div class="side-tabs kana-tabs" role="tablist" aria-label="Kana Pad 카테고리" data-kana-tabs>
+                                    <button id="kana-tab-hiragana" class="kana-tab" role="tab" type="button" data-kana-tab="hiragana" aria-label="히라가나" title="히라가나">あ</button>
+                                    <button id="kana-tab-hiragana-voiced" class="kana-tab" role="tab" type="button" data-kana-tab="hiraganaVoiced" aria-label="히라가나 탁음·반탁음" title="히라가나 탁음·반탁음">が</button>
+                                    <button id="kana-tab-katakana" class="kana-tab" role="tab" type="button" data-kana-tab="katakana" aria-label="가타카나" title="가타카나">ア</button>
+                                    <button id="kana-tab-katakana-voiced" class="kana-tab" role="tab" type="button" data-kana-tab="katakanaVoiced" aria-label="가타카나 탁음·반탁음" title="가타카나 탁음·반탁음">ガ</button>
+                                    <button id="kana-tab-small" class="kana-tab" role="tab" type="button" data-kana-tab="small" aria-label="작은 가나" title="작은 가나">ゃ</button>
+                                    <button id="kana-tab-symbols" class="kana-tab" role="tab" type="button" data-kana-tab="symbols" aria-label="기호" title="기호">「」</button>
+                                </div>
+                                <div class="kana-grid-shell">
+                                    <div id="kana-pad-grid" class="kana-grid" role="grid" aria-label="가나 문자표" data-kana-grid></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="handoff-links send-tools" data-handoff-source="kana-pad-output" aria-label="입력 결과를 다른 도구로 보내기">
+                        <span>결과를 다른 도구로 보내기</span>
+                        <a data-handoff-target="/ko/tools/width-converter/" href="/ko/tools/width-converter/">전각/반각</a>
+                        <a data-handoff-target="/ko/tools/kana-converter/" href="/ko/tools/kana-converter/">히라가나/가타카나</a>
+                        <a data-handoff-target="/ko/tools/genko-yoshi-viewer/" href="/ko/tools/genko-yoshi-viewer/">원고지</a>
+                    </div>
+                </section>
+
+                <!-- Mobile ad slot -->
+                <aside class="ad-slot mobile-ad" aria-label="광고 영역"><span></span></aside>
+
+                <!-- Guide section -->
+                <section class="guide-section" aria-labelledby="guide-heading">
+                    <h2 id="guide-heading">Kana Pad란</h2>
+                    <p>Kana Pad는 일본어 키보드나 IME 없이 히라가나, 가타카나, 기호 등을 온라인에서
+                        바로 입력할 수 있는 도구입니다.</p>
+                    <p>모바일에서 일본어를 자주 입력한다면 Kana Pad를 즐겨찾기 하고 사용해 보세요!</p>
+                    <h2>Kana Pad 사용 방법</h2>
+                    <ol>
+                        <li>[<strong>あ</strong> 히라가나], [<strong>が</strong> 히라가나 탁음·반탁음],
+                            [<strong>ア</strong> 가타카나], [<strong>ガ</strong> 가타카나 탁음·반탁음],
+                            [<strong>ゃ</strong> 작은 가나], [<strong>「」</strong>문장 기호] 탭에서 필요한 문자를 선택합니다.</li>
+                        <li>선택한 문자는 입력 결과창 커서 위치에 삽입되며 [복사] 버튼으로 전체 문장을 복사할 수 있습니다.</li>
+                        <li>[삭제] 버튼으로 입력 결과를 전부 삭제합니다. [⌫] 버튼으로 이전 한 글자를 삭제합니다. </li>
+                        <li>문자표에서는 방향키로 이동할 수도 있고 Enter 또는 Space로 문자를 입력할 수 있습니다.</li>
+                        <li>키보드만 사용할 때는 Tab과 Shift+Tab을 이용해 입력 영역, 작업 버튼, 탭, 문자표 사이를 이동할 수도 있습니다.</li>
+                    </ol>
+                    <h2>지원 문자</h2>
+                    <p>오십음도 기반의 히라가나와 가타카나뿐만 아니라 히라가나·가타카나 탁음과 반탁음(が・ざ・だ・ば・ぱ / ガ・ザ・ダ・バ・パ 계열), 요음・촉음(ゃ・ゅ・ょ・っ),
+                        작은 가나(ァ・ィ・ゥ・ェ・ォ), 그리고 일본어식 문장 부호(쿠텐과 토텐, 따옴표와 괄호, 장음, 반복 부호, 말줄임표 등)을 제공합니다.</p>
+                    <h2>오십음도  배열</h2>
+                    <p>
+                        선택하면 입력 패드가 전통 세로쓰기 형태의 오십음도 순서로 표시됩니다.
+                        모음은 위에서 아래로 あ・い・う・え・お 순서로 배치되고,
+                        열은 오른쪽에서 왼쪽으로 진행되며 あ행이 가장 오른쪽에 놓입니다.
+                    </p>
+                    <h2>검색 예시</h2>
+                    <div class="example-grid">
+                        <div><strong>로마자</strong><p>ka → か, カ</p></div>
+                        <div><strong>가나</strong><p>つ → つ, っ, ツ, ッ</p></div>
+                        <div><strong>한글</strong><p>쿠 → く, ク, ぐ, グ</p></div>
+                    </div>
+                    <h2>관련 도구</h2>
+                    <ul class="link-list">
+                        <li><a href="/ko/tools/width-converter/">전각/반각</a></li>
+                        <li><a href="/ko/tools/kana-converter/">히라가나/가타카나</a></li>
+                        <li><a href="/ko/tools/genko-yoshi-viewer/">원고지</a></li>
+                        <li><a href="/ko/tools/kaomoji-copy/">카오모지</a></li>
+                        <li><a href="/ko/tools/japanese-era-converter/">일본 연호</a></li>
+                    </ul>
+                </section>
+
+                <!-- Horizontal ad slot -->
+                <aside class="ad-slot horizontal-ad" aria-label="광고 영역"><span></span></aside>
+
+                <!-- Extra article section -->
+                <article class="guide-section article-extra" aria-labelledby="kana-pad-extra-guide-heading">
+
+                    <h2 id="kana-pad-extra-guide-heading">일본어 키보드 없이 히라가나·가타카나 입력하기</h2>
+
+                    <p>
+                        일본어를 입력해야 하는데 일본어 키보드나 IME 입력기가 설정되어 있지 않을 때가 있습니다.
+                        직장 PC나 공용 컴퓨터처럼 언어 설정을 마음대로 변경하기 어려운 환경이거나
+                        일본어를 가끔씩만 사용할 뿐이라면 매번 일본어 자판을 추가하는 과정이 부담스러울 수도 있습니다.
+                        Kana Pad는 별도의 설치 없이 브라우저에서 바로 히라가나, 가타카나 및 문장 기호를 입력할 수 있는 웹 도구입니다.
+                    </p>
+
+                    <section>
+                        <h3>📌 Kana Pad가 필요한 상황</h3>
+                        <div class="table-scroll">
+                            <table class="seo-guide-table">
+                                <thead>
+                                    <tr>
+                                        <th>상황</th>
+                                        <th>활용 방법</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>일본어 키보드·IME가 없는 기기</strong></td>
+                                        <td>설정 변경 없이 브라우저에서 필요한 가나 문자를 입력합니다.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>일본 직구·예약 사이트 이용</strong></td>
+                                        <td>상품명, 이름, 후리가나, 간단한 일본어 문구를 빠르게 입력합니다.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>모바일에서 간단히 입력</strong></td>
+                                        <td>앱 설치 없이 브라우저에서 열어 필요한 문자를 선택합니다.</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>일본어 기호 입력</strong></td>
+                                        <td>장음 기호, 일본어 쉼표·마침표, 괄호, 반복 부호 등을 쉽게 찾습니다.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3>1. 일본어 자판 설정 없이 가나 입력하기</h3>
+                        <p>
+                            일본어를 자주 사용하지 않는다면 IME 설정이나 입력 방식을 익히는 과정이 번거로울 수 있습니다.
+                            Kana Pad는 화면에 표시된 오십음도 문자표에서 필요한 글자를 직접 선택해 입력하는 방식입니다.
+                            자판 배열을 외우지 않아도 히라가나와 가타카나를 눈으로 확인하면서 입력이 가능합니다.
+                        </p>
+
+                        <p>
+                            예를 들어 일본어 단어를 검색하거나 사이트의 입력란에 짧은 가나 문구를 넣어야 한다면
+                            필요한 문자를 클릭이나 터치를 통해 조합한 뒤 복사하여 붙여넣을 수 있습니다.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>2. Kana Pad에서 입력할 수 있는 문자</h3>
+                        <p>
+                            Kana Pad는 기본 히라가나와 가타카나뿐 아니라 일본어 입력에서 자주 필요한 기호도 함께 제공합니다.
+                            일반 키보드에서 찾기 어려운 문자도 탭을 전환해 바로 선택할 수 있습니다.
+                        </p>
+
+                        <ul>
+                            <li><strong>기본 히라가나·가타카나:</strong> あ・い・う・え・お / ア・イ・ウ・エ・オ</li>
+                            <li><strong>탁음·반탁음:</strong> 히라가나 が・ざ・だ・ば・ぱ 계열, 가타카나 ガ・ザ・ダ・バ・パ 계열</li>
+                            <li><strong>요음·촉음:</strong> ゃ・ゅ・ょ・っ / ャ・ュ・ョ・ッ</li>
+                            <li><strong>일본어 문장 부호:</strong> 。 、 「 」 『 』 ー 々 … 등</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>3. 검색 기능으로 빠르게 문자 찾기</h3>
+                        <p>
+                            오십음도 표에서 원하는 글자를 찾기가 어렵다면 검색 기능을 사용해 보세요.
+                            로마자, 가나, 한글 발음으로 직접 검색해 관련 문자를 찾을 수 있습니다.
+                        </p>
+
+                        <ul>
+                            <li><code>ka</code> 검색 → <code>か</code>, <code>カ</code></li>
+                            <li><code>つ</code> 검색 → <code>つ</code>, <code>っ</code>, <code>ツ</code>, <code>ッ</code></li>
+                            <li><code>쿠</code> 검색 → <code>く</code>, <code>ク</code>, <code>ぐ</code>, <code>グ</code></li>
+                        </ul>
+
+                        <p>
+                            특히 작은 가나, 탁음, 반탁음처럼 헷갈리기 쉬운 문자를 찾을 때 유용합니다.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>4. 일본어 특수 기호와 문장 부호 입력</h3>
+                        <p>
+                            일본어 문장에서는 보통 일반적인 쉼표와 마침표 대신 <code>、</code>와 <code>。</code>를 사용합니다.
+                            대사나 인용에는 <code>「 」</code>, <code>『 』</code> 같은 괄호가 쓰이고,
+                            외래어 표기에서는 장음 기호 <code>ー</code>가 자주 등장합니다.
+                        </p>
+
+                        <p>
+                            특수 문자 찾기가 까다롭다면 Kana Pad에서 필요한 기호를 선택해 삽입하세요.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>5. 입력한 텍스트를 다른 도구로 이어서 사용하기</h3>
+                        <p>
+                            작성한 텍스트는 복사해서 그대로 붙여넣기 할 수 있고,
+                            필요하다면 MojiHako의 다른 도구로 보내 추가로 작업합니다.
+                        </p>
+
+                        <ul>
+                            <li><a href="/ko/tools/width-converter/"><strong>전각/반각 변환:</strong></a> 반각 가타카나나 전각 문자 형식을 조정해야 할 때</li>
+                            <li><a href="/ko/tools/kana-converter/"><strong>히라가나/가타카나 변환:</strong></a> 입력한 가나 문자의 종류를 바꾸고 싶을 때</li>
+                            <li><a href="/ko/tools/genko-yoshi-viewer/"><strong>원고지:</strong></a> 입력한 일본어 문장을 원고지 형식으로 확인하고 싶을 때</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>6. 키보드만으로 사용하는 방법</h3>
+                        <p>
+                            마우스를 사용하지 않고 키보드만으로도 주요 기능을 조작할 수 있습니다.
+                            입력 영역, 버튼, 문자표 사이를 이동하면서 원하는 문자를 선택해 입력 가능합니다.
+                        </p>
+
+                        <ul>
+                            <li><strong>십자 방향키:</strong> 문자표 안에서 선택 위치 이동</li>
+                            <li><strong>Enter 또는 Space:</strong> 선택한 문자 입력</li>
+                            <li><strong>Tab / Shift+Tab:</strong> 입력창, 버튼, 탭, 문자표 사이 이동</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h3>자주 묻는 질문</h3>
+
+                        <h4>Q. 입력한 텍스트가 서버로 전송되나요?</h4>
+                        <p>
+                            아니요. 입력한 텍스트는 사용자의 브라우저 안에서만 처리되며 서버로 전송되지 않습니다.
+                        </p>
+
+                        <h4>Q. 스마트폰에서도 사용할 수 있나요?</h4>
+                        <p>
+                            네. 모바일에서도 사용할 수 있습니다.
+                            자주 사용한다면 즐겨찾기나 홈 화면 바로가기로 등록해 보세요.
+                        </p>
+
+                        <h4>Q. 히라가나로 입력한 뒤 가타카나로 바꿀 수 있나요?</h4>
+                        <p>
+                            네. 입력한 텍스트를 복사한 뒤 히라가나/가타카나 변환 도구로 보내 변환합니다.
+                            반대로 가타카나를 히라가나로 바꾸는 것도 가능합니다.
+                        </p>
+
+                        <h4>Q. 반각 가타카나도 입력할 수 있나요?</h4>
+                        <p>
+                            Kana Pad는 기본적으로 일반 히라가나와 전각 가타카나를 기준으로 합니다.
+                            <code>ｶﾀｶﾅ</code>처럼 폭이 좁은 반각 가타카나가 필요하다면
+                            전각/반각 변환 도구를 함께 사용하세요.
+                        </p>
+                        <p><a href="/ko/tools/width-converter/"><strong>전각/반각 변환기로 이동하기</strong></a></p>
+
+                    </section>
+                </article>
+
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <nav class="footer-nav" aria-label="하단 사이트 링크">
+                    <div class="footer-link-group">
+                        <a href="#top">맨 위로 돌아가기</a>
+                        <a href="/ko/tools/width-converter/">전각/반각</a>
+                        <a href="/ko/tools/kana-converter/">가나 변환</a>
+                        <a aria-current="page" href="./">일본어 입력</a>
+                        <a href="/ko/tools/genko-yoshi-viewer/">원고지</a>
+                        <a href="/ko/tools/japanese-era-converter/">일본 연호</a>
+                        <a href="/ko/tools/kaomoji-copy/">카오모지</a>
+                        <a href="/ko/#tool-list">도구 목록</a>
+                    </div>
+                    <div class="footer-link-group">
+                        <a href="/ko/about.html">소개</a>
+                        <a href="/ko/terms.html">이용약관</a>
+                        <a href="/ko/privacy.html">개인정보처리방침</a>
+                    </div>
+                </nav>
+                <p class="footer-note">입력한 텍스트를 서버로 전송하지 않고, 브라우저 안에서만 처리합니다.</p>
+                <p class="copyright">© 2026 MojiHako. All rights reserved.</p>
+            </div>
+        </footer>
+        <script src="/assets/js/i18n.js"></script>
+        <script src="/assets/js/app.js"></script>
+    </body>
+</html>

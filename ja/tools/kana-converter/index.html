@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ひらがな・カタカナ変換 - かな文字変換ツール | MojiHako</title>
+        <meta name="description"
+              content="ひらがなをカタカナに、カタカナをひらがなにブラウザ上で変換できる無料ツールです。漢字・英数字はそのまま残ります。">
+
+        <!-- Canonical -->
+        <link rel="canonical" href="https://ezyno.github.io/japanese-text-converter/ja/tools/kana-converter/">
+
+        <!-- Icons -->
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+        <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="manifest" href="/site.webmanifest">
+
+        <!-- Style -->
+        <link rel="stylesheet" href="/style.css">
+
+        <!-- Schema -->
+        <script type="application/ld+json">
+         {
+             "@context": "https://schema.org",
+             "@type": "WebApplication",
+             "name": "ひらがな・カタカナ変換",
+             "alternateName": "Hiragana Katakana Converter",
+             "url": "https://ezyno.github.io/japanese-text-converter/ja/tools/kana-converter/",
+             "inLanguage": "ja",
+             "applicationCategory": "UtilitiesApplication",
+             "operatingSystem": "Any",
+             "isAccessibleForFree": true,
+             "description": "ひらがなをカタカナに、カタカナをひらがなに変換する無料ツールです。漢字・英数字はそのまま残ります。",
+             "offers": {
+                 "@type": "Offer",
+                 "price": "0",
+                 "priceCurrency": "JPY"
+             },
+             "creator": {
+                 "@type": "Organization",
+                 "name": "MojiHako",
+                 "url": "https://ezyno.github.io/japanese-text-converter/"
+             }
+         }
+        </script>
+
+    </head>
+    <body id="top">
+        <a class="skip-link" href="#main">本文へ移動</a>
+        <header class="site-header">
+            <div class="header-inner">
+                <a class="brand" href="/ja/" aria-label="MojiHako ホーム">
+                    <img class="brand-mark" src="/assets/images/mojihako-brand-logo-origin.svg" alt="" width="34" height="34">
+                    <span class="brand-word"><span class="brand-moji">Moji</span><span class="brand-hako">Hako</span></span>
+                </a>
+                <nav class="language-nav" aria-label="言語選択">
+                    <a href="/ko/">한국어</a>
+                    <a aria-current="page" href="/ja/">日本語</a>
+                    <a href="/">English</a>
+                </nav>
+            </div>
+            <nav class="tool-nav" aria-label="ツールメニュー">
+                <a href="/ja/tools/width-converter/">全角・半角</a>
+                <a aria-current="page" href="./">かな変換</a>
+                <a href="/ja/tools/kana-pad/">日本語入力</a>
+                <a href="/ja/tools/genko-yoshi-viewer/">原稿用紙</a>
+                <a href="/ja/tools/japanese-era-converter/">和暦</a>
+                <a href="/ja/tools/kaomoji-copy/">顔文字</a>
+                <a href="/ja/#tool-list">ツール一覧</a>
+            </nav>
+        </header>
+
+        <!-- Main content -->
+        <main id="main" class="page-shell">
+
+            <!-- Desktop ad slot -->
+            <aside class="ad-slot desktop-ad" aria-label="広告エリア"><span></span></aside>
+
+            <!-- Main tool -->
+            <div class="content-column">
+                <section class="intro">
+                    <div class="tool-title-row">
+                        <h1>ひらがな・カタカナ変換</h1>
+                    </div>
+                    <p>入力したかな文字を、ひらがな・カタカナの間で相互変換します。漢字・英数字はそのまま残ります。</p>
+                </section>
+
+                <section class="tool-panel converter-tool" aria-label="ひらがな・カタカナ変換ツール">
+                    <div class="input-header">
+                        <label class="field-label" for="kana-input">入力</label>
+                    </div>
+                    <textarea id="kana-input" class="text-box converter-textarea" data-receive-text rows="4" placeholder="例: ひらがな カタカナ 東京 abc 123"></textarea>
+
+                    <fieldset class="option-grid" aria-label="変換方式">
+                        <legend>変換方式</legend>
+                        <label><input name="kana-mode" type="radio" value="hira-to-kata" checked> ひらがな → カタカナ</label>
+                        <label><input name="kana-mode" type="radio" value="kata-to-hira"> カタカナ → ひらがな</label>
+                    </fieldset>
+
+                    <div class="action-row convert-action-row">
+                        <label class="live-toggle-inline"><input data-live-toggle="kana" type="checkbox" checked><span>自動変換</span></label>
+                        <button class="primary-button" data-convert="kana" type="button" hidden>変換</button>
+                    </div>
+
+                    <div class="result-header">
+                        <label class="field-label" for="kana-output">結果</label>
+                        <div class="result-actions">
+                            <button class="copy-button" data-copy="kana" type="button">コピー</button>
+                            <button class="secondary-button" data-clear="kana" type="button">クリア</button>
+                        </div>
+                    </div>
+                    <textarea id="kana-output" class="text-box converter-textarea output-box" rows="4" readonly placeholder="変換結果がここに表示されます。"></textarea>
+                    <div class="handoff-links" data-handoff-source="kana-output" aria-label="結果を他のツールへ送る">
+                        <span>結果を他のツールへ送る</span>
+                        <a data-handoff-target="/ja/tools/width-converter/" href="/ja/tools/width-converter/">全角・半角</a>
+                        <a data-handoff-target="/ja/tools/kana-pad/" href="/ja/tools/kana-pad/">Kana Pad</a>
+                        <a data-handoff-target="/ja/tools/genko-yoshi-viewer/" href="/ja/tools/genko-yoshi-viewer/">原稿用紙</a>
+                    </div>
+                    <p class="note">漢字の読み仮名は自動生成しません。このツールは、すでに入力されているひらがな・カタカナだけを変換します。</p>
+                </section>
+
+                <!-- Mobile ad slot -->
+                <aside class="ad-slot mobile-ad" aria-label="広告エリア"><span></span></aside>
+
+                <!-- Guide section -->
+                <section class="guide-section" aria-labelledby="guide-heading">
+                    <h2 id="guide-heading">Guide section</h2>
+                    <ol>
+                        <li>変換したいテキストを入力欄に貼り付けます。</li>
+                        <li>「ひらがな → カタカナ」または「カタカナ → ひらがな」を選択します。</li>
+                        <li>自動変換がオンのとき、結果はリアルタイムで表示されます。</li>
+                        <li>自動変換をオフにすると、[変換] ボタンで手動変換できます。</li>
+                        <li>[コピー] ボタンで変換結果をコピーして使えます。</li>
+                    </ol>
+
+                    <h2>変換例</h2>
+                    <div class="example-grid">
+                        <div><strong>ひらがな → カタカナ</strong><p>とうきょう → トウキョウ</p></div>
+                        <div><strong>カタカナ → ひらがな</strong><p>カタカナ → かたかな</p></div>
+                        <div><strong>他の文字は維持</strong><p>東京 ab123 → 東京 ab123</p></div>
+                    </div>
+
+                    <h2>注意事項</h2>
+                    <p>
+                        <span class="note-icon" aria-hidden="true">!</span>
+                        このツールは漢字の読み仮名を自動生成しません。たとえば「東京」を「とうきょう」や「トウキョウ」に変換する機能はありません。漢字の読みが必要な場合は、別途ふりがな変換ツールをお使いください。
+                    </p>
+
+                    <h2>関連ツール</h2>
+                    <ul class="link-list">
+                        <li><a href="/ja/tools/width-converter/">全角・半角</a></li>
+                        <li><a href="/ja/tools/kana-pad/">Kana Pad</a></li>
+                        <li><a href="/ja/tools/genko-yoshi-viewer/">原稿用紙</a></li>
+                        <li><a href="/ja/tools/kaomoji-copy/">顔文字</a></li>
+                        <li><a href="/ja/tools/japanese-era-converter/">和暦</a></li>
+                    </ul>
+                </section>
+
+                <!-- Horizontal ad slot -->
+                <aside class="ad-slot horizontal-ad" aria-label="広告エリア"><span></span></aside>
+
+                <!-- Extra article section -->
+                <article class="guide-section article-extra" aria-labelledby="kana-extra-guide-heading">
+
+                    <h2 id="kana-extra-guide-heading">ひらがな・カタカナ変換ガイド</h2>
+
+                    <p>
+                        日本語テキストを編集していると、ひらがなとカタカナを一括で入れ替えたい場面があります。
+                        単語が数個ならその場で直せますが、長い文章や単語リストを一字ずつ直すのは手間がかかります。
+                        このツールはテキスト内のかな文字だけを変換し、漢字・英数字・記号はそのまま残します。
+                    </p>
+
+                    <section>
+                        <h3>📌 変換が役立つ主な場面</h3>
+                        <div class="table-scroll">
+                            <table class="seo-guide-table">
+                                <thead>
+                                    <tr>
+                                        <th>場面</th>
+                                        <th>活用方法</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>フォームのフリガナ入力</strong></td>
+                                        <td>カタカナのみ受け付けるフリガナ欄に、ひらがなで入力してしまったとき</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>データ表記の統一</strong></td>
+                                        <td>ひらがなとカタカナが混在するリストや文書を一方に統一したいとき</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>創作・テキスト編集</strong></td>
+                                        <td>小説・ゲームのセリフをカタカナ表記に統一したり、逆にひらがなへ戻したりしたいとき</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>検索・データ整形</strong></td>
+                                        <td>検索や比較処理の前にかな表記を統一したいとき</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3>1. ひらがなをカタカナに変換するケース</h3>
+                        <p>
+                            ウェブフォームの氏名フリガナ欄では、カタカナのみ受け付けるものが少なくありません。
+                            ひらがなで入力したあとにエラーが出た場合、
+                            <strong>[ひらがな → カタカナ]</strong> で変換してから貼り付けると解決することがあります。
+                        </p>
+                        <p>
+                            また、商品名・地名・人名など固有名詞のリストで
+                            ひらがなとカタカナが混在している場合に、一括でカタカナに統一できます。
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>2. カタカナをひらがなに変換するケース</h3>
+                        <p>
+                            すべてカタカナで書かれた文章は読みにくいことがあります。
+                            ひらがなに変換すると、内容を確認しやすくなります。
+                            小説・ゲーム・マンガで演出上カタカナにしているセリフを
+                            ひらがな表記で確認したいときにも便利です。
+                        </p>
+                        <p>
+                            なお、変換結果は音そのままの置き換えであり、
+                            辞書的な正書法や自然な表記を保証するものではありません。
+                            用途に応じて変換後の表記もご確認ください。
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>3. 変換されるものとされないもの</h3>
+
+                        <h4>変換対象</h4>
+                        <ul>
+                            <li>ひらがな → カタカナ: <code>とうきょう</code> → <code>トウキョウ</code></li>
+                            <li>カタカナ → ひらがな: <code>カタカナ</code> → <code>かたかな</code></li>
+                            <li>混在テキスト内のかな文字のみ</li>
+                        </ul>
+
+                        <h4>変換対象外</h4>
+                        <ul>
+                            <li>漢字: <code>東京</code></li>
+                            <li>英字: <code>abc</code></li>
+                            <li>数字: <code>123</code></li>
+                            <li>記号・句読点</li>
+                        </ul>
+
+                        <p>
+                            このツールは「すでにかなで書かれている文字の字種を変える」ツールです。
+                            漢字の読みを推定して <code>東京</code> → <code>とうきょう</code> のように変換する機能は持っていません。
+                            そのような変換が必要な場合はふりがな（よみがな）変換ツールをご利用ください。
+                        </p>
+                    </section>
+
+                    <section>
+                        <h3>4. 半角カタカナはどうすればいいですか？</h3>
+                        <p>
+                            <code>ｶﾀｶﾅ</code> のような半角カタカナは、全角カタカナ <code>カタカナ</code> とは別の文字です。
+                            このページのかな変換は、ひらがなと全角カタカナの相互変換を対象としています。
+                            半角カタカナと全角カタカナの相互変換には <strong>全角・半角変換</strong> をお使いください。
+                        </p>
+
+                        <a href="/ja/tools/width-converter/"><strong>全角・半角変換へ移動</strong></a>
+                    </section>
+
+                    <section>
+                        <div class="shortcut-box">
+                            <h4>🛑 変換前のチェックリスト</h4>
+                            <ul>
+                                <li>ひらがなにするか、カタカナにするか変換方向を確認してください。</li>
+                                <li>漢字を含むテキストは、かな部分のみ変換されます。</li>
+                                <li>半角カタカナの変換が必要な場合は全角・半角変換を使用してください。</li>
+                                <li>氏名・住所・予約情報など重要な入力値は変換後の結果を再確認してください。</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h3>よくある質問</h3>
+
+                        <h4>Q. 入力したテキストはサーバーに送信されますか？</h4>
+                        <p>
+                            送信されません。テキストはブラウザ内だけで処理されます。
+                        </p>
+
+                        <h4>Q. 漢字をひらがなやカタカナに変換できますか？</h4>
+                        <p>
+                            できません。このツールは漢字の読みを推定しないため、
+                            <code>東京</code> はそのまま残り、<code>とうきょう</code> や <code>トウキョウ</code> には変換されません。
+                        </p>
+
+                        <h4>Q. 長い文章でも一括変換できますか？</h4>
+                        <p>
+                            入力欄に貼り付けられる分量であれば一括で変換できます。
+                            長い文章でも、変換されるのはひらがな・カタカナだけで、漢字や英数字はそのままです。
+                        </p>
+                    </section>
+                </article>
+
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <nav class="footer-nav" aria-label="フッターのサイトリンク">
+                    <div class="footer-link-group">
+                        <a href="#top">ページ上部へ戻る</a>
+                        <a href="/ja/tools/width-converter/">全角・半角</a>
+                        <a aria-current="page" href="./">かな変換</a>
+                        <a href="/ja/tools/kana-pad/">日本語入力</a>
+                        <a href="/ja/tools/genko-yoshi-viewer/">原稿用紙</a>
+                        <a href="/ja/tools/japanese-era-converter/">和暦</a>
+                        <a href="/ja/tools/kaomoji-copy/">顔文字</a>
+                        <a href="/ja/#tool-list">ツール一覧</a>
+                    </div>
+                    <div class="footer-link-group">
+                        <a href="/ja/about.html">サイト紹介 / お問い合わせ</a>
+                        <a href="/ja/terms.html">利用規約</a>
+                        <a href="/ja/privacy.html">プライバシーポリシー</a>
+                    </div>
+                </nav>
+                <p class="footer-note">入力したテキストはサーバーへ送信されず、ユーザーのブラウザ内だけで処理されます。</p>
+                <p class="copyright">© 2026 MojiHako. All rights reserved.</p>
+            </div>
+        </footer>
+        <script src="/assets/js/i18n.js"></script>
+        <script src="/assets/js/app.js"></script>
+    </body>
+</html>

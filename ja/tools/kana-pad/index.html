@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Kana Pad - ひらがな・カタカナ文字入力ツール | MojiHako</title>
+        <meta name="description"
+              content="ひらがな・カタカナ・濁音・半濁音・小書き仮名・日本語記号を、文字表からクリックして入力できる無料ツールです。検索・コピー・五十音レイアウトに対応しています。">
+
+        <!-- Canonical -->
+        <link rel="canonical" href="https://ezyno.github.io/japanese-text-converter/ja/tools/kana-pad/">
+
+        <!-- Icons -->
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+        <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="manifest" href="/site.webmanifest">
+
+        <!-- Style -->
+        <link rel="stylesheet" href="/style.css">
+
+        <!-- Schema -->
+        <script type="application/ld+json">
+         {
+             "@context": "https://schema.org",
+             "@type": "WebApplication",
+             "name": "Kana Pad",
+             "alternateName": "かな入力パッド",
+             "url": "https://ezyno.github.io/japanese-text-converter/ja/tools/kana-pad/",
+             "inLanguage": "ja",
+             "applicationCategory": "UtilitiesApplication",
+             "operatingSystem": "Any",
+             "isAccessibleForFree": true,
+             "description": "ひらがな・カタカナ・濁音・半濁音・小書き仮名・日本語記号を、文字表からクリックして入力できる無料ツールです。検索・コピー・五十音レイアウトに対応しています。",
+             "offers": {
+                 "@type": "Offer",
+                 "price": "0",
+                 "priceCurrency": "JPY"
+             },
+             "creator": {
+                 "@type": "Organization",
+                 "name": "MojiHako",
+                 "url": "https://ezyno.github.io/japanese-text-converter/"
+             }
+         }
+        </script>
+
+    </head>
+    <body id="top">
+        <a class="skip-link" href="#main">本文へ移動</a>
+        <header class="site-header">
+            <div class="header-inner">
+                <a class="brand" href="/ja/" aria-label="MojiHako ホーム">
+                    <img class="brand-mark" src="/assets/images/mojihako-brand-logo-origin.svg" alt="" width="34" height="34">
+                    <span class="brand-word"><span class="brand-moji">Moji</span><span class="brand-hako">Hako</span></span>
+                </a>
+                <nav class="language-nav" aria-label="言語選択">
+                    <a href="/ko/">한국어</a>
+                    <a aria-current="page" href="/ja/">日本語</a>
+                    <a href="/">English</a>
+                </nav>
+            </div>
+            <nav class="tool-nav" aria-label="ツールメニュー">
+                <a href="/ja/tools/width-converter/">全角・半角</a>
+                <a href="/ja/tools/kana-converter/">かな変換</a>
+                <a aria-current="page" href="./">日本語入力</a>
+                <a href="/ja/tools/genko-yoshi-viewer/">原稿用紙</a>
+                <a href="/ja/tools/japanese-era-converter/">和暦</a>
+                <a href="/ja/tools/kaomoji-copy/">顔文字</a>
+                <a href="/ja/#tool-list">ツール一覧</a>
+            </nav>
+        </header>
+
+        <!-- Main content -->
+        <main id="main" class="page-shell kana-pad-page">
+
+            <!-- Desktop ad slot -->
+            <aside class="ad-slot desktop-ad" aria-label="広告エリア"><span></span></aside>
+
+            <!-- Main tool -->
+            <div class="content-column">
+                <section class="intro">
+                    <div class="tool-title-row">
+                        <h1>Kana Pad</h1>
+                    </div>
+                    <p>ひらがな・カタカナ・濁音・小書き仮名・記号を、文字表からすばやく入力できます。</p>
+                </section>
+
+                <section class="tool-panel kana-pad-panel" data-kana-pad aria-label="Kana Pad かな入力ツール">
+                    <div class="kana-workspace">
+                        <div class="result-panel kana-result-panel">
+                            <div class="input-header">
+                                <label class="field-label" for="kana-pad-output">入力結果</label>
+                                <output class="status-line" data-kana-status aria-live="polite"></output>
+                            </div>
+                            <textarea id="kana-pad-output" class="text-box kana-output" data-receive-text rows="5" placeholder="ここに入力されます"></textarea>
+
+                            <div class="action-row kana-actions result-actions" aria-label="入力結果の操作">
+                                <button class="action-button action-button-primary" data-kana-action="copy" type="button"
+                                        aria-label="入力結果をコピー">コピー</button>
+                                <button class="action-button" data-kana-action="clear" type="button"
+                                        aria-label="入力結果をすべて削除">クリア</button>
+                                <button class="action-button" data-kana-action="backspace" type="button"
+                                        aria-label="最後の文字を削除">⌫</button>
+                                <button class="action-button" data-kana-action="space" type="button"
+                                        aria-label="スペースを入力">Space</button>
+                                <button class="action-button" data-kana-action="newline" type="button"
+                                        aria-label="改行を入力">↵</button>
+                            </div>
+                        </div>
+
+                        <div class="kana-picker-panel" aria-label="文字選択">
+                            <div class="utility-toolbar kana-search-row">
+                                <label class="search-field" for="kana-pad-search">
+                                    <span class="field-label">検索</span>
+                                    <input id="kana-pad-search" class="search-input" data-kana-search type="search"
+                                           placeholder="ka, tsu, xya, か, 小さいよ">
+                                </label>
+                            </div>
+                            <label class="option-check kana-layout-toggle">
+                                <input id="kana-gojuon-layout-toggle" data-kana-gojuon-layout-toggle type="checkbox">
+                                五十音レイアウト
+                            </label>
+
+                            <div class="split-tool-layout">
+                                <div class="side-tabs kana-tabs" role="tablist" aria-label="Kana Padカテゴリ" data-kana-tabs>
+                                    <button id="kana-tab-hiragana" class="kana-tab" role="tab" type="button" data-kana-tab="hiragana" aria-label="ひらがな" title="ひらがな">あ</button>
+                                    <button id="kana-tab-hiragana-voiced" class="kana-tab" role="tab" type="button" data-kana-tab="hiraganaVoiced" aria-label="濁音・半濁音（ひらがな）" title="濁音・半濁音（ひらがな）">が</button>
+                                    <button id="kana-tab-katakana" class="kana-tab" role="tab" type="button" data-kana-tab="katakana" aria-label="カタカナ" title="カタカナ">ア</button>
+                                    <button id="kana-tab-katakana-voiced" class="kana-tab" role="tab" type="button" data-kana-tab="katakanaVoiced" aria-label="濁音・半濁音（カタカナ）" title="濁音・半濁音（カタカナ）">ガ</button>
+                                    <button id="kana-tab-small" class="kana-tab" role="tab" type="button" data-kana-tab="small" aria-label="小書き仮名" title="小書き仮名">ゃ</button>
+                                    <button id="kana-tab-symbols" class="kana-tab" role="tab" type="button" data-kana-tab="symbols" aria-label="記号" title="記号">「」</button>
+                                </div>
+                                <div class="kana-grid-shell">
+                                    <div id="kana-pad-grid" class="kana-grid" role="grid" aria-label="かな文字表" data-kana-grid></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="handoff-links send-tools" data-handoff-source="kana-pad-output" aria-label="結果を別のツールへ送る">
+                        <span>結果を別のツールへ送る</span>
+                        <a data-handoff-target="/ja/tools/width-converter/" href="/ja/tools/width-converter/">全角・半角</a>
+                        <a data-handoff-target="/ja/tools/kana-converter/" href="/ja/tools/kana-converter/">ひらがな・カタカナ</a>
+                        <a data-handoff-target="/ja/tools/genko-yoshi-viewer/" href="/ja/tools/genko-yoshi-viewer/">原稿用紙</a>
+                    </div>
+                </section>
+
+                <!-- Mobile ad slot -->
+                <aside class="ad-slot mobile-ad" aria-label="広告エリア"><span></span></aside>
+
+                <!-- Guide section -->
+                <section class="guide-section" aria-labelledby="guide-heading">
+                    <h2 id="guide-heading">Kana Pad のGuide section</h2>
+                    <ol>
+                        <li>ひらがな・カタカナ・濁音・小書き仮名・記号のタブから、入力したい文字を選びます。</li>
+                        <li>文字をクリックまたはタップすると、入力結果欄のカーソル位置に挿入されます。</li>
+                        <li>[コピー] で入力結果をコピーし、フォームやメモ、SNS などに貼り付けられます。</li>
+                        <li>[⌫] で直前の 1 文字を削除し、[クリア] で入力結果をまとめて消去できます。</li>
+                        <li>文字表では方向キーで移動し、Enter または Space で文字を入力できます。</li>
+                    </ol>
+
+                    <h2>対応文字</h2>
+                    <p>
+                        ひらがな・カタカナの基本文字に加えて、濁音・半濁音、
+                        拗音や促音に使う小書き仮名、句点・読点・鉤括弧・長音符などの日本語記号を入力できます。
+                    </p>
+
+                    <h2>五十音レイアウト</h2>
+                    <p>
+                        五十音レイアウトをオンにすると、あ行を右端に置く伝統的な五十音順で表示します。
+                        一覧から目で探したいときに便利です。
+                    </p>
+
+                    <h2>検索例</h2>
+                    <div class="example-grid">
+                        <div><strong>ローマ字</strong><p>ka → か、カ</p></div>
+                        <div><strong>かな</strong><p>つ → つ、っ、ツ、ッ</p></div>
+                        <div><strong>小書き仮名</strong><p>xya → ゃ、ャ</p></div>
+                    </div>
+
+                    <h2>関連ツール</h2>
+                    <ul class="link-list">
+                        <li><a href="/ja/tools/width-converter/">全角・半角</a></li>
+                        <li><a href="/ja/tools/kana-converter/">ひらがな・カタカナ</a></li>
+                        <li><a href="/ja/tools/genko-yoshi-viewer/">原稿用紙</a></li>
+                        <li><a href="/ja/tools/kaomoji-copy/">顔文字</a></li>
+                        <li><a href="/ja/tools/japanese-era-converter/">和暦</a></li>
+                    </ul>
+                </section>
+
+                <!-- Horizontal ad slot -->
+                <aside class="ad-slot horizontal-ad" aria-label="広告エリア"><span></span></aside>
+
+                <!-- Extra article section -->
+                <article class="guide-section article-extra" aria-labelledby="kana-pad-extra-guide-heading">
+
+                    <h2 id="kana-pad-extra-guide-heading">かな文字をすばやく入力・コピーする</h2>
+
+                    <p>
+                        Kana Pad は、ひらがな・カタカナ・小書き仮名・日本語記号を文字表から選んで入力するためのツールです。
+                        ふりがな、短い日本語フレーズ、作品名や商品名の一部など、
+                        少しだけかな文字を入力したいときに使えます。
+                    </p>
+
+                    <section>
+                    <h3>📌 こんなときに便利</h3>
+                    <div class="table-scroll">
+                        <table class="seo-guide-table">
+                            <thead>
+                                <tr>
+                                    <th>場面</th>
+                                    <th>Guide section</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>小書き仮名を探したい</strong></td>
+                                    <td><code>ゃ</code>、<code>ゅ</code>、<code>ょ</code>、<code>っ</code>、<code>ァ</code> などを一覧から選べます。</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>濁音・半濁音を確認したい</strong></td>
+                                    <td><code>が</code>、<code>ぱ</code>、<code>ガ</code>、<code>パ</code> などをタブでまとめて確認できます。</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>日本語記号を入力したい</strong></td>
+                                    <td>句点・読点・鉤括弧・長音符・三点リーダーなどをワンタップで入力できます。</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>入力した文字を別ツールへ回したい</strong></td>
+                                    <td>入力結果を全角・半角変換、かな変換、原稿用紙ビューアへ送れます。</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    </section>
+
+                    <section>
+                    <h3>1. 収録している文字</h3>
+                    <p>
+                        基本的なひらがな・カタカナのほか、日本語入力でよく使う派生文字と記号をまとめています。
+                    </p>
+                    <ul>
+                        <li><strong>ひらがな・カタカナ：</strong> あ・い・う・え・お / ア・イ・ウ・エ・オ</li>
+                        <li><strong>濁音・半濁音：</strong> が・ざ・だ・ば・ぱ / ガ・ザ・ダ・バ・パ 系列</li>
+                        <li><strong>小書き仮名：</strong> ゃ・ゅ・ょ・っ / ャ・ュ・ョ・ッ / ァ・ィ・ゥ・ェ・ォ</li>
+                        <li><strong>日本語記号：</strong> 。 、 「 」 『 』 ー 々 … など</li>
+                    </ul>
+                    </section>
+
+                    <section>
+                    <h3>2. 検索で文字を絞り込む</h3>
+                    <p>
+                        文字表から探すだけでなく、検索欄に読みやローマ字を入れて絞り込めます。
+                    </p>
+                    <ul>
+                        <li><code>ka</code> → <code>か</code>、<code>カ</code></li>
+                        <li><code>tsu</code> → <code>つ</code>、<code>ツ</code></li>
+                        <li><code>xya</code> → <code>ゃ</code>、<code>ャ</code></li>
+                    </ul>
+                    <p>
+                        小書き仮名や濁音・半濁音のように、一覧から探すと少し手間な文字を出したいときに便利です。
+                    </p>
+                    </section>
+
+                    <section>
+                    <h3>3. 日本語記号もまとめて入力</h3>
+                    <p>
+                        句点（。）・読点（、）・鉤括弧（「」）・二重鉤括弧（『』）・長音符（ー）などは、
+                        日本語の文章や会話文でよく使う記号です。
+                        記号タブから選ぶだけで、入力結果欄にそのまま挿入できます。
+                    </p>
+                    </section>
+
+                    <section>
+                    <h3>4. 他の MojiHako ツールと組み合わせる</h3>
+                    <p>
+                        入力した文字はコピーして使えるほか、他のツールへ送って追加処理できます。
+                    </p>
+                    <ul>
+                        <li><a href="/ja/tools/width-converter/"><strong>全角・半角変換：</strong></a>半角カタカナや文字幅を整えたいとき</li>
+                        <li><a href="/ja/tools/kana-converter/"><strong>ひらがな・カタカナ変換：</strong></a>入力後に文字種を切り替えたいとき</li>
+                        <li><a href="/ja/tools/genko-yoshi-viewer/"><strong>原稿用紙：</strong></a>入力した文章を縦書き原稿用紙で確認したいとき</li>
+                    </ul>
+                    </section>
+
+                    <section>
+                    <h3>よくある質問</h3>
+
+                    <h4>Q. 入力したテキストはサーバーに送信されますか？</h4>
+                    <p>
+                        送信されません。すべての処理はブラウザ内で完結します。
+                    </p>
+
+                    <h4>Q. スマートフォンでも使えますか？</h4>
+                    <p>
+                        使えます。よく使う場合は、ブックマークやホーム画面のショートカットに追加しておくと便利です。
+                    </p>
+
+                    <h4>Q. 半角カタカナは入力できますか？</h4>
+                    <p>
+                        Kana Pad は通常のひらがな・全角カタカナを基準にしています。
+                        <code>ｶﾀｶﾅ</code> のような半角カタカナが必要な場合は、全角・半角変換ツールを合わせてご利用ください。
+                    </p>
+                    <p><a href="/ja/tools/width-converter/"><strong>全角・半角変換へ移動</strong></a></p>
+                    </section>
+
+                </article>
+
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <nav class="footer-nav" aria-label="フッターリンク">
+                    <div class="footer-link-group">
+                        <a href="#top">ページ上部へ戻る</a>
+                        <a href="/ja/tools/width-converter/">全角・半角</a>
+                        <a href="/ja/tools/kana-converter/">かな変換</a>
+                        <a aria-current="page" href="./">日本語入力</a>
+                        <a href="/ja/tools/genko-yoshi-viewer/">原稿用紙</a>
+                        <a href="/ja/tools/japanese-era-converter/">和暦</a>
+                        <a href="/ja/tools/kaomoji-copy/">顔文字</a>
+                        <a href="/ja/#tool-list">ツール一覧</a>
+                    </div>
+                    <div class="footer-link-group">
+                        <a href="/ja/about.html">サイト紹介 / お問い合わせ</a>
+                        <a href="/ja/terms.html">利用規約</a>
+                        <a href="/ja/privacy.html">プライバシーポリシー</a>
+                    </div>
+                </nav>
+                <p class="footer-note">入力したテキストはサーバーへ送信されず、ユーザーのブラウザ内だけで処理されます。</p>
+                <p class="copyright">© 2026 MojiHako. All rights reserved.</p>
+            </div>
+        </footer>
+        <script src="/assets/js/i18n.js"></script>
+        <script src="/assets/js/app.js"></script>
+    </body>
+</html>

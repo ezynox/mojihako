@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>일본어 텍스트 변환 도구 - 전각·반각, 가나 변환, 원고지 계산 | MojiHako</title>
+        <meta name="description" content="전각 반각 변환, 히라가나 가타카나 변환, 일본 연호 계산, 세로쓰기 원고지 등 일본어 텍스트 작업을 브라우저에서 바로 처리하는 무료 웹 도구 모음입니다.">
+
+        <!-- canonical -->
+        <link rel="canonical" href="./">
+
+        <!-- icons -->
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+        <link rel="icon" href="/favicon-32x32.png" sizes="32x32" type="image/png">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="manifest" href="/site.webmanifest">
+
+        <!-- style -->
+        <link rel="stylesheet" href="/style.css">
+
+        <!-- schema -->
+        <script type="application/ld+json">
+         {
+             "@context": "https://schema.org",
+             "@type": "WebSite",
+             "name": "mojihako",
+             "alternateName": "모지하코",
+             "url": "https://ezyno.github.io/japanese-text-converter/",
+             "inLanguage": "ko",
+             "description": "전각 반각 변환, 히라가나 가타카나 변환, 일본 연호 계산, 세로쓰기 원고지 등 일본어 텍스트 작업을 브라우저에서 바로 처리하는 무료 웹 도구 모음입니다.",
+             "publisher": {
+                 "@type": "organization",
+                 "name": "mojihako",
+                 "url": "https://ezyno.github.io/japanese-text-converter/"
+             },
+             "hasPart": {
+                 "@type": "ItemList",
+                 "name": "일본어 텍스트 변환 도구 목록",
+                 "itemListElement": [
+                     {
+                         "@type": "ListItem",
+                         "position": 1,
+                         "name": "전각/반각 변환기",
+                         "url": "https://ezyno.github.io/japanese-text-converter/tools/width-converter/"
+                     },
+                     {
+                         "@type": "ListItem",
+                         "position": 2,
+                         "name": "히라가나/가타카나 변환기",
+                         "url": "https://ezyno.github.io/japanese-text-converter/tools/kana-converter/"
+                     },
+                     {
+                         "@type": "ListItem",
+                         "position": 3,
+                         "name": "kana pad",
+                         "url": "https://ezyno.github.io/japanese-text-converter/tools/kana-pad/"
+                     },
+                     {
+                         "@type": "ListItem",
+                         "position": 4,
+                         "name": "원고지 뷰어",
+                         "url": "https://ezyno.github.io/japanese-text-converter/tools/genko-yoshi-viewer/"
+                     },
+                     {
+                         "@type": "ListItem",
+                         "position": 5,
+                         "name": "일본 연호 변환기",
+                         "url": "https://ezyno.github.io/japanese-text-converter/tools/japanese-era-converter/"
+                     },
+                     {
+                         "@type": "ListItem",
+                         "position": 6,
+                         "name": "카오모지 복사",
+                         "url": "https://ezyno.github.io/japanese-text-converter/tools/kaomoji-copy/"
+                     }
+                 ]
+             }
+         }
+        </script>
+
+    </head>
+    <body id="top">
+        <a class="skip-link" href="#main">본문으로 이동</a>
+        <header class="site-header">
+            <div class="header-inner">
+                <a class="brand" href="/ko/" aria-label="mojihako 홈">
+                    <img class="brand-mark"
+                         src="/assets/images/mojihako-brand-logo-origin.svg" alt="" width="34" height="34">
+                    <span class="brand-word">
+                        <span class="brand-moji">Moji</span>
+                        <span class="brand-hako">Hako</span>
+                    </span>
+                </a>
+                <nav class="language-nav" aria-label="언어 선택">
+                    <a aria-current="page" href="/ko/">한국어</a>
+                    <a href="/ja/">日本語</a>
+                    <a href="/">english</a>
+                </nav>
+            </div>
+            <nav class="tool-nav" aria-label="도구 메뉴">
+                <a href="/ko/tools/width-converter/">전각/반각</a>
+                <a href="/ko/tools/kana-converter/">가나 변환</a>
+                <a href="/ko/tools/kana-pad/">일본어 입력</a>
+                <a href="/ko/tools/genko-yoshi-viewer/">원고지</a>
+                <a href="/ko/tools/japanese-era-converter/">일본 연호</a>
+                <a href="/ko/tools/kaomoji-copy/">카오모지</a>
+                <a href="#tool-list">도구 목록</a>
+            </nav>
+        </header>
+
+        <main id="main" class="home-main">
+            <section class="intro home-hero">
+                <h1>일본어 텍스트 변환 도구 모음</h1>
+
+                <p>
+                    전각·반각, 히라가나·가타카나 변환이나 서기 날짜 일본 연호 환산, 원고지 매수 계산 등
+                    자주 쓰는 일본어 문자 작업을 회원가입 없이 브라우저 안에서 간편하게 처리합니다.
+                </p>
+
+            </section>
+
+            <section id="tool-list" class="tool-hub" aria-labelledby="hub-heading">
+                <h2 id="hub-heading">도구 목록</h2>
+                <div class="hub-grid">
+
+                    <a class="hub-tile" href="/ko/tools/width-converter/">
+                        <span class="hub-icon">Ａ</span>
+                        <span class="hub-copy">
+                            <strong>전각/반각</strong>
+                            <small>일본어 전각·반각 문자, 숫자, 공백, 문장부호를 변환</small>
+                        </span>
+                    </a>
+
+                    <a class="hub-tile" href="/ko/tools/kana-converter/">
+                        <span class="hub-icon">あ</span>
+                        <span class="hub-copy">
+                            <strong>히라가나/가타카나</strong>
+                            <small>히라가나를 가타카나로, 가타카나를 히라가나로 변환</small>
+                        </span>
+                    </a>
+
+                    <a class="hub-tile" href="/ko/tools/kana-pad/">
+                        <!-- keyboard icon code -->
+                        <span class="hub-icon">⌨</span>
+                        <span class="hub-copy">
+                            <strong>일본어 입력</strong>
+                            <small>일본어 IME 없이도 가나와 특수문자를 클릭해서 입력</small>
+                        </span>
+                    </a>
+
+                    <a class="hub-tile" href="/ko/tools/genko-yoshi-viewer/">
+                        <span class="hub-icon">稿</span>
+                        <span class="hub-copy">
+                            <strong>원고지</strong>
+                            <small>텍스트를 세로쓰기 원고지 형식으로 미리 보고 글자 수와 매수를 계산</small>
+                        </span>
+                    </a>
+
+                    <a class="hub-tile" href="/ko/tools/japanese-era-converter/">
+                        <span class="hub-icon">令</span>
+                        <span class="hub-copy">
+                            <strong>일본 연호</strong>
+                            <small>서기 날짜를 레이와·헤이세이·쇼와 등 주요 일본 연호로 변환</small>
+                        </span>
+                    </a>
+
+                    <a class="hub-tile" href="/ko/tools/kaomoji-copy/">
+                        <span class="hub-icon">^◡^</span>
+                        <span class="hub-copy">
+                            <strong>카오모지</strong>
+                            <small>일본식 문자 이모티콘, 카오모지를 검색·복사</small>
+                        </span>
+                    </a>
+
+                </div>
+            </section>
+
+            <section class="guide-section home-guide" aria-labelledby="home-guide-heading">
+                <h2 id="home-guide-heading">온라인 일본어 텍스트 도구</h2>
+                <p>
+                    MojiHako는 일본어 텍스트 작업을 할 때 필요한 각종 변환 툴을 한곳에 모아 둔 웹사이트입니다.
+                    전각/반각 변환이나 가나 변환, 연호 확인, 원고지 계산 등 다양한 작업을 프로그램 설치 없이
+                    바로 실행해 보세요.
+                </p>
+            </section>
+
+            <section class="guide-section home-guide" aria-labelledby="home-extra-guide-heading">
+                <h2 id="home-extra-guide-heading">MojiHako 일본어 텍스트 도구 활용 방법 및 상세 가이드</h2>
+                <ul class="home-article-list">
+                    <li>
+                        <a href="/ko/tools/width-converter/#width-extra-guide-heading">
+                            “전각으로 입력해 주세요” 오류 해결을 위한 전각·반각 변환 가이드
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/ko/tools/kana-converter/#kana-extra-guide-heading">
+                            히라가나·가타카나 상호 변환 가이드
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/ko/tools/kana-pad/#kana-pad-extra-guide-heading">
+                            일본어 키보드 설치 없이 히라가나·가타카나 입력하는 법
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/ko/tools/genko-yoshi-viewer/#genko-extra-guide-heading">
+                            일본어 세로쓰기 원고지 규칙과 200자·400자 원고지 매수 계산 가이드
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/ko/tools/japanese-era-converter/#era-extra-guide-heading">
+                            일본 연호와 서기 변환 가이드: 레이와·헤이세이·쇼와 날짜 계산
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/ko/tools/kaomoji-copy/#kaomoji-extra-guide-heading">
+                            카오모지란? SNS에서 쓸 수 있는 일본식 텍스트 이모티콘
+                        </a>
+                    </li>
+                </ul>
+            </section>
+
+        </main>
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <nav class="footer-nav" aria-label="하단 사이트 링크">
+                    <div class="footer-link-group">
+                        <a href="#top">맨 위로 돌아가기</a>
+                        <a href="/ko/tools/width-converter/">전각/반각</a>
+                        <a href="/ko/tools/kana-converter/">가나 변환</a>
+                        <a href="/ko/tools/kana-pad/">일본어 입력</a>
+                        <a href="/ko/tools/genko-yoshi-viewer/">원고지</a>
+                        <a href="/ko/tools/japanese-era-converter/">일본 연호</a>
+                        <a href="/ko/tools/kaomoji-copy/">카오모지</a>
+                        <a aria-current="page" href="/ko/#tool-list">도구 목록</a>
+                    </div>
+                    <div class="footer-link-group">
+                        <a href="/ko/about.html">소개</a>
+                        <a href="/ko/terms.html">이용약관</a>
+                        <a href="/ko/privacy.html">개인정보처리방침</a>
+                    </div>
+                </nav>
+                <p class="footer-note">입력한 텍스트를 서버로 전송하지 않고, 브라우저 안에서만 처리합니다.</p>
+                <p class="copyright">© 2026 MojiHako. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <script src="/assets/js/i18n.js"></script>
+    </body>
+</html>
