@@ -1380,6 +1380,7 @@ button {
 
 .kana-output {
     min-height: 330px;
+    font-size: 16px;
 }
 
 .kana-pad-panel.is-gojuon-layout .kana-output {
@@ -1596,6 +1597,14 @@ button {
     text-align: center;
     font-weight: 800;
     white-space: nowrap;
+}
+
+.kana-key,
+.kana-tab,
+.kana-result-panel button,
+.kana-result-panel .action-button {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .kana-tab:hover {

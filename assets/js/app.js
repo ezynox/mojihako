@@ -869,6 +869,7 @@
         const tabButtons = Array.from(root.querySelectorAll("[data-kana-tab]"));
         const tabIds = tabButtons.map((button) => button.dataset.kanaTab);
         const compactOutputQuery = window.matchMedia("(max-width: 860px)");
+        const coarsePointerQuery = window.matchMedia("(pointer: coarse)");
         const gojuonLayoutStorageKey = "mojihako:kana-pad:gojuon-layout";
         let statusTimer = 0;
         let activeTab = readStoredString(`${storagePrefix}tab`, "hiragana");
@@ -911,6 +912,18 @@
             caretStart = position;
             caretEnd = position;
             output.setSelectionRange(position, position);
+        }
+
+        function shouldSkipOutputFocus() {
+            return coarsePointerQuery.matches;
+        }
+
+        function syncOutputFocusAfterAction({ shouldFocusDesktop = false } = {}) {
+            if (shouldSkipOutputFocus()) {
+                if (document.activeElement === output) output.blur();
+                return;
+            }
+            if (shouldFocusDesktop) output.focus();
         }
 
         function allKanaValues() {
@@ -1036,7 +1049,7 @@
             saveOutput();
             autoResizeOutput();
             updateHandoffLinks();
-            output.focus();
+            syncOutputFocusAfterAction({ shouldFocusDesktop: true });
         }
 
         function renderGrid() {
@@ -1147,10 +1160,11 @@
                 }
                 if (action === "clear") {
                     output.value = "";
+                    placeCaret(0);
                     saveOutput();
                     autoResizeOutput();
                     updateHandoffLinks();
-                    output.focus();
+                    syncOutputFocusAfterAction({ shouldFocusDesktop: true });
                     setStatus(uiText("status.cleared"));
                 }
                 if (action === "backspace") deleteBeforeCursor();
