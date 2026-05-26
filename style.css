@@ -214,7 +214,7 @@ textarea {
     justify-content: center;
     flex: 0 0 auto;
     width: 14px;
-    height: 14px
+    height: 14px;
     margin-top: 0.45em;
     border-radius: 999px;
     background: var(--focus);
@@ -629,7 +629,7 @@ h2 {
 /*     letter-spacing: 0; */
 /*     tab-size: 4; */
 
-}
+
 
 /* ==========================================================================
    Focus states
