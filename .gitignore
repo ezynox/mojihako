@@ -1,0 +1,55 @@
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / Emacs
+*~
+\#*\#
+.\#*
+/auto-save-list/
+/.eldev/
+/.eldoc/
+*.org
+
+# Logs
+*.log
+
+# Environment / local config
+.env
+.env.*
+
+# Perl
+*.pl
+
+# Build output
+/dist/
+/build/
+/public/
+
+# Cache
+/.cache/
+/.parcel-cache/
+/.vite/
+
+# Dependencies, if using Node later
+/node_modules/
+/.npm/
+/.pnpm-store/
+
+# node
+/tests/
+/tsets/**
+/.github/
+package-lock.json
+package.json
+playwright*
+.htmlhint*
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
