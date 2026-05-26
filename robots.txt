@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mojihako.pages.dev/sitemap.xml
+Sitemap: https://mojihako.com/sitemap.xml
