@@ -302,11 +302,9 @@ textarea {
 .page-shell {
     display: grid;
     grid-template-columns: minmax(160px, 220px) minmax(0, 900px) minmax(160px, 220px);
-    /* grid-template-columns: minmax(160px, 220px) minmax(0, 880px) minmax(160px, 220px); */
     gap: 28px;
     align-items: start;
     max-width: 1436px;
-    /* max-width: 1384px; */
     margin: 0 auto;
     padding: 22px 20px 52px;
 }
@@ -645,16 +643,6 @@ h2 {
 }
 
 
-/* .converter-tool .width-textarea { */
-/*     padding: 14px; */
-/*     font-family: "Noto Sans Mono", "Noto Sans Mono CJK JP", "Cascadia Mono", "Consolas", "SFMono-Regular", monospace; */
-/*     font-size: 1rem; */
-/*     line-height: 1.7; */
-/*     letter-spacing: 0; */
-/*     tab-size: 4; */
-
-
-
 /* ==========================================================================
    Focus states
    ========================================================================== */
@@ -693,13 +681,8 @@ summary:focus-visible {
     display: flex;
     align-items: center;
     gap: 8px;
-
     min-height: 36px;
     padding: 5px 12px;
-
-    /* min-height: 44px; */
-    /* padding: 8px 12px; */
-
     border: 1px solid var(--line);
     border-radius: 4px;
     background: var(--surface);
@@ -713,7 +696,6 @@ summary:focus-visible {
     color: var(--text);
 }
 
-/* Live switch */
 .switch {
     flex: 0 0 auto;
     color: var(--text);
@@ -1776,7 +1758,6 @@ button {
 
 /* ==========================================================================
    Ad slots
-   - .ad-slot의 min-height를 바꾸면 광고 예약 공간 높이가 바뀜
    - .desktop-ad와 .mobile-ad는 반응형 @media에서 표시 여부가 전환
    ========================================================================== */
 .ad-slot {
@@ -1956,8 +1937,6 @@ summary {
         grid-template-columns: max-content max-content;
         justify-content: center;
         gap: 200px;
-        /* grid-template-columns: 1fr 1fr; */
-        /* gap: 48px; */
     }
 }
 
