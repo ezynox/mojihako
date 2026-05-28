@@ -2,7 +2,8 @@
    Web Fonts
    ========================================================================== */
 
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700;800&family=Noto+Sans+JP:wght@400;700;800&family=Noto+Sans+KR:wght@400;700;800&display=swap");
+/* Google Fonts are linked from each HTML document so Cloudflare Fonts can
+   rewrite them and avoid the extra @import round trip. */
 
 /* ==========================================================================
    Design tokens / color variables
@@ -40,19 +41,15 @@
     --font-sans-ko:
         "Noto Sans KR",
         "Noto Sans JP",
-        "Noto Sans",
         var(--font-sans);
 
     --font-sans-ja:
         "Noto Sans JP",
-        "Noto Sans",
-        "Noto Sans KR",
         var(--font-sans);
 
     --font-sans-en:
         "Noto Sans",
         "Noto Sans JP",
-        "Noto Sans KR",
         var(--font-sans);
 
     --font-mono:
@@ -629,15 +626,7 @@ h2 {
 
 .converter-tool .converter-textarea,
 .converter-tool .output-box {
-    font-family:
-        "Noto Sans JP",
-        "Noto Sans KR",
-        "Noto Sans",
-        "Meiryo",
-        "Yu Gothic",
-        "Malgun Gothic",
-        system-ui,
-        sans-serif;
+    font-family: var(--font-sans-ja);
     font-size: 1rem;
     line-height: 1.8;
 }
@@ -1263,7 +1252,7 @@ button {
 
 .genko-cell-mark.genko-token-bracket,
 .genko-cell-mark.genko-token-quote {
-    font-family: "Noto Sans KR", "Noto Sans JP", "Noto Sans", system-ui, sans-serif;
+    font-family: var(--font-sans-ja);
     text-orientation: mixed;
     transform-origin: center;
     writing-mode: horizontal-tb;
