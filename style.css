@@ -19,9 +19,16 @@
     --line-strong: #cfcfcf;
     --primary: #111111;
     --primary-strong: #000000;
-    --accent: #14b8a6;
-    --accent-teal: #14b8a6;
-    --accent-orange: #f59e0b;
+
+    --accent: #0f766e;
+    --accent-teal: #0f766e;
+    --accent-orange: #b45309;
+
+    /* original brand logo color */
+    --accent-orig: #14b8a6;
+    --accent-teal-orig: #14b8a6;
+    --accent-orange-orig: #f59e0b;
+
     --accent-soft: #f4fbfa;
     --focus: #f59e0b;
     --shadow: none;
