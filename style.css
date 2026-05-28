@@ -199,11 +199,11 @@ textarea {
 }
 
 .brand-moji {
-    color: var(--accent-orange-orig);
+    color: var(--accent-orange);
 }
 
 .brand-hako {
-    color: var(--accent-teal-orig);
+    color: var(--accent-teal);
 }
 
 .intro p,
