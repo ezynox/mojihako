@@ -20,14 +20,15 @@
     --primary: #111111;
     --primary-strong: #000000;
 
-    --accent: #0f766e;
-    --accent-teal: #0f766e;
-    --accent-orange: #b45309;
-
     /* original brand logo color */
-    --accent-orig: #14b8a6;
-    --accent-teal-orig: #14b8a6;
-    --accent-orange-orig: #f59e0b;
+    --accent: #14b8a6;
+    --accent-teal: #14b8a6;
+    --accent-orange: #f59e0b;
+
+    /* brand theme color for text */
+    /* --accent: #0f766e; */
+    --accent-teal-text: #0f766e;
+    --accent-orange-text: #b45309;
 
     --accent-soft: #f4fbfa;
     --focus: #f59e0b;
@@ -1854,11 +1855,11 @@ summary {
 }
 
 .seo-guide-table .text-teal {
-    color: var(--accent-teal);
+    color: var(--accent-teal-text);
 }
 
 .seo-guide-table .text-orange {
-    color: var(--accent-orange);
+    color: var(--accent-orange-text);
 }
 
 
