@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /cdn-cgi/
 Sitemap: https://mojihako.com/sitemap.xml
