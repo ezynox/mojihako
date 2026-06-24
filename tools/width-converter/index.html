@@ -123,12 +123,6 @@
                     <div class="tool-title-row">
                         <h1>Full-width / Half-width Converter</h1>
                     </div>
-
-                    <p>
-                        Quickly convert between full-width and half-width characters — useful for formatting names,
-                        addresses, product listings, and form fields on Japanese websites.
-                    </p>
-
                 </section>
 
                 <section class="tool-panel converter-tool" aria-label="Full-width / Half-width conversion tool">
@@ -186,11 +180,9 @@
                 <section class="guide-section" aria-labelledby="guide-heading">
                     <h2 id="guide-heading">How to use</h2>
                     <ol>
-                        <li>Paste the text you want to convert into the input box.</li>
                         <li>Select a conversion mode.</li>
                         <li>With Live mode on, the result updates automatically as you type.</li>
                         <li>Turn Live mode off to convert manually with the Convert button.</li>
-                        <li>Click Copy to copy the converted text to your clipboard.</li>
                     </ol>
 
                     <h2>Examples</h2>
@@ -210,17 +202,10 @@
                         <div><strong>NFKC normalization</strong>
                             <p><code>① Ⅳ ㍿ → 1 IV 株式会社</code></p></div>
                     </div>
+                </section>
 
-                    <h2>What are full-width and half-width characters?</h2>
-                    <p>Full-width characters(全角文字) occupy a square cell (1:1 ratio), like kanji or full-width Latin letters.
-                        Half-width characters(半角文字) are narrower (1:0.5 ratio), like standard ASCII letters and digits.</p>
-                    <p>Japanese websites often require a specific width format for names, addresses, phone numbers, and product fields — mixing the two can trigger validation errors.</p>
-
-                    <h2>What is NFKC normalization?</h2>
-                    <p>NFKC normalization maps compatibility characters — such as circled numbers (<code>①</code>), Roman numerals (<code>Ⅳ</code>), and full-width letters (<code>Ａ</code>, <code>１</code>) — to their standard Unicode equivalents (<code>1</code>, <code>IV</code>, <code>A</code>).</p>
-                    <p>It is useful for cleaning up text before search indexing or data analysis, where inconsistent character forms can cause mismatches.</p>
-
-                    <h2>Related tools</h2>
+                <section class="guide-section" aria-labelledby="related-tools-heading">
+                    <h2 id="related-tools-heading">Related tools</h2>
                     <ul class="link-list">
                         <li><a href="/tools/kana-converter/">Hiragana / Katakana</a></li>
                         <li><a href="/tools/kana-pad/">Kana Pad</a></li>
@@ -241,13 +226,9 @@
                     </h2>
 
                     <p>
-                        When signing up for a Japanese website, shopping on Amazon Japan or Mercari, or booking a hotel,
-                        you may run into error messages like
-                        <strong>"Please enter in full-width characters (全角で入力してください)"</strong> or
-                        <strong>"Please enter in half-width characters (半角で入力してください)"</strong>.
-                        These errors are usually caused by input forms that distinguish
-                        between full-width and half-width character widths.
-                        Use the guide below to identify the cause and convert your text to the required format.
+                        Japanese websites may strictly distinguish between different character types when processing account registration or address information.
+                        One common example is the distinction between full-width and half-width characters.
+                        Refer to the guide below and convert your text to the required format.
                     </p>
 
                     <section>

@@ -136,7 +136,6 @@
             },
             genko: {
                 title: "세로쓰기 원고지 뷰어",
-                description: "텍스트를 세로쓰기 원고지 형식으로 배치하고, 200자/400자 기준 매수를 계산합니다.",
                 inputHeading: "텍스트 입력",
                 textLabel: "원고지에 넣을 텍스트",
                 fileLabel: "텍스트 파일 불러오기( .txt / .md )",
@@ -354,7 +353,6 @@
             },
             genko: {
                 title: "縦書き原稿用紙ビューア",
-                description: "テキストを日本式の縦書き原稿用紙形式に配置し、200字/400字基準の枚数を計算します。",
                 inputHeading: "テキスト入力",
                 textLabel: "原稿用紙に入れるテキスト",
                 fileLabel: "テキストファイルを読み込む（.txt / .md）",
@@ -562,7 +560,6 @@
             },
             genko: {
                 title: "Vertical Genko Paper Viewer",
-                description: "Lay out text in a Japanese vertical manuscript grid and calculate 200/400-character sheet counts.",
                 inputHeading: "Text Input",
                 textLabel: "Text for the manuscript grid",
                 fileLabel: "Load text file( .txt / .md )",

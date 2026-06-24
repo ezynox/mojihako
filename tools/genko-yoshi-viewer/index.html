@@ -123,9 +123,6 @@
                     <div class="tool-title-row">
                         <h1 data-i18n-text="genko.title">Vertical Genko Paper Viewer</h1>
                     </div>
-                    <p data-i18n-text="genko.description">
-                        Lay out text in a Japanese vertical manuscript grid and calculate sheet counts for 200- and 400-character formats.
-                    </p>
                 </section>
 
                 <div class="genko-control-grid" data-genko-tool>
@@ -244,19 +241,7 @@
 
                 <!-- How to use -->
                 <section class="guide-section" aria-labelledby="guide-heading">
-                    <h2 id="guide-heading">What is Genko Yoshi?</h2>
-                    <p>
-                        Genko yoshi (原稿用紙, genkō yōshi) is a type of Japanese manuscript paper with a fixed grid of cells,
-                        one character per cell. In vertical layout, characters run top to bottom and columns proceed right to left.
-                    </p>
-
-                    <h2>200-character vs. 400-character format</h2>
-                    <p>
-                        A 400-character sheet has 20 characters per column across 20 columns (20×20).
-                        A 200-character sheet has 20 characters per column across 10 columns (20×10).
-                    </p>
-
-                    <h2>Basic layout rules</h2>
+                    <h2 id="guide-heading">Basic layout rules</h2>
                     <p>
                         Each character occupies one cell. Line breaks advance to the next column.
                         With the paragraph indent option on, the first cell of each new paragraph is left empty.
@@ -264,7 +249,7 @@
                     </p>
 
                     <p>
-                        For text with spaces between words (such as Korean or romanized text),
+                        For text with spaces between words,
                         a space that would land in the first cell of a column is skipped
                         so the column does not open with a blank cell.
                     </p>
@@ -283,19 +268,9 @@
                         line breaks, blank lines, paragraph indents, and kinsoku handling —
                         all of which consume cells without adding characters.
                     </p>
+                </section>
 
-                    <h2>Loading TXT files</h2>
-                    <p>
-                        Files are read using the browser File API only. No text or file content is sent to a server.
-                    </p>
-
-                    <h2>Note</h2>
-                    <p>
-                        Manuscript formatting rules vary by school, contest, publisher, and submission guidelines.
-                        This tool is a layout preview aid, not a substitute for professional typesetting.
-                        Always check the specific rules of your submission venue.
-                    </p>
-
+                <section>
                     <h2>Related tools</h2>
                     <ul class="link-list">
                         <li><a href="/tools/width-converter/">Full / Half Width</a></li>
@@ -465,6 +440,15 @@
                                 <li>Do punctuation marks and closing brackets appear in awkward positions in the preview?</li>
                             </ul>
                         </div>
+                    </section>
+
+                    <section>
+                        <h2>6.Note</h2>
+                        <p>
+                            Manuscript formatting rules vary by school, contest, publisher, and submission guidelines.
+                            This tool is a layout preview aid, not a substitute for professional typesetting.
+                            Always check the specific rules of your submission venue.
+                        </p>
                     </section>
 
                     <section>
