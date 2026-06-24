@@ -110,6 +110,10 @@
                     today: "오늘",
                     plus1: "1일 →",
                 },
+                monthJumpLabels: {
+                    minus1: "← 1월",
+                    plus1: "1월 →",
+                },
                 yearJumpLabels: {
                     minus10: "← 10년",
                     minus1: "← 1년",
@@ -323,6 +327,10 @@
                     minus1: "← 1日",
                     today: "今日",
                     plus1: "1日 →",
+                },
+                monthJumpLabels: {
+                    minus1: "← 1月",
+                    plus1: "1月 →",
                 },
                 yearJumpLabels: {
                     minus10: "← 10年",
@@ -541,6 +549,10 @@
                     minus1: "← 1 day",
                     today: "Today",
                     plus1: "1 day →",
+                },
+                monthJumpLabels: {
+                    minus1: "← 1 mo",
+                    plus1: "1 mo →",
                 },
                 yearJumpLabels: {
                     minus10: "← 10 yrs",
@@ -829,6 +841,10 @@
         root.querySelectorAll("[data-era-relative]").forEach((button) => {
             const key = { "-1": "minus1", "0": "today", "1": "plus1" }[button.dataset.eraRelative];
             if (key) setText(button, `era.dayJumpLabels.${key}`);
+        });
+        root.querySelectorAll("[data-month-jump]").forEach((button) => {
+            const key = { "-1": "minus1", "1": "plus1" }[button.dataset.monthJump];
+            if (key) setText(button, `era.monthJumpLabels.${key}`);
         });
         root.querySelectorAll("[data-year-jump]").forEach((button) => {
             const key = { "-10": "minus10", "-1": "minus1", "1": "plus1", "10": "plus10" }[button.dataset.yearJump];

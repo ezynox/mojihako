@@ -625,6 +625,21 @@
         return nextDate;
     }
 
+    function jumpEraMonth(value, offset) {
+        const baseDate = eraBaseDate(value);
+        const monthBase = new Date(0);
+        monthBase.setFullYear(baseDate.getFullYear(), baseDate.getMonth() + offset, 1);
+        monthBase.setHours(0, 0, 0, 0);
+
+        const year = monthBase.getFullYear();
+        const month = monthBase.getMonth() + 1;
+        const day = Math.min(baseDate.getDate(), daysInMonth(year, month));
+        const nextDate = new Date(0);
+        nextDate.setFullYear(year, month - 1, day);
+        nextDate.setHours(0, 0, 0, 0);
+        return nextDate;
+    }
+
     function jumpEraYear(value, offset) {
         const baseDate = eraBaseDate(value);
         const year = baseDate.getFullYear() + offset;
@@ -1253,6 +1268,13 @@
         const offset = Number(button.dataset.eraRelative || 0);
         const nextDate = offset === 0 ? todayDate() : jumpEraDay(eraElements.input.value, offset);
         eraElements.input.value = formatDateInput(nextDate);
+        convertEra();
+    });
+
+    bindClickAll("[data-month-jump]", (button) => {
+        if (!eraElements.input) return;
+        const offset = Number(button.dataset.monthJump || 0);
+        eraElements.input.value = formatDateInput(jumpEraMonth(eraElements.input.value, offset));
         convertEra();
     });
 
