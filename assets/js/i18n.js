@@ -72,7 +72,8 @@
             },
             footer: {
                 top: "맨 위로 돌아가기",
-                about: "소개 / 문의",
+                about: "소개",
+                contact: "문의",
                 privacy: "개인정보처리방침",
                 terms: "이용약관",
                 privacyNote: "입력한 텍스트를 서버로 전송하지 않고, 브라우저 안에서만 처리합니다.",
@@ -285,7 +286,8 @@
             },
             footer: {
                 top: "ページ上部へ戻る",
-                about: "サイト紹介 / お問い合わせ",
+                about: "サイト紹介",
+                contact: "お問い合わせ",
                 privacy: "プライバシーポリシー",
                 terms: "利用規約",
                 privacyNote: "入力したテキストはサーバーへ送信されず、ユーザーのブラウザ内だけで処理されます。",
@@ -502,7 +504,8 @@
             },
             footer: {
                 top: "Back to Top",
-                about: "About / Contact",
+                about: "About",
+                contact: "Contact",
                 terms: "Terms",
                 privacy: "Privacy Policy",
                 privacyNote: "Your text stays in your browser and is not sent to our server.",
