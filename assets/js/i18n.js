@@ -54,7 +54,7 @@
                 },
                 kanaPad: {
                     nav: "일본어 입력",
-                    short: "Kana Pad",
+                    short: "일본어입력",
                 },
                 kaomoji: {
                     nav: "카오모지",
